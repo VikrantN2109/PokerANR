@@ -3,6 +3,7 @@ package flows;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.Point;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.PageFactory;
@@ -40,13 +41,29 @@ public class ANRFlows extends ANRLocators {
     }
 
     public void flutterToWebviewPromotions() throws InterruptedException {
-        tapByCoordinates(973, 2095); //clickSideMenuButton();
-        goToHelpFromSideMenu();
-        clickOnBackBtnHelp();
-        Thread.sleep(3000);
-        tapByCoordinates(133, 2100); //goToPromotions();
-        Thread.sleep(5000);
-        clickBackButtonAndroid();
+        try
+        {
+            // tapByCoordinates(973, 2095);
+            clickSideMenuButton();
+            goToHelpFromSideMenu();
+            clickOnBackBtnHelp();
+            Thread.sleep(3000);
+            // tapByCoordinates(133, 2100);
+            goToPromotions();
+            Thread.sleep(5000);
+            clickBackButtonAndroid();
+        }
+        catch (TimeoutException e)
+        {
+            try
+            {
+                swipeToRight();
+            }
+            catch (Exception ex)
+            {
+                System.out.println(ex);
+            }
+        }
     }
 
     public void flutterToWebviewLeaderboard() throws InterruptedException {
@@ -62,7 +79,7 @@ public class ANRFlows extends ANRLocators {
         goToPracticeTab();
         select2Player();
         clickPlayNowBtn();
-        Thread.sleep(); //dropTable();
+        Thread.sleep(1000); //dropTable();
         tapByCoordinates(133, 2100); //goToPromotions();
     }
 

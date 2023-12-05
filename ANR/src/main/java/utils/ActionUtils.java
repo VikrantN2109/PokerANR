@@ -5,13 +5,16 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.List;
 
 public class ActionUtils {
@@ -104,5 +107,31 @@ public class ActionUtils {
             } catch (Exception e) {
             }
         }
+    }
+
+    public void swipeToRight()
+    {
+        try {
+            Dimension size = driver.manage().window().getSize();
+//            int startX = size.width / 2;
+//            int startY = (int) (size.height * 0.8); // Start from 80% down the screen
+//            int endY = (int) (size.height * 0.6); // End at 20% down the screen
+
+            int startX = (int) (size.width * 0.8); // 80% from the left
+            int endX = (int) (size.width * 0.2);   // 20% from the left
+            int startY = size.height / 3;
+
+            TouchAction<?> action = new TouchAction<>(driver);
+            action.press(PointOption.point(startX, startY))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500))) // Add a wait action
+                    .moveTo(PointOption.point(startX, endX))
+                    .release()
+                    .perform();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage() + "swipeToBottom method failed");
+        }
+
+
     }
 }
