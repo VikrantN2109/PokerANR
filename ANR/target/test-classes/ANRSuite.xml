@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="ANR Suite" verbose="2" thread-count="1">
+    <test name="ANR" preserve-order="true">
+        <classes>
+            <class name="ANR.ANR">
+                <!--            <methods>-->
+                <!--                <include name="LoginWeb"></include>-->
+                <!--            </methods>-->
+            </class>
+        </classes>
+    </test>
+</suite>
