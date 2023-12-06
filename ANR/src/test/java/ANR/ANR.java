@@ -25,14 +25,17 @@ public class ANR extends BaseTest {
 
     @Test
     public void anr() throws InterruptedException {
-        int n = 1;
+        int n = 5;
 
         flows.loginExistingUser();
 
-        for (int i = 1; i <= n; i++) {
+        for (int i = 1; i <= n; i++)
+        {
             System.out.println("iteration: " + i); //Use logging
 
-            if (i % appLaunchFrequency == 0) {
+            if (i % appLaunchFrequency == 0)
+            {
+                driver.terminateApp("com.jungleerummy.playcashgameonline");
                 startActivity("com.jungleerummy.playcashgameonline", "io.jungleerummy.jungleegames.MainActivity");
             }
 

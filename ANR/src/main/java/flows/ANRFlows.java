@@ -50,8 +50,13 @@ public class ANRFlows extends ANRLocators {
             Thread.sleep(3000);
             // tapByCoordinates(133, 2100);
             goToPromotions();
+            Thread.sleep(7000);
+            clickLeaderBoard();
+            Thread.sleep(7000);
+            clickOptIn();
             Thread.sleep(5000);
-            clickBackButtonAndroid();
+            clickLobby();
+          //  clickBackButtonAndroid();
         }
         catch (TimeoutException e)
         {
@@ -67,20 +72,30 @@ public class ANRFlows extends ANRLocators {
     }
 
     public void flutterToWebviewLeaderboard() throws InterruptedException {
-        tapByCoordinates(973, 2095); //clickSideMenuButton();
+      //  tapByCoordinates(973, 2095);
+        clickSideMenuButton();
         goToHelpFromSideMenu();
         clickBackButtonAndroid();
         Thread.sleep(5000);
-        tapByCoordinates(133, 2100); //goToPromotions();
+        // tapByCoordinates(133, 2100);
+        goToPromotions();
         clickOnBackBtnHelp();
+        clickSideMenuButton();
+        goToLeaderBoardFromSideMenu();
+        Thread.sleep(5000);
+        scrollAndViewAll();
+        clickLobby();
+
     }
 
     public void flutterToUnity() throws InterruptedException {
         goToPracticeTab();
         select2Player();
         clickPlayNowBtn();
-        Thread.sleep(1000); //dropTable();
-        tapByCoordinates(133, 2100); //goToPromotions();
+        Thread.sleep(1000);
+        dropTable();
+        //tapByCoordinates(133, 2100);
+        goToPromotions();
     }
 
     public void addCashJuspayFlow() throws InterruptedException {
@@ -88,11 +103,11 @@ public class ANRFlows extends ANRLocators {
         closeRatingPopUp();
         clickAddCashLobby();
         unCheckExpressCheckout();
-        tapByCoordinates(815, 1934); //Not able to locate Add Cash Button
+        tapByCoordinates(542, 1328); //Not able to locate Add Cash Button
         clickSelectYourBank();
         clickAnyBankInNetBanking();
-        Thread.sleep(5000);
-        waitForNavHomeTabVisible(); //Wait for Juspay webview to load
+        Thread.sleep(7000);
+       // waitForNavHomeTabVisible(); //Wait for Juspay webview to load
         clickBackButtonAndroid();
         clickJusPayYesCancelBtn();
         clickBackButtonAndroid();

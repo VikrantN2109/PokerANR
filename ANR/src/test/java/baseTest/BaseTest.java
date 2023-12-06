@@ -26,7 +26,7 @@ public class BaseTest {
     public AndroidDriver initAppiumDriver() throws IOException, InterruptedException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "RZ8M63E30VY");
+        desiredCapabilities.setCapability("deviceName", "10BD7S02NE009SG");
         desiredCapabilities.setCapability("unicodeKeyboard", false);
         desiredCapabilities.setCapability("resetKeyboard", false);
         desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
@@ -38,7 +38,7 @@ public class BaseTest {
         AppiumServiceBuilder builder = new AppiumServiceBuilder();
         builder.withIPAddress("127.0.0.1");
         builder.usingAnyFreePort();
-        builder.withAppiumJS(new File("/usr/local/bin/appium"));
+        builder.withAppiumJS(new File("/opt/homebrew/bin/appium"));
         builder.withCapabilities(desiredCapabilities);
         builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
         builder.withArgument(GeneralServerFlag.LOG_LEVEL, "error");
@@ -49,7 +49,7 @@ public class BaseTest {
         driver = new AndroidDriver(url, desiredCapabilities);
         Thread.sleep(4000);
         System.out.println(driver.getContextHandles().toString());
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         locators=new ANRLocators(driver,wait);
         flows =new ANRFlows(driver,wait);
         return driver;

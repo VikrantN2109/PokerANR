@@ -103,6 +103,21 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'How would you rate')]/android.view.View")
     public WebElement ratingPopUp;
 
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View[2]/android.widget.ListView/android.view.View[3]")
+    public WebElement leaderBoard;
+
+    @AndroidFindBy(accessibility = "Opt- in Now")
+    public WebElement optIn;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"LOBBY\"]")
+    public WebElement lobby;
+
+    @AndroidFindBy(accessibility= "Leaderboard")
+    public WebElement leaderBoardAccess;
+    @AndroidFindBy(accessibility= "View all")
+    public WebElement viewALL;
+
+
     public void clickAllowPermission()
     {
         if (isElementPresent(allowButton)) {
@@ -247,6 +262,31 @@ public class ANRLocators extends ActionUtils {
     public void clickPlayNowBtn()
     {
         waitAndClick(playNowBtn);
+    }
+
+    public void clickLeaderBoard()
+    {
+        waitAndClick(leaderBoard);
+    }
+
+    public void clickOptIn()
+    {
+        waitAndClick(optIn);
+    }
+
+    public void clickLobby()
+    {
+        waitAndClick(lobby);
+    }
+
+    public void goToLeaderBoardFromSideMenu()
+    {
+        waitAndClick(leaderBoardAccess);
+    }
+    public void scrollAndViewAll()
+    {
+        scrollWithCoordinates(driver, 364, 1257, 350, 183);
+        waitAndClick(viewALL);
     }
 
 

@@ -9,7 +9,10 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -134,4 +137,27 @@ public class ActionUtils {
 
 
     }
+
+    public void scrollWithCoordinates(AndroidDriver driver, int startX, int startY, int endX, int endY) {
+        final PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Point start = new Point(startX, startY);
+        Point end = new Point(endX, endY);
+        Sequence swipe = new Sequence(FINGER, 1)
+                .addAction(
+                        FINGER.createPointerMove(
+                                Duration.ofMillis(0),
+                                PointerInput.Origin.viewport(),
+                                start.getX(),
+                                start.getY()))
+                .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                .addAction(
+                        FINGER.createPointerMove(
+                                Duration.ofMillis(1000),
+                                PointerInput.Origin.viewport(),
+                                end.getX(),
+                                end.getY()))
+                .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+        driver.perform(java.util.Arrays.asList(swipe));
+    }
+
 }
