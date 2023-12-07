@@ -106,7 +106,7 @@ public class ANRFlows extends ANRLocators {
         tapByCoordinates(542, 1328); //Not able to locate Add Cash Button
         clickSelectYourBank();
         clickAnyBankInNetBanking();
-        Thread.sleep(7000);
+        Thread.sleep(8000);
        // waitForNavHomeTabVisible(); //Wait for Juspay webview to load
         clickBackButtonAndroid();
         clickJusPayYesCancelBtn();
