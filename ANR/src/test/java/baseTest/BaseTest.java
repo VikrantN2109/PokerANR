@@ -9,6 +9,7 @@ import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.DataProvider;
 import pageObjects.ANRLocators;
 
 import java.io.File;
@@ -24,10 +25,10 @@ public class BaseTest {
     public ANRLocators locators;
     public ANRFlows flows;
 
-    public AndroidDriver initAppiumDriver() throws IOException, InterruptedException {
+    public AndroidDriver initAppiumDriver(String deviceId) throws IOException, InterruptedException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "RZ8M63E30VY");
+        desiredCapabilities.setCapability("deviceName", deviceId);
         desiredCapabilities.setCapability("unicodeKeyboard", false);
         desiredCapabilities.setCapability("resetKeyboard", false);
         desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
@@ -49,13 +50,22 @@ public class BaseTest {
         service.start();
         URL url = service.getUrl();
         driver = new AndroidDriver(url, desiredCapabilities);
-        driver.setNetworkSpeed(NetworkSpeed.valueOf("250")); // Replace with your desired speed
+        //driver.setNetworkSpeed(NetworkSpeed.valueOf("250")); // Replace with your desired speed
         Thread.sleep(4000);
         System.out.println(driver.getContextHandles().toString());
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         locators=new ANRLocators(driver,wait);
         flows =new ANRFlows(driver,wait);
         return driver;
+    }
+
+    @DataProvider(name = "deviceIds")
+    public Object[][] getDeviceIds() {
+        return new Object[][]{
+                {"RZ8M63E30VY"},
+                {"10BD7S02NE009SG"}
+                // Add more device IDs as needed
+        };
     }
 
     public void startActivity(String appPackage, String activity){
