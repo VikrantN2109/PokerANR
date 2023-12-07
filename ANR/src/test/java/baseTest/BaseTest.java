@@ -3,6 +3,7 @@ package baseTest;
 import com.google.common.collect.ImmutableMap;
 import flows.ANRFlows;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.NetworkSpeed;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
@@ -35,6 +36,7 @@ public class BaseTest {
         desiredCapabilities.setCapability("noReset", false);
         desiredCapabilities.setCapability("fullReset", false);
         desiredCapabilities.setCapability("automationName", "uiautomator2");
+        desiredCapabilities.setCapability("newCommandTimeout", "200");
         AppiumServiceBuilder builder = new AppiumServiceBuilder();
         builder.withIPAddress("127.0.0.1");
         builder.usingAnyFreePort();
@@ -47,6 +49,7 @@ public class BaseTest {
         service.start();
         URL url = service.getUrl();
         driver = new AndroidDriver(url, desiredCapabilities);
+        driver.setNetworkSpeed(NetworkSpeed.valueOf("250")); // Replace with your desired speed
         Thread.sleep(4000);
         System.out.println(driver.getContextHandles().toString());
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));

@@ -183,7 +183,7 @@ public class ANRLocators extends ActionUtils {
 
     public void clickJusPayYesCancelBtn()
     {
-        waitAndClick(juspayYesCancelBtn);
+        click(juspayYesCancelBtn);
     }
 
     public void ClickYes_Button()
