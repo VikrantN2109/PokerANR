@@ -117,6 +117,10 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(accessibility= "View all")
     public WebElement viewALL;
 
+    @AndroidFindBy(xpath= "//android.widget.ImageView[@content-desc=\"CASH\"]")
+    public WebElement cashTabButton;
+
+
 
     public void clickAllowPermission()
     {
@@ -198,7 +202,7 @@ public class ANRLocators extends ActionUtils {
 
     public void clickJusPayYesCancelBtn()
     {
-        waitAndClick(juspayYesCancelBtn);
+        click(juspayYesCancelBtn);
     }
 
     public void ClickYes_Button()
@@ -248,6 +252,27 @@ public class ANRLocators extends ActionUtils {
             System.out.println(navHomeTab.toString()+" not found");
         }
     }
+
+    public void cashTab()
+    {
+//        try{
+//            FluentWait<AndroidDriver> wait = new FluentWait<>(driver)
+//                    .withTimeout(Duration.ofSeconds(30))
+//                    .pollingEvery(Duration.ofSeconds(2))
+//                    .ignoring(NoSuchElementException.class);
+//            wait.until(ExpectedConditions.visibilityOf(cashTabButton));
+//            timeStamp();//login->lobby
+//            System.out.println("Timestamp form app launch to lobby ");
+//        }catch(Exception e){
+//            System.out.println(cashTabButton.toString()+" not found");
+//        }
+
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//android.widget.ImageView[@content-desc=\"CASH\"]")));
+        timeStamp();//login->lobby
+        System.out.println("Timestamp form app launch to lobby ");
+
+    }
+
 
     public void goToPracticeTab()
     {

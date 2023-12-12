@@ -16,7 +16,9 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.time.Duration;
 import java.util.List;
 
@@ -158,6 +160,12 @@ public class ActionUtils {
                                 end.getY()))
                 .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
         driver.perform(java.util.Arrays.asList(swipe));
+    }
+
+    public void timeStamp()
+    {
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        System.out.println(timestamp);
     }
 
 }
