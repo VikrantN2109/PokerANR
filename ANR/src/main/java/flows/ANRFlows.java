@@ -31,9 +31,11 @@ public class ANRFlows extends ANRLocators {
         Thread.sleep(2000);
         ClickLogIn();
         ClickLoginUsingPassword();
+        ClickLoginViaPassword();
         enterUsername("7999465910");
-        enterPassword("@Test123");
-        hideKeyboard_Android();
+        enterPassword("@Test123");    //Abcdef123!
+        clickBackButtonAndroid();
+        //hideKeyboard_Android();
         clickLoginButtonExisting();
         Thread.sleep(2000); //use wait for element visible
         clickAllowPermission();
@@ -111,8 +113,11 @@ public class ANRFlows extends ANRLocators {
         Thread.sleep(2000);
         closeRatingPopUp();
         clickAddCashLobby();
-        unCheckExpressCheckout();
-        tapByCoordinates(542, 1328); //Not able to locate Add Cash Button
+        selectFirstTile();
+        Thread.sleep(4000);
+     //   unCheckExpressCheckout();
+      //  tapByCoordinates(542, 1328); //Not able to locate Add Cash Button (VIVO Y16)
+        tapByCoordinates(538,1837); // vivo y11
         clickSelectYourBank();
         clickAnyBankInNetBanking();
         randomRotation(5);

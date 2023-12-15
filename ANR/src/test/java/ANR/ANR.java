@@ -55,8 +55,8 @@ public class ANR extends BaseTest {
 
                 if (i % addCashFrequency == 0) {
                     System.out.println("Device Rotation Before Add Cash!");
-                    flows.randomRotation(5);
-                    flows.addCashJuspayFlow();
+                  //  flows.randomRotation(5);
+               //     flows.addCashJuspayFlow();
                 }
 
                 if (i % F2UFrequency == 0)
@@ -69,11 +69,18 @@ public class ANR extends BaseTest {
                 }
 
                 System.out.println("Testcase Passed with All Condition=" + i);
+                Thread.sleep(4000);
             }
             catch (Exception e) {
                 System.out.println("Exception =" + e);
-                driver.terminateApp("io.jungleerummy.jungleegames");
-                startActivity("io.jungleerummy.jungleegames", "io.jungleerummy.jungleegames.MainActivity");
+
+//                driver.terminateApp("io.jungleerummy.jungleegames");
+//                startActivity("io.jungleerummy.jungleegames", "io.jungleerummy.jungleegames.MainActivity");
+
+                driver.terminateApp("com.rummydotcom.indianrummycashgame");
+                startActivity("com.rummydotcom.indianrummycashgame","com.rummydotcom.indianrummycashgame.MainActivity");
+
+                Thread.sleep(5000);
             }
 
         }

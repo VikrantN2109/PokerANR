@@ -34,8 +34,12 @@ public class BaseTest {
 //        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
 //        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
 
-        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
-        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+//        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+//        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+
+        desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
+        desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");
+
 
         desiredCapabilities.setCapability("simpleIsVisibleCheck", true);
         desiredCapabilities.setCapability("noReset", false);

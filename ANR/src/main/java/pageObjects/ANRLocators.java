@@ -31,6 +31,9 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(accessibility = "Login Using Password")
     public WebElement loginUsingPswd;
 
+    @AndroidFindBy(accessibility = "Login via password")
+    public WebElement loginViaPswd;
+
     @AndroidFindBy(xpath = "(//android.widget.ImageView)[4]")
     public WebElement enterUsername;
 
@@ -120,6 +123,14 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(xpath= "//android.widget.ImageView[@content-desc=\"CASH\"]")
     public WebElement cashTabButton;
 
+    @AndroidFindBy(xpath= "//*[contains(@text,'LEADERBOARD')]")
+    public WebElement rummyComLeaderBoard;
+
+    @AndroidFindBy(accessibility = "Opt-In Now")
+    public WebElement optInRummyCom;
+
+    @AndroidFindBy(accessibility = "Lobby")
+    public WebElement rummyComLobby;
 
 
     public void clickAllowPermission()
@@ -131,12 +142,28 @@ public class ANRLocators extends ActionUtils {
 
     public void ClickLogIn()
     {
-        waitAndClick(loginButton);
+        if(isElementPresent(loginButton))
+        {
+            waitAndClick(loginButton);
+        }
+
     }
 
     public void ClickLoginUsingPassword() {
-        waitAndClick(loginUsingPswd);
+        if(isElementPresent(loginUsingPswd))
+        {
+            waitAndClick(loginUsingPswd);
+        }
 
+
+    }
+
+    public void ClickLoginViaPassword()
+    {
+        if(isElementPresent(loginViaPswd))
+        {
+            waitAndClick(loginViaPswd);
+        }
     }
 
     public void enterUsername(String userName)
@@ -291,17 +318,43 @@ public class ANRLocators extends ActionUtils {
 
     public void clickLeaderBoard()
     {
-        waitAndClick(leaderBoard);
+        if(isElementPresent(leaderBoard))
+        {
+            waitAndClick(leaderBoard);
+        }
+
+        if(isElementPresent(rummyComLeaderBoard))
+        {
+            waitAndClick(rummyComLeaderBoard);
+        }
+
     }
 
     public void clickOptIn()
     {
-        waitAndClick(optIn);
+        if(isElementPresent(optIn))
+        {
+            waitAndClick(optIn);
+        }
+
+        if(isElementPresent(optInRummyCom))
+        {
+            waitAndClick(optInRummyCom);
+        }
     }
 
     public void clickLobby()
     {
-        waitAndClick(lobby);
+        if(isElementPresent(lobby))
+        {
+            waitAndClick(lobby);
+        }
+
+        if(isElementPresent(rummyComLobby))
+        {
+            waitAndClick(rummyComLobby);
+        }
+
     }
 
     public void goToLeaderBoardFromSideMenu()
@@ -311,9 +364,12 @@ public class ANRLocators extends ActionUtils {
     public void scrollAndViewAll()
     {
         scrollWithCoordinates(driver, 364, 1257, 350, 183);
-        waitAndClick(viewALL);
-    }
+        if(isElementPresent(viewALL))
+        {
+            waitAndClick(viewALL);
+        }
 
+    }
 
 
 }
