@@ -71,12 +71,12 @@ public class ActionUtils {
 
     public void waitAndClick(WebElement locator) {
         int n=3;
-        while(n>1){
-            try{
+        while(n>1) {
+            try {
                 wait.until(ExpectedConditions.visibilityOf(locator)).click();
                 return;
-            }catch(Exception e){
-                n-=1;
+            } catch (Exception e) {
+                n -= 1;
             }
         }
     }
@@ -167,5 +167,4 @@ public class ActionUtils {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         System.out.println(timestamp);
     }
-
 }

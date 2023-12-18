@@ -1,0 +1,78 @@
+{
+  "server": "hub-cloud.browserstack.com",
+  "username": "roohpreetkaur_rJOCtg",
+  "access_key": "XgrmR7L4zwj9HHEpC6sB",
+  "native_app": "bs://ecd03e80d45407109d35748c0fd7da1b67bd572c",
+  "psrmg_app": "bs://1a9e754d7e26b989a37bc4c4efa840c1aadc66eb",
+  "ipa": "bs://841d0bbb62ac5bf3bb5737d0861064a676d99bcb",
+  "rummycom_app": "",
+  "capabilities": {
+    "project": "ANR",
+    "build": "ANR Build",
+    "name": "ANR Script",
+    "browserstack.debug": true,
+    "interactiveDebugging": true,
+    "newCommandTimeout": 300,
+    "noReset": false,
+    "autoGrantPermissions": true,
+    "customNetwork": "800,800,100,1",
+    "appProfiling": true,
+    "resignApp": false,
+    "autoAcceptAlerts": true
+  },
+
+  "androidEnvironments": [
+    {
+      "platformName": "android",
+      "deviceName": "Samsung Galaxy S22",
+      "os_version": "12.0"
+    },
+    {
+      "platformName": "android",
+      "deviceName": "Vivo Y21",
+      "os_version": "11.0"
+    },
+    {
+      "platformName": "android",
+      "deviceName": "Oppo A96",
+      "os_version": "11.0"
+    },
+    {
+      "platformName": "android",
+      "deviceName": "Motorola Moto G71 5G",
+      "os_version": "11.0"
+    },
+    {
+      "platformName": "android",
+      "deviceName": "OnePlus 9",
+      "os_version": "11.0"
+    }
+  ],
+  "iOSEnvironments": [
+    {
+      "platformName": "iOS",
+      "deviceName": "iPhone 13",
+      "os_version": "17"
+    },
+    {
+      "platformName": "iOS",
+      "deviceName": "iPhone 13",
+      "os_version": "15.5"
+    },
+    {
+      "platformName": "iOS",
+      "deviceName": "iPhone 14",
+      "os_version": "16"
+    },
+    {
+      "platformName": "iOS",
+      "deviceName": "iPhone 11",
+      "os_version": "15"
+    },
+    {
+      "platformName": "iOS",
+      "deviceName": "iPhone 13 Pro",
+      "os_version": "15"
+    }
+  ]
+}
