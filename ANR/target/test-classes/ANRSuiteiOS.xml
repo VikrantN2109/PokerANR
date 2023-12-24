@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel" thread-count="5" parallel="tests">
+    <test name="ANR iPhone 13 17">
+        <parameter name="deviceIndex" value="0"/>
+        <classes>
+            <class name="ANR.ANR"/>
+        </classes>
+    </test>
+
+    <test name="ANR iPhone 13">
+        <parameter name="deviceIndex" value="1"/>
+        <classes>
+            <class name="ANR.ANR"/>
+        </classes>
+    </test>
+
+    <test name="ANR iPhone 14">
+        <parameter name="deviceIndex" value="2"/>
+        <classes>
+            <class name="ANR.ANR"/>
+        </classes>
+    </test>
+
+    <test name="ANR iPhone 11">
+        <parameter name="deviceIndex" value="3"/>
+        <classes>
+            <class name="ANR.ANR"/>
+        </classes>
+    </test>
+
+        <test name="ANR iPhone 12 Pro">
+            <parameter name="deviceIndex" value="4"/>
+            <classes>
+                <class name="ANR.ANR"/>
+            </classes>
+        </test>
+</suite>

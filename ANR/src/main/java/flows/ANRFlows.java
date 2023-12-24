@@ -31,7 +31,7 @@ public class ANRFlows extends ANRLocators {
             clickAllowPermission();
         }
         clickAllowPermission();
-       // clickLocationOkBtn();
+         clickLocationOkBtn();
         Thread.sleep(2000);
         ClickLogIn();
         ClickLoginUsingPassword();
@@ -152,6 +152,7 @@ public class ANRFlows extends ANRLocators {
         select2Player();
         clickPlayNowBtn();
         randomRotation(5);
+        driver.runAppInBackground(Duration.ofSeconds(10));
         Thread.sleep(100000);
         //dropTable();
         goToPromotions();

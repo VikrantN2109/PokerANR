@@ -56,7 +56,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="TestNG.ANR.anr">
+  <component name="RunManager" selected="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml">
     <configuration name="ANR.anr" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ANR" />
       <shortenClasspath name="NONE" />
@@ -89,58 +89,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AnrTimeStamp" type="TestNG" temporary="true" nameIsGenerated="true">
+    <configuration name="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ANR" />
       <shortenClasspath name="NONE" />
       <useClassPathOnly />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ANR.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SUITE_NAME" value="" />
-      <option name="PACKAGE_NAME" value="ANR" />
-      <option name="MAIN_CLASS_NAME" value="ANR.AnrTimeStamp" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/ANRSuiteLocal.xml" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
       <option name="GROUP_NAME" value="" />
-      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="TEST_OBJECT" value="SUITE" />
       <option name="PARAMETERS" value="" />
       <option name="OUTPUT_DIRECTORY" value="" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="PROPERTIES_FILE" value="" />
-      <envs>
-        <env name="ANDROID_HOME" value="$USER_HOME$/Library/Android/sdk" />
-        <env name="ANDROID_SDK_ROOT" value="$USER_HOME$/Library/Android/sdk" />
-      </envs>
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AnrTimeStamp.anr" type="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="ANR" />
-      <shortenClasspath name="NONE" />
-      <useClassPathOnly />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ANR.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="SUITE_NAME" value="" />
-      <option name="PACKAGE_NAME" value="ANR" />
-      <option name="MAIN_CLASS_NAME" value="ANR.AnrTimeStamp" />
-      <option name="METHOD_NAME" value="anr" />
-      <option name="GROUP_NAME" value="" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <option name="PARAMETERS" value="" />
-      <option name="OUTPUT_DIRECTORY" value="" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
       <option name="PROPERTIES_FILE" value="" />
       <envs>
         <env name="ANDROID_HOME" value="$USER_HOME$/Library/Android/sdk" />
@@ -175,18 +135,57 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="ANR" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/ANRSuiteiOS.xml" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="PROPERTIES_FILE" value="" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="/Users/anushkas.hrivastava/Library/Caches/JetBrains/IdeaIC2023.1/temp-testng-customsuite.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
+      <option name="SUITE_NAME" value="$USER_HOME$/Library/Caches/JetBrains/IdeaIC2023.1/temp-testng-customsuite.xml" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="GROUP_NAME" value="" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="PROPERTIES_FILE" value="" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml" />
+      <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml" />
+      <item itemvalue="TestNG./Users/anushkas.hrivastava/Library/Caches/JetBrains/IdeaIC2023.1/temp-testng-customsuite.xml" />
       <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuite.xml" />
-      <item itemvalue="TestNG.AnrTimeStamp.anr" />
       <item itemvalue="TestNG.ANR.anr" />
-      <item itemvalue="TestNG.AnrTimeStamp" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml" />
         <item itemvalue="TestNG.ANR.anr" />
+        <item itemvalue="TestNG./Users/anushkas.hrivastava/Library/Caches/JetBrains/IdeaIC2023.1/temp-testng-customsuite.xml" />
+        <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml" />
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuite.xml" />
-        <item itemvalue="TestNG.AnrTimeStamp.anr" />
-        <item itemvalue="TestNG.AnrTimeStamp" />
       </list>
     </recent_temporary>
   </component>
@@ -219,29 +218,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/pageObjects/ANRLocators.java</url>
-          <line>235</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ANR/ANR.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
-          <line>113</line>
-          <option name="timeStamp" value="23" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ANR/ANR.java</url>
-          <line>61</line>
+          <line>77</line>
           <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ANR/ANR.java</url>
-          <line>52</line>
-          <option name="timeStamp" value="25" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
@@ -258,5 +237,8 @@
         <watch expression="cashTabButton" language="JAVA" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ANR$_Users_anushkas_hrivastava_Desktop_ANR_ANR_src_test_resources_ANRSuiteLocal_xml.ic" NAME="$PROJECT_DIR$/src/test/resources/ANRSuiteLocal.xml Coverage Results" MODIFIED="1703158348525" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

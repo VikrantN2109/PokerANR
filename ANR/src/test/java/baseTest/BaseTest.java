@@ -48,6 +48,7 @@ public class BaseTest {
         System.out.println(props.getProperty("runEnv"));
     }
 
+    @BeforeMethod(alwaysRun = true)
     public AndroidDriver initAppiumDriver() throws IOException, InterruptedException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
@@ -58,11 +59,11 @@ public class BaseTest {
 //        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
 //        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
 
-//        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
-//        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
 
-        desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
-        desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");
+//        desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
+//        desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");
 
 
         desiredCapabilities.setCapability("simpleIsVisibleCheck", true);
@@ -125,7 +126,7 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeMethod(alwaysRun = true)
+   // @BeforeMethod(alwaysRun = true)
     @Parameters(value={"deviceIndex"})
     public AndroidDriver launchBS(String deviceIndex) throws Exception {
         JSONParser parser = new JSONParser();

@@ -1,8 +1,12 @@
 package ANR;
 
 import baseTest.BaseTest;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class ANR extends BaseTest {
 
@@ -12,7 +16,7 @@ public class ANR extends BaseTest {
     int F2WFrequency = 1;
     int addCashFrequency =1;
     int F2UFrequency = 1;
-    //int rotationFrequency = 1;
+    int runAppInBackGround=1;
 
     @Test
     @Parameters(value={"deviceIndex"})
@@ -41,7 +45,18 @@ public class ANR extends BaseTest {
                 if (i % addCashFrequency == 0) {
                     System.out.println("Device Rotation Before Add Cash!");
                     flows.randomRotation(10);
-                    flows.addCashJuspayFlow(platform, deviceIndex);
+                  //  flows.addCashJuspayFlow(platform, deviceIndex);
+                }
+
+                if(i % runAppInBackGround ==0)
+                {
+                   // driver.runAppInBackground(Duration.ofSeconds(10));
+
+                    driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+                    driver.activateApp("com.rummydotcom.indianrummycashgame");
+                    Thread.sleep(2000);
+                    driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+                    driver.activateApp("io.jungleerummy.jungleegames");
                 }
 
                 if (i % F2UFrequency == 0) {
@@ -51,6 +66,7 @@ public class ANR extends BaseTest {
                     System.out.println("Device Rotation After Game table!");
                     flows.randomRotation(5);
                 }
+
 
                 System.out.println("Testcase Passed with All Condition=" + i);
                 Thread.sleep(4000);
