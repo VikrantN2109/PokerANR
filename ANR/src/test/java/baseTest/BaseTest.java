@@ -48,7 +48,7 @@ public class BaseTest {
         System.out.println(props.getProperty("runEnv"));
     }
 
-    @BeforeMethod(alwaysRun = true)
+   // @BeforeMethod(alwaysRun = true)
     public AndroidDriver initAppiumDriver() throws IOException, InterruptedException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
@@ -126,7 +126,7 @@ public class BaseTest {
         return driver;
     }
 
-   // @BeforeMethod(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     @Parameters(value={"deviceIndex"})
     public AndroidDriver launchBS(String deviceIndex) throws Exception {
         JSONParser parser = new JSONParser();

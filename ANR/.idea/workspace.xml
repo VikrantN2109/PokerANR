@@ -70,7 +70,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml">
+  <component name="RunManager" selected="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml">
     <configuration name="ANR.anr" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ANR" />
       <shortenClasspath name="NONE" />
@@ -203,10 +203,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml" />
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml" />
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Library/Caches/JetBrains/IdeaIC2023.1/temp-testng-customsuite.xml" />
         <item itemvalue="TestNG.ANR.anr" />
-        <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml" />
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuite.xml" />
       </list>
     </recent_temporary>
@@ -241,12 +241,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ANR/ANR.java</url>
-          <line>100</line>
+          <line>117</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ANR/ANR.java</url>
-          <line>93</line>
+          <line>88</line>
           <option name="timeStamp" value="32" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -256,8 +256,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
-          <line>272</line>
+          <line>273</line>
           <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/baseTest/BaseTest.java</url>
+          <line>208</line>
+          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

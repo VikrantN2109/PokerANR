@@ -2,6 +2,8 @@ package flows;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.TimeoutException;
@@ -192,7 +194,6 @@ public class ANRFlows extends ANRLocators {
         innerList.add(1,date2);
 
         twoDArrayList.add(innerList);
-
     }
 
     public void printTwoDArray()
@@ -322,4 +323,15 @@ public class ANRFlows extends ANRLocators {
         }
 
     }
+
+    public void toggleApps() throws InterruptedException {
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+        driver.activateApp("com.rummydotcom.indianrummycashgame");
+        Thread.sleep(2000);
+        driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+        driver.activateApp("io.jungleerummy.jungleegames");
+    }
+
+
+
 }
