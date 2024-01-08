@@ -120,6 +120,9 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Pay')]/android.widget.ImageView")
     public WebElement uncheckBtn;
 
+    @AndroidFindBy(xpath ="//android.view.View[@content-desc=\"Select Amount Enter Amount (Up to ₹10,000) You Get ₹1,000 Pay Using ****8622\"]/android.widget.ImageView")
+    public WebElement uncheckBtnCard;
+
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.TextView[1]")
     @iOSXCUITFindBy(accessibility = "Yes")
     public WebElement juspayYesCancelBtn;
@@ -284,7 +287,15 @@ public class ANRLocators extends ActionUtils {
 
     public void unCheckExpressCheckout()
     {
-        waitAndClick(uncheckBtn);
+        if(uncheckBtn.isDisplayed())
+        {
+            waitAndClick(uncheckBtn);
+        }
+//        if(uncheckBtnCard.isDisplayed())
+//        {
+//            waitAndClick(uncheckBtnCard);
+//        }
+
     }
 
     public void clickAnyBankInNetBanking()

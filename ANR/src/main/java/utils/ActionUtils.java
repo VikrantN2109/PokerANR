@@ -13,12 +13,11 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
+import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.time.Duration;
 import java.util.List;
 
@@ -162,9 +161,18 @@ public class ActionUtils {
         driver.perform(java.util.Arrays.asList(swipe));
     }
 
-    public void timeStamp()
+    public Timestamp timeStamp()
     {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         System.out.println(timestamp);
+        return timestamp;
+    }
+
+    public void printDeviceLogs(AndroidDriver driver)
+    {
+        List<org.openqa.selenium.logging.LogEntry> logEntries = driver.manage().logs().get("logcat").getAll();
+        for (LogEntry logEntry : logEntries) {
+            System.out.println(logEntry.getMessage());
+        }
     }
 }

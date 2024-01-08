@@ -5,8 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0345e6e6-e6d9-4479-8b35-59dc886b7613" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/ANR.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/ANR.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/browserstack-plugin.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/browserstack-plugin.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/flows/ANRFlows.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/flows/ANRFlows.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pageObjects/ANRLocators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pageObjects/ANRLocators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ActionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ActionUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ANR/ANR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ANR/ANR.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/ANRConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/ANRConfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/flows/ANRFlows.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/flows/ANRFlows.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/pageObjects/ANRLocators.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/pageObjects/ANRLocators.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/utils/ActionUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/utils/ActionUtils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ANR/ANR.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ANR/ANR.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/ANRConfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ANRConfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +57,9 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/anushkas.hrivastava/Desktop/ANR/ANR&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -148,6 +162,10 @@
       <option name="PARAMETERS" value="" />
       <option name="OUTPUT_DIRECTORY" value="" />
       <option name="PROPERTIES_FILE" value="" />
+      <envs>
+        <env name="ANDROID_HOME" value="$USER_HOME$/Library/Android/sdk" />
+        <env name="ANDROID_SDK_ROOT" value="$USER_HOME$/Library/Android/sdk" />
+      </envs>
       <properties />
       <listeners />
       <method v="2">
@@ -166,6 +184,10 @@
       <option name="PARAMETERS" value="" />
       <option name="OUTPUT_DIRECTORY" value="" />
       <option name="PROPERTIES_FILE" value="" />
+      <envs>
+        <env name="ANDROID_HOME" value="$USER_HOME$/Library/Android/sdk" />
+        <env name="ANDROID_SDK_ROOT" value="$USER_HOME$/Library/Android/sdk" />
+      </envs>
       <properties />
       <listeners />
       <method v="2">
@@ -182,8 +204,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml" />
-        <item itemvalue="TestNG.ANR.anr" />
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Library/Caches/JetBrains/IdeaIC2023.1/temp-testng-customsuite.xml" />
+        <item itemvalue="TestNG.ANR.anr" />
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml" />
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuite.xml" />
       </list>
@@ -219,13 +241,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ANR/ANR.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="24" />
+          <line>100</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ANR/ANR.java</url>
+          <line>93</line>
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pageObjects/ANRLocators.java</url>
+          <line>273</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
-          <line>95</line>
-          <option name="timeStamp" value="26" />
+          <line>272</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
