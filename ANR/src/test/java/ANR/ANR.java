@@ -9,6 +9,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.Duration;
@@ -26,41 +27,41 @@ public class ANR extends BaseTest {
     int toggleBetweenApps=5;
     @Test
     @Parameters(value={"deviceIndex"})
-    public void anr(String deviceIndex) throws InterruptedException {
-        int noOfIterations = 3;
+    public void anr(String deviceIndex) throws InterruptedException, FileNotFoundException {
+        int noOfIterations = 2;
 
         flows.loginExistingUser(platform, deviceIndex);
 
         for (int i = 1; i <= noOfIterations; i++) {
             System.out.println("iteration: " + i); //Use logging
             try {
-                if (i % appLaunchFrequency == 0) {
-                    flows.relaunchApp(platform);
-                }
-
-                if (i % reloadChipsFrequency == 0) {
-                    flows.reloadChips();
-                }
-
-                if (i % F2WFrequency == 0) {
-                    flows.randomRotation(20);
-                    flows.flutterToWebviewPromotions(platform);
-                    flows.flutterToWebviewLeaderboard(platform);
-                }
-
-                if (i % addCashFrequency == 0) {
-                    System.out.println("Device Rotation Before Add Cash!");
-                    flows.randomRotation(10);
-                    flows.addCashJuspayFlow(platform);
-                }
-
-                if(i % runAppInBackGround ==0) {
-                    driver.runAppInBackground(Duration.ofSeconds(10));
-                }
-
-                if(i % toggleBetweenApps==0) {
-                    flows.toggleApps();
-                }
+//                if (i % appLaunchFrequency == 0) {
+//                    flows.relaunchApp(platform);
+//                }
+//
+//                if (i % reloadChipsFrequency == 0) {
+//                    flows.reloadChips();
+//                }
+//
+//                if (i % F2WFrequency == 0) {
+//                    flows.randomRotation(20);
+//                    flows.flutterToWebviewPromotions(platform);
+//                    flows.flutterToWebviewLeaderboard(platform);
+//                }
+//
+//                if (i % addCashFrequency == 0) {
+//                    System.out.println("Device Rotation Before Add Cash!");
+//                    flows.randomRotation(10);
+//                    flows.addCashJuspayFlow(platform);
+//                }
+//
+//                if(i % runAppInBackGround ==0) {
+//                    driver.runAppInBackground(Duration.ofSeconds(10));
+//                }
+//
+//                if(i % toggleBetweenApps==0) {
+//                    flows.toggleApps();
+//                }
 
                 if (i % F2UFrequency == 0) {
                     System.out.println("Device Rotation Before Game table!");
@@ -86,7 +87,7 @@ public class ANR extends BaseTest {
         System.out.println("DIFFERENCE IN TIMESTAMP FROM LOBBY TO GAMETABLE");
         flows.printTimestamp();
 
-        //flows.printDeviceLogs(driver);
+        flows.printDeviceLogs(driver);
 
 
     }

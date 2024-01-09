@@ -17,6 +17,10 @@ import org.openqa.selenium.logging.LogEntry;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
 import java.sql.Timestamp;
 import java.time.Duration;
 import java.util.List;
@@ -168,12 +172,24 @@ public class ActionUtils {
         return timestamp;
     }
 
-    public void printDeviceLogs(AndroidDriver driver)
-    {
+    public void printDeviceLogs(AndroidDriver driver) throws FileNotFoundException {
+        String filePath="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/output.txt";
+        PrintStream fileStream = new PrintStream(new File(filePath));
+        // Redirect System.out to the file stream
+        System.setOut(fileStream);
+
         List<org.openqa.selenium.logging.LogEntry> logEntries = driver.manage().logs().get("logcat").getAll();
         for (LogEntry logEntry : logEntries) {
-            System.out.println(logEntry.getMessage());
+
+            if (logEntry.getMessage().contains("flutter : Lobby Event Added ::  lobby_play_now_clicked")) {
+                System.out.println(logEntry.getMessage());
+            }
+
+            if (logEntry.getMessage().contains("Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft")) {
+                System.out.println(logEntry.getMessage());
+            }
         }
+        fileStream.close();
     }
 
 
