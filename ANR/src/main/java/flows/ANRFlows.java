@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.ScreenOrientation;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.PageFactory;
@@ -24,18 +25,51 @@ public class ANRFlows extends ANRLocators {
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
-    public void loginExistingUser() throws InterruptedException {
+    public void loginExistingUser(String platform, String deviceIndex) throws InterruptedException {
+        timeStamp();// splash->login
+        if (platform.equalsIgnoreCase("ipa")) {
+            clickAllowPermission();
+        }
         clickAllowPermission();
+//        clickLocationOkBtn();
+        Thread.sleep(2000);
         ClickLogIn();
         ClickLoginUsingPassword();
-        enterUsername("7087537187");
-        enterPassword("Abcdef123!");
-        hideKeyboard_Android();
+        ClickLoginViaPassword();
+        switch (deviceIndex) {
+            case "0":
+                enterUsername("dbmundhra@gmail.com");
+                enterPassword("1234@Test");    //Abcdef123!
+                break;
+            case "1":
+                enterUsername("7087537187");
+                enterPassword("1234@Test");    //Abcdef123!
+                break;
+            case "2":
+                enterUsername("roohpreet.kaur@jungleegames.com");
+                enterPassword("1234@Test");    //Abcdef123!
+                break;
+            case "3":
+                enterUsername("roohpreet002@gmail.com");
+                enterPassword("1234@Test");    //Abcdef123!
+                break;
+            case "4":
+                enterUsername("8979561161");
+                enterPassword("Abcdef123!");    //Abcdef123!
+                break;
+        }
+        clickBackButtonAndroid();
         clickLoginButtonExisting();
         Thread.sleep(2000); //use wait for element visible
-        clickAllowPermission();
+        if (platform.equalsIgnoreCase("ipa")) {
+            clickAllowWhileUsingApp();
+        } else {
+            clickAllowPermission();
+        }
         clickSkipButton();
         closeWelcomeBanner();
+        closeWelcomeBanner();
+        closeRatingPopUp();
     }
 
     public void reloadChips() {
@@ -43,50 +77,140 @@ public class ANRFlows extends ANRLocators {
         clickOkBtnReloadChips();
     }
 
-    public void flutterToWebviewPromotions() throws InterruptedException {
-        tapByCoordinates(973, 2095); //clickSideMenuButton();
-        goToHelpFromSideMenu();
-        clickOnBackBtnHelp();
-        Thread.sleep(3000);
-        tapByCoordinates(133, 2100); //goToPromotions();
-        Thread.sleep(5000);
-        clickBackButtonAndroid();
+    public void relaunchApp(String platform) {
+        switch (platform) {
+            case "ipa":
+                driver.terminateApp("com.jungleerummy.jungleerummy");
+                driver.activateApp("com.jungleerummy.jungleerummy");
+                break;
+            case "psrmg":
+                driver.terminateApp("com.jungleerummy.playcashgameonline");
+                driver.activateApp("com.jungleerummy.playcashgameonline");
+                break;
+            case "native":
+                driver.terminateApp("io.jungleerummy.jungleegames");
+                driver.activateApp("io.jungleerummy.jungleegames");
+                break;
+            case "rummy.com":
+                driver.terminateApp("com.rummydotcom.indianrummycashgame");
+                driver.activateApp("com.jungleerummy.playcashgameonline");
+                break;
+        }
     }
 
-    public void flutterToWebviewLeaderboard() throws InterruptedException {
-        tapByCoordinates(973, 2095); //clickSideMenuButton();
+    public void flutterToWebviewPromotions(String platform) throws InterruptedException {
+        try {
+            //  cashTab();
+            clickSideMenuButton();
+            goToHelpFromSideMenu();
+            if (platform.equalsIgnoreCase("ipa")) {
+                clickLobby();
+            } else {
+                clickOnBackBtnHelp();
+            }
+            Thread.sleep(3000);
+            goToPromotions();
+            Thread.sleep(7000);
+            clickLeaderBoard();
+            Thread.sleep(7000);
+            clickOptIn();
+            Thread.sleep(5000);
+            clickLobby();
+            //  clickBackButtonAndroid();
+        } catch (TimeoutException e) {
+            try {
+                swipeToRight();
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+    }
+
+    public void flutterToWebviewLeaderboard(String platform) throws InterruptedException {
+        clickSideMenuButton();
+        setNetworkSpeedBS("2g-gprs-lossy");
         goToHelpFromSideMenu();
-        clickBackButtonAndroid();
+        if (platform.equalsIgnoreCase("ipa")) {
+            clickLobby();
+        } else {
+            clickBackButtonAndroid();
+        }
         Thread.sleep(5000);
-        tapByCoordinates(133, 2100); //goToPromotions();
-        clickOnBackBtnHelp();
+        goToPromotions();
+        if (platform.equalsIgnoreCase("ipa")) {
+            clickLobby();
+        } else {
+            clickOnBackBtnHelp();
+        }
+        clickSideMenuButton();
+        setNetworkSpeedBS("reset");
+        goToLeaderBoardFromSideMenu();
+        Thread.sleep(5000);
+        scrollAndViewAll();
+        clickLobby();
     }
 
     public void flutterToUnity() throws InterruptedException {
         goToPracticeTab();
         select2Player();
-        clickPlayNowBtn();
-        Thread.sleep(130000);
-        tapByCoordinates(133, 2100); //goToPromotions();
+        //clickPlayNowBtn();
+        Thread clickPlayNowBtnThread = new Thread(() -> clickPlayNowBtn());
+        Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("2g-gprs-lossy"));
+        // Start both threads
+        setNetworkSpeedThread.start();
+        Thread.sleep(2000);
+        clickPlayNowBtnThread.start();
+
+        // Wait for both threads to finish
+        setNetworkSpeedThread.join();
+        clickPlayNowBtnThread.join();
+        setNetworkSpeedBS("reset");
+        timeStamp();
+        randomRotation(5);
+        setNetworkSpeedBS("2g-gprs-lossy");
+        Thread.sleep(90000);
+        setNetworkSpeedBS("reset");
+        System.out.println("wait completed");
+        //dropTable();
+//        goToPromotions();
+//        clickLobby();
     }
 
-    public void addCashJuspayFlow() throws InterruptedException {
-        Thread.sleep(2000);
+    public void addCashJuspayFlow(String platform, String deviceIndex) throws InterruptedException {
         closeRatingPopUp();
         clickAddCashLobby();
-        unCheckExpressCheckout();
-        tapByCoordinates(815, 1934); //Not able to locate Add Cash Button
-        clickSelectYourBank();
-        clickAnyBankInNetBanking();
-        Thread.sleep(15000);
-        // waitForNavHomeTabVisible(); //Wait for Juspay webview to load
+        setNetworkSpeedBS("2g-gprs-lossy");
+        selectFirstTile();
+        Thread.sleep(4000);
+        //unCheckExpressCheckout();
         clickBackButtonAndroid();
-        clickJusPayYesCancelBtn();
-        clickBackButtonAndroid();
-        clickBackButtonAndroid();
-        ClickYes_Button();
-        clickBackButtonAndroid();
-        Thread.sleep(2000);
+        //clickEABackBtn();
+
+//        tapByCoordinates(542, 1328); //Not able to locate Add Cash Button (VIVO Y16)
+//        //tapByCoordinates(538,1837); // vivo y11
+//        clickSelectYourBank();
+//        clickAnyBankInNetBanking();
+//        randomRotation(5);
+//        Thread.sleep(8000);
+//        switch (platform) {
+//            case "android":
+//                clickBackButtonAndroid();
+//                clickJusPayYesCancelBtn();
+//                clickBackButtonAndroid();
+//                clickBackButtonAndroid();
+//                ClickYes_Button();
+//                clickBackButtonAndroid();
+//                break;
+//            case "ipa":
+//                clickCloseButton();
+//                clickJusPayYesCancelBtn();
+//                clickPaymentBackBtn();
+//                clickSMBackBtn();
+//                ClickYes_Button();
+//                clickEABackBtn();
+//        }
+//        Thread.sleep(2000);
+        setNetworkSpeedBS("reset");
     }
 
     public void dropTable() throws InterruptedException {
@@ -118,16 +242,16 @@ public class ANRFlows extends ANRLocators {
 
     public void randomRotation(int bound) throws InterruptedException {
         Random rand = new Random();
-        int random = rand.nextInt(bound);
-        if (random <= 5) {
-            for (int i = 0; i < 5; i++) {
+        int randomNumber = rand.nextInt(bound);
+        if (randomNumber <= 5) {
+            for (int i = 0; i < 2; i++) {
                 try {
                     driver.rotate(ScreenOrientation.LANDSCAPE);
                     driver.rotate(ScreenOrientation.PORTRAIT);
-                } catch (InvalidElementStateException e) {
+                } catch (Exception e) {
                     System.out.println("Exception: " + e);
                 }
-                Thread.sleep(100);
+                Thread.sleep(1000);
             }
         }
     }

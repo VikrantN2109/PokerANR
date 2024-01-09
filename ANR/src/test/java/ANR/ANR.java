@@ -2,32 +2,47 @@ package ANR;
 
 import baseTest.BaseTest;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 
 public class ANR extends BaseTest {
-    int n = 300;
+
+    //    @BeforeClass(alwaysRun = true)
+//    public void setup() throws InterruptedException {
+//        try {
+//            if(props.getProperty("runEnv").equalsIgnoreCase("local")) {
+//                driver = initAppiumDriver();
+//            } else {
+//                driver = launchBSDriverSingleDevice();
+//            }
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//    }
+    String platform = props.getProperty("platform");
+    int noOfIterations = 100;
     int appLaunchFrequency = 4;
-    int reloadChipsFrequency = 45;
+    int reloadChipsFrequency = 10;
     int F2WFrequency = 1;
     int addCashFrequency = 1;
     int F2UFrequency = 1;
-    int rotationFrequency = 1;
+    int bound = 5;
 
-    @Test(dataProvider = "deviceIds")
-    public void anr(String deviceId) throws InterruptedException, IOException {
-        initAppiumDriver(deviceId);
+    @Test
+    @Parameters(value={"deviceIndex"})
+    public void anr(@Optional String deviceIndex) throws InterruptedException {
+        flows.loginExistingUser(platform, deviceIndex);
+        Thread.sleep(50000);
+        for (int i = 1; i <= noOfIterations; i++) {
 
-        flows.loginExistingUser();
-
-        for (int i = 1; i <= n; i++) {
+            System.out.println("iteration: " + i); //Use logging
             try {
-                System.out.println("iteration: " + i); //Use logging
-
                 if (i % appLaunchFrequency == 0) {
-                    driver.terminateApp("com.jungleerummy.playcashgameonline");
-                    startActivity("com.jungleerummy.playcashgameonline", "io.jungleerummy.jungleegames.MainActivity");
+                    Thread.sleep(5000);
+                    flows.relaunchApp(platform);
                 }
 
                 if (i % reloadChipsFrequency == 0) {
@@ -35,27 +50,32 @@ public class ANR extends BaseTest {
                 }
 
                 if (i % F2WFrequency == 0) {
-                    flows.randomRotation(20);
-                    flows.flutterToWebviewPromotions();
-                    flows.flutterToWebviewLeaderboard();
+                    flows.randomRotation(bound);
+                    flows.flutterToWebviewPromotions(platform);
+                    flows.flutterToWebviewLeaderboard(platform);
                 }
 
                 if (i % addCashFrequency == 0) {
-                    flows.randomRotation(20);
-                    flows.addCashJuspayFlow();
+                    System.out.println("Device Rotation Before Add Cash!");
+                    flows.randomRotation(bound);
+                    flows.addCashJuspayFlow(platform, deviceIndex);
                 }
 
                 if (i % F2UFrequency == 0) {
-                    flows.randomRotation(20);
+                    System.out.println("Device Rotation Before Game table!");
+                    flows.randomRotation(bound);
                     flows.flutterToUnity();
+                    System.out.println("Device Rotation After Game table!");
+                    flows.randomRotation(bound);
                 }
-                System.out.println("Testcase Passed with All Condition = " + i);
+
+                System.out.println("Testcase Passed with All Condition=" + i);
+
             } catch (Exception e) {
-                System.out.println("Exception =" + e);
-                driver.terminateApp("com.jungleerummy.playcashgameonline");
-                startActivity("com.jungleerummy.playcashgameonline", "io.jungleerummy.jungleegames.MainActivity");
+                System.out.println("Exception = " + e);
+                flows.relaunchApp(platform);
+                Thread.sleep(2000);
             }
         }
     }
 }
-

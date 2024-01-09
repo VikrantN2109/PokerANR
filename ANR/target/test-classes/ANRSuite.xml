@@ -1,12 +1,38 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="ANR Suite" verbose="2" thread-count="1">
-    <test name="ANR" preserve-order="true">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Parallel Script" thread-count="5" parallel="tests">
+    <test name="ANR Device 1">
+        <parameter name="deviceIndex" value="0"/>
         <classes>
-            <class name="ANR.ANR">
-                <!--            <methods>-->
-                <!--                <include name="LoginWeb"></include>-->
-                <!--            </methods>-->
-            </class>
+            <class name="ANR.ANR"/>
+        </classes>
+    </test>
+
+    <test name="ANR Device 2">
+        <parameter name="deviceIndex" value="1"/>
+        <classes>
+            <class name="ANR.ANR"/>
+        </classes>
+    </test>
+
+    <test name="ANR Device 3">
+        <parameter name="deviceIndex" value="2"/>
+        <classes>
+            <class name="ANR.ANR"/>
+        </classes>
+    </test>
+
+    <test name="ANR Device 4">
+        <parameter name="deviceIndex" value="3"/>
+        <classes>
+            <class name="ANR.ANR"/>
+        </classes>
+    </test>
+
+    <test name="ANR Device 5">
+        <parameter name="deviceIndex" value="4"/>
+        <classes>
+            <class name="ANR.ANR"/>
         </classes>
     </test>
 </suite>
