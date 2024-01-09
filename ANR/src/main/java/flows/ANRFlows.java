@@ -171,8 +171,8 @@ public class ANRFlows extends ANRLocators {
         System.out.println("Timestamp at Gametable :  ");
         Timestamp t1=timeStamp(); //t1
 
-        diffenceinDuration(t0,t1);
-        ArrayTimeStamp(t0,t1);
+//        diffenceinDuration(t0,t1);
+//        ArrayTimeStamp(t0,t1);
         //randomRotation(5);
         Thread.sleep(80000);
         // dropTable();
@@ -294,35 +294,35 @@ public class ANRFlows extends ANRLocators {
         }
     }
 
-    private void diffenceinDuration(Timestamp t0, Timestamp t1) throws ParseException {
-
-        String timestamp0=t0.toString();
-        String timestamp1=t1.toString();
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date1 = sdf.parse(timestamp0);
-        Date date2 = sdf.parse(timestamp1);
-
-        // Calculate the time difference in milliseconds
-        long timeDifference = date2.getTime() - date1.getTime();
-
-        // Convert milliseconds to seconds
-        long secondsDifference = timeDifference / 1000;
-
-        // Print the result
-        System.out.println("Time difference: " + secondsDifference + " seconds");
-
-        timestamp.add((int) secondsDifference);
-
-    }
-    public void printTimestamp()
-    {
-        // Print elements using a traditional for loop
-        for (int i = 0; i < timestamp.size(); i++) {
-            System.out.println("iteration " + i + " : " + timestamp.get(i) + " secs ");
-        }
-
-    }
+//    private void diffenceinDuration(Timestamp t0, Timestamp t1) throws ParseException {
+//
+//        String timestamp0=t0.toString();
+//        String timestamp1=t1.toString();
+//
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        Date date1 = sdf.parse(timestamp0);
+//        Date date2 = sdf.parse(timestamp1);
+//
+//        // Calculate the time difference in milliseconds
+//        long timeDifference = date2.getTime() - date1.getTime();
+//
+//        // Convert milliseconds to seconds
+//        long secondsDifference = timeDifference / 1000;
+//
+//        // Print the result
+//        System.out.println("Time difference: " + secondsDifference + " seconds");
+//
+//        timestamp.add((int) secondsDifference);
+//
+//    }
+//    public void printTimestamp()
+//    {
+//        // Print elements using a traditional for loop
+//        for (int i = 0; i < timestamp.size(); i++) {
+//            System.out.println("iteration " + i + " : " + timestamp.get(i) + " secs ");
+//        }
+//
+//    }
 
     public void toggleApps() throws InterruptedException {
         driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));

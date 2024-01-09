@@ -22,12 +22,17 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class ActionUtils {
    public AndroidDriver driver;
    public WebDriverWait wait;
+   public ArrayList<Integer> timestamp=new ArrayList<Integer>();
 
     public ActionUtils(AndroidDriver driver, WebDriverWait wait){
         this.driver=driver;
@@ -172,24 +177,66 @@ public class ActionUtils {
         return timestamp;
     }
 
-    public void printDeviceLogs(AndroidDriver driver) throws FileNotFoundException {
+    public void printDeviceLogs(AndroidDriver driver) throws FileNotFoundException, ParseException {
         String filePath="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/output.txt";
         PrintStream fileStream = new PrintStream(new File(filePath));
         // Redirect System.out to the file stream
         System.setOut(fileStream);
 
+        long t0 = 0;
+        long t1 = 0;
+
         List<org.openqa.selenium.logging.LogEntry> logEntries = driver.manage().logs().get("logcat").getAll();
         for (LogEntry logEntry : logEntries) {
 
             if (logEntry.getMessage().contains("flutter : Lobby Event Added ::  lobby_play_now_clicked")) {
+                t0=logEntry.getTimestamp();
                 System.out.println(logEntry.getMessage());
             }
 
             if (logEntry.getMessage().contains("Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft")) {
+                t1=logEntry.getTimestamp();
                 System.out.println(logEntry.getMessage());
             }
         }
         fileStream.close();
+
+        diffenceinDuration(t0,t1);
+    }
+
+    public void diffenceinDuration(long t0, long t1) throws ParseException {
+
+//        String timestamp0=t0.toString();
+//        String timestamp1=t1.toString();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        String timestamp0 = sdf.format(new Date(t0));
+        String timestamp1 = sdf.format(new Date(t1));
+
+        Date date1 = sdf.parse(timestamp0);
+        Date date2 = sdf.parse(timestamp1);
+
+        // Calculate the time difference in milliseconds
+        long timeDifference = date2.getTime() - date1.getTime();
+
+        // Convert milliseconds to seconds
+        long secondsDifference = timeDifference / 1000;
+
+        // Print the result
+        System.out.println("Time difference: " + secondsDifference + " seconds");
+
+        timestamp.add((int) secondsDifference);
+
+    }
+    public void printTimestamp()
+    {
+        // Print elements using a traditional for loop
+        System.out.println("AFTER FILESTREAM CLOSE");
+        for (int i = 0; i < timestamp.size(); i++) {
+            System.out.println("iteration " + i + " : " + timestamp.get(i) + " secs ");
+        }
+
     }
 
 

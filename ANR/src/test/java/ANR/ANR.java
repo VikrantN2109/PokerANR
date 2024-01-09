@@ -12,6 +12,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.ParseException;
 import java.time.Duration;
 import java.util.List;
 
@@ -27,7 +28,7 @@ public class ANR extends BaseTest {
     int toggleBetweenApps=5;
     @Test
     @Parameters(value={"deviceIndex"})
-    public void anr(String deviceIndex) throws InterruptedException, FileNotFoundException {
+    public void anr(String deviceIndex) throws InterruptedException, FileNotFoundException, ParseException {
         int noOfIterations = 2;
 
         flows.loginExistingUser(platform, deviceIndex);
