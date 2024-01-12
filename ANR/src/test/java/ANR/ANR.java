@@ -15,10 +15,13 @@ import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 
 public class ANR extends BaseTest {
 
     String platform = props.getProperty("platform");
+
+    ReadLogs logs= new ReadLogs();
     int appLaunchFrequency = 4;
     int reloadChipsFrequency = 45;
     int F2WFrequency = 1;
@@ -29,7 +32,7 @@ public class ANR extends BaseTest {
     @Test
     @Parameters(value={"deviceIndex"})
     public void anr(String deviceIndex) throws InterruptedException, FileNotFoundException, ParseException {
-        int noOfIterations = 2;
+        int noOfIterations = 5;
 
         flows.loginExistingUser(platform, deviceIndex);
 
@@ -49,17 +52,17 @@ public class ANR extends BaseTest {
 //                    flows.flutterToWebviewPromotions(platform);
 //                    flows.flutterToWebviewLeaderboard(platform);
 //                }
-//
+
 //                if (i % addCashFrequency == 0) {
 //                    System.out.println("Device Rotation Before Add Cash!");
 //                    flows.randomRotation(10);
 //                    flows.addCashJuspayFlow(platform);
 //                }
-//
+
 //                if(i % runAppInBackGround ==0) {
 //                    driver.runAppInBackground(Duration.ofSeconds(10));
 //                }
-//
+
 //                if(i % toggleBetweenApps==0) {
 //                    flows.toggleApps();
 //                }
@@ -82,16 +85,28 @@ public class ANR extends BaseTest {
             }
         }
 
-        System.out.println("TWO DIMENSIONAL ARRAY FROM LOBBY TO GAME TABLE");
-        flows.printTwoDArray();
+//        System.out.println("TWO DIMENSIONAL ARRAY FROM LOBBY TO GAME TABLE");
+//        flows.printTwoDArray();
+//
+//        System.out.println("DIFFERENCE IN TIMESTAMP FROM LOBBY TO GAMETABLE");
+//        //  flows.printTimestamp();
+//
+//
 
-        System.out.println("DIFFERENCE IN TIMESTAMP FROM LOBBY TO GAMETABLE");
-        flows.printTimestamp();
 
-        flows.printDeviceLogs(driver);
+
+       flows.printDeviceLogs(driver);
+
+//        Thread.sleep(5000);
+//        logs.readLogs();
+//        logs.print2DArray();
+//        logs.diffInDuration();
 
 
     }
+
+
+
 
 
 

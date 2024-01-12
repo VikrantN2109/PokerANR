@@ -56,11 +56,11 @@ public class BaseTest {
         desiredCapabilities.setCapability("unicodeKeyboard", false);
         desiredCapabilities.setCapability("resetKeyboard", false);
 
-//        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
-//        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
-
-        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
         desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+
+//        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+//        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
 
 //        desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
 //        desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");

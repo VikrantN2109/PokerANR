@@ -18,21 +18,24 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
+import java.io.*;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ActionUtils {
    public AndroidDriver driver;
    public WebDriverWait wait;
    public ArrayList<Integer> timestamp=new ArrayList<Integer>();
+   public ArrayList<ArrayList<Long>> timeStamp2DArray = new ArrayList<ArrayList<Long>>();
 
     public ActionUtils(AndroidDriver driver, WebDriverWait wait){
         this.driver=driver;
@@ -177,7 +180,7 @@ public class ActionUtils {
         return timestamp;
     }
 
-    public void printDeviceLogs(AndroidDriver driver) throws FileNotFoundException, ParseException {
+    public void printDeviceLogs(AndroidDriver driver) throws FileNotFoundException, ParseException, InterruptedException {
         String filePath="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/output.txt";
         PrintStream fileStream = new PrintStream(new File(filePath));
         // Redirect System.out to the file stream
@@ -189,20 +192,37 @@ public class ActionUtils {
         List<org.openqa.selenium.logging.LogEntry> logEntries = driver.manage().logs().get("logcat").getAll();
         for (LogEntry logEntry : logEntries) {
 
-            if (logEntry.getMessage().contains("flutter : Lobby Event Added ::  lobby_play_now_clicked")) {
-                t0=logEntry.getTimestamp();
-                System.out.println(logEntry.getMessage());
-            }
+//            if (logEntry.getMessage().contains("flutter : Lobby Event Added ::  lobby_play_now_clicked")) {
+//                t0=logEntry.getTimestamp();
+//                System.out.println(logEntry.getMessage());
+//            }
+//
+//            if (logEntry.getMessage().contains("Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft")) {
+//                t1=logEntry.getTimestamp();
+//                System.out.println(logEntry.getMessage());
+//            }
 
-            if (logEntry.getMessage().contains("Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft")) {
-                t1=logEntry.getTimestamp();
-                System.out.println(logEntry.getMessage());
-            }
+            System.out.println(logEntry.getMessage());
+
+
         }
+        Thread.sleep(20000);
         fileStream.close();
 
-        diffenceinDuration(t0,t1);
     }
+
+//    public void print2DArray()
+//    {
+//        System.out.print("             t0 (lobby)      " + " || ");
+//        System.out.print("        t1 (game table)            " );
+//        System.out.println();
+//        for (int i = 0; i < timeStamp2DArray.size(); i++) {
+//            for (int j = 0; j < timeStamp2DArray.get(i).size(); j++) {
+//                System.out.print(timeStamp2DArray.get(i).get(j) + " || ");
+//            }
+//            System.out.println();
+//        }
+//    }
 
     public void diffenceinDuration(long t0, long t1) throws ParseException {
 
@@ -229,15 +249,61 @@ public class ActionUtils {
         timestamp.add((int) secondsDifference);
 
     }
+
     public void printTimestamp()
     {
         // Print elements using a traditional for loop
         System.out.println("AFTER FILESTREAM CLOSE");
+
         for (int i = 0; i < timestamp.size(); i++) {
             System.out.println("iteration " + i + " : " + timestamp.get(i) + " secs ");
         }
-
     }
+
+//    public void readLogs()
+//    {
+//        String filePath = "/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/output.txt"; // Replace with the actual path to your log file
+//        try {
+//
+//            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
+//            String line;
+//
+//            // DateTimeFormatter for parsing timestamps
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd HH:mm:ss.SSS");
+//
+//            while ((line = bufferedReader.readLine()) != null) {
+//                try {
+//                    // Attempt to parse timestamp in each line
+//                    String timestampString = line.substring(0, 18); // Assuming timestamp is always at the beginning
+//                   // formatter.parse(timestampString);
+//                    System.err.println("Timestamp: " + timestampString);
+//                } catch (Exception e) {
+//                    // Ignore lines without a valid timestamp
+//                    System.out.println("Exception is : " + e );
+//                }
+//            }
+//
+////        try {
+////            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
+////            String line;
+////            // Regular expression pattern to match timestamps (assuming the format in your logs)
+////            Pattern pattern = Pattern.compile("((.*)\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+(.*))");
+////            while ((line = bufferedReader.readLine()) != null) {
+////                // Find timestamp in each line using the regular expression
+////                Matcher matcher = pattern.matcher(line);
+////                if (matcher.find()) {
+////                    String timestamp = matcher.group();
+////                    System.out.println("Current Timestamp: " + timestamp);
+////                }
+////            }
+//
+//            // Close the resources
+//            bufferedReader.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
 
 
 }

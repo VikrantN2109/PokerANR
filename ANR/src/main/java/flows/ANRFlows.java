@@ -22,7 +22,7 @@ import java.util.Random;
 public class ANRFlows extends ANRLocators {
     AndroidDriver driver;
 
-    public ArrayList<Integer> timestamp=new ArrayList<Integer>();
+  //  public ArrayList<Integer> timestamp=new ArrayList<Integer>();
     public ArrayList<ArrayList<Date>> twoDArrayList = new ArrayList<ArrayList<Date>>();
 
     public ANRFlows(AndroidDriver driver, WebDriverWait wait) {
@@ -224,7 +224,7 @@ public class ANRFlows extends ANRLocators {
         randomRotation(5);
         Thread.sleep(8000);
         switch (platform) {
-            case "native":
+            case "psrmg":
                 clickBackButtonAndroid();
                 clickJusPayYesCancelBtn();
                 clickBackButtonAndroid();
@@ -329,7 +329,7 @@ public class ANRFlows extends ANRLocators {
         driver.activateApp("com.rummydotcom.indianrummycashgame");
         Thread.sleep(2000);
         driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
-        driver.activateApp("io.jungleerummy.jungleegames");
+        driver.activateApp("com.jungleerummy.playcashgameonline");
     }
 
 
