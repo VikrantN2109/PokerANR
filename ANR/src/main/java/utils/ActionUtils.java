@@ -15,16 +15,18 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -57,10 +59,9 @@ public class ActionUtils {
     }
 
     public void click(WebElement locator, boolean... takeScreenshot) {
-        TouchAction touchAction = new TouchAction(driver);
-        TapOptions tapOptions = new TapOptions();
-        tapOptions.withElement(ElementOption.element(locator)).withTapsCount(1);
-        touchAction.tap(tapOptions).perform();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+        element.click();
     }
 
     public void tapByCoordinates(int x,int y){
@@ -258,6 +259,21 @@ public class ActionUtils {
             System.out.println("Network speed changed successfully.");
         } else {
             System.err.println("Failed to change network speed. Response code: " + statusCode);
+        }
+    }
+
+    public void captureScreenshot() {
+        String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
+        String fileName = "GameTable_" + timestamp + ".png";
+
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        Path destination = Paths.get("/Users/roohpreet.kaur/Desktop/ANR/ANR/src/test/resources/Screenshots/" + fileName);
+
+        try {
+            Files.copy(screenshot.toPath(), destination);
+            System.out.println("Screenshot captured: " + destination.toAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

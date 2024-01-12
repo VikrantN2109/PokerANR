@@ -2,9 +2,9 @@
   "server": "hub-cloud.browserstack.com",
   "username": "roohpreetkaur_rJOCtg",
   "access_key": "XgrmR7L4zwj9HHEpC6sB",
-  "native_app": "bs://18e25d78f649f7d5c249c3297641d93dafebef7e",
-  "psrmg_app": "bs://7ea36d5cba6eb4236407275fef3ea9b3df3f309e",
-  "ipa": "bs://c5405a4708650617cd85fb6ebc6f96384d8b0f92",
+  "native_app": "bs://116bdce0cbdf14c5e8b474f630e3169234f470bb",
+  "psrmg_app": "bs://d97d77341683f046769d31f5ccbac35d8d7f911e",
+  "ipa": "bs://2f64243f4da00c17fc3839e027207934d0fff91d",
   "rummycom_app": "bs://7ea36d5cba6eb4236407275fef3ea9b3df3f309e",
   "capabilities": {
     "project": "ANR",
@@ -16,7 +16,6 @@
     "browserstack.idleTimeout": 900,
     "noReset": false,
     "autoGrantPermissions": true,
-    "customNetwork": "3000,3000,100,1",
     "appProfiling": true,
     "resignApp": false,
     "autoAcceptAlerts": true
@@ -30,7 +29,7 @@
     },
     {
       "platformName": "android",
-      "deviceName": "Vivo Y21",
+      "deviceName": "Vivo V21",
       "os_version": "11.0"
     },
     {

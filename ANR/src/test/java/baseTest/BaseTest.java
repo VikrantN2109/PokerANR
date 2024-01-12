@@ -10,6 +10,8 @@ import io.appium.java_client.service.local.flags.GeneralServerFlag;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
@@ -20,6 +22,9 @@ import pageObjects.ANRLocators;
 
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
@@ -32,6 +37,7 @@ public class BaseTest {
     public ANRLocators locators;
     public ANRFlows flows;
     public Properties props;
+    private static ThreadLocal<Integer> currentDeviceIndex = new ThreadLocal<>();
 
     public BaseTest(){
         FileReader propertyFile = null;
@@ -217,6 +223,21 @@ public class BaseTest {
 
             process.waitFor();
         } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void captureScreenshot() {
+        String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
+        String fileName = "GameTable_" + timestamp + ".png";
+
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        Path destination = Paths.get("/Users/roohpreet.kaur/Desktop/ANR/ANR/src/test/resources/Screenshots/" + fileName);
+
+        try {
+            Files.copy(screenshot.toPath(), destination);
+            System.out.println("Screenshot captured: " + destination.toAbsolutePath());
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

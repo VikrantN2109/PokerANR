@@ -150,28 +150,34 @@ public class ANRFlows extends ANRLocators {
         clickLobby();
     }
 
-    public void flutterToUnity() throws InterruptedException {
+    public void flutterToUnity(String platform) throws InterruptedException {
         goToPracticeTab();
         select2Player();
+        //setNetworkSpeedBS("2g-gprs-lossy");
         //clickPlayNowBtn();
         Thread clickPlayNowBtnThread = new Thread(() -> clickPlayNowBtn());
         Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("2g-gprs-lossy"));
         // Start both threads
         setNetworkSpeedThread.start();
-        Thread.sleep(2000);
         clickPlayNowBtnThread.start();
-
         // Wait for both threads to finish
         setNetworkSpeedThread.join();
         clickPlayNowBtnThread.join();
-        setNetworkSpeedBS("reset");
-        timeStamp();
+        Thread.sleep(3000);
+        //setNetworkSpeedBS("reset");
+        Thread.sleep(5000);
+        captureScreenshot();
         randomRotation(5);
         setNetworkSpeedBS("2g-gprs-lossy");
-        Thread.sleep(90000);
+        Thread.sleep(2000);
         setNetworkSpeedBS("reset");
+        Thread.sleep(90000);
         System.out.println("wait completed");
-        //dropTable();
+        if (!(lobby.isDisplayed())) {
+            timeStamp();
+            System.out.println("Something went wrong. Relaunching the app!");
+            relaunchApp(platform);
+        }
 //        goToPromotions();
 //        clickLobby();
     }
@@ -238,6 +244,30 @@ public class ANRFlows extends ANRLocators {
                 PointerInput.Origin.viewport(), tapPoint1.x, tapPoint1.y));
         tap1.addAction(FINGER1.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
         driver.perform(Arrays.asList(tap1));
+    }
+
+    public void playYoutubeVideo(String platform) throws InterruptedException {
+        driver.activateApp("com.google.android.youtube");
+        driver.rotate(ScreenOrientation.PORTRAIT);
+        clickSearchBtnYoutube();
+        searchVideo();
+        clickSearchIcon();
+        clickOnVideo();
+        Thread.sleep(80000);
+        switch (platform) {
+            case "ipa":
+                driver.activateApp("com.jungleerummy.jungleerummy");
+                break;
+            case "psrmg":
+                driver.activateApp("com.jungleerummy.playcashgameonline");
+                break;
+            case "native":
+                driver.activateApp("io.jungleerummy.jungleegames");
+                break;
+            case "rummy.com":
+                driver.activateApp("com.jungleerummy.playcashgameonline");
+                break;
+        }
     }
 
     public void randomRotation(int bound) throws InterruptedException {

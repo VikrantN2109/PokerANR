@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -180,6 +181,18 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(accessibility = "Lobby")
     public WebElement rummyComLobby;
 
+    @AndroidFindBy(accessibility = "Search")
+    public WebElement youtubeSearchBtn;
+
+    @AndroidFindBy(id = "com.google.android.youtube:id/search_edit_text")
+    public WebElement editSearch;
+
+    @AndroidFindBy(id = "com.google.android.youtube:id/search_type_icon")
+    public WebElement searchIcon;
+
+    @AndroidFindBy(xpath = "(//android.view.ViewGroup[contains(@content-desc, \"play video\")]/android.view.ViewGroup[1]/android.widget.ImageView)[2]")
+    public WebElement youtubeVideo;
+
 
     public void clickAllowPermission()
     {
@@ -206,9 +219,26 @@ public class ANRLocators extends ActionUtils {
 
     public void ClickLoginViaPassword()
     {
-        if(isElementPresent(loginViaPswd))
-        {
-            click(loginViaPswd);
+        if(isElementPresent(loginViaPswd)) {
+//        {
+//            click(loginViaPswd);
+//        }
+            Rectangle rect = loginViaPswd.getRect();
+            int x = rect.getX();
+            int y = rect.getY();
+            int height = rect.getHeight();
+            int width = rect.getWidth();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            tapByCoordinates(x + (width / 2), y + (height / 4));
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -433,5 +463,24 @@ public class ANRLocators extends ActionUtils {
         {
             waitAndClick(viewALL);
         }
+    }
+
+    public void clickSearchBtnYoutube()
+    {
+        click(youtubeSearchBtn);
+    }
+
+    public void searchVideo()
+    {
+        sendText(editSearch, "4k video");
+    }
+
+    public void clickSearchIcon()
+    {
+        click(searchIcon);
+    }
+
+    public void clickOnVideo() {
+        click(youtubeVideo);
     }
 }

@@ -27,15 +27,16 @@ public class ANR extends BaseTest {
     int appLaunchFrequency = 4;
     int reloadChipsFrequency = 10;
     int F2WFrequency = 1;
-    int addCashFrequency = 1;
+    int addCashFrequency = Integer.MAX_VALUE;
     int F2UFrequency = 1;
     int bound = 5;
 
     @Test
     @Parameters(value={"deviceIndex"})
     public void anr(@Optional String deviceIndex) throws InterruptedException {
+        //flows.playYoutubeVideo(platform);
         flows.loginExistingUser(platform, deviceIndex);
-        Thread.sleep(50000);
+
         for (int i = 1; i <= noOfIterations; i++) {
 
             System.out.println("iteration: " + i); //Use logging
@@ -64,7 +65,7 @@ public class ANR extends BaseTest {
                 if (i % F2UFrequency == 0) {
                     System.out.println("Device Rotation Before Game table!");
                     flows.randomRotation(bound);
-                    flows.flutterToUnity();
+                    flows.flutterToUnity(platform);
                     System.out.println("Device Rotation After Game table!");
                     flows.randomRotation(bound);
                 }
