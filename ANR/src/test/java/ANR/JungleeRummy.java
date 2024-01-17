@@ -1,14 +1,15 @@
 package ANR;
 
 import baseTest.BaseTest;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
-public class ANR extends BaseTest {
+public class JungleeRummy extends BaseTest {
 
     //    @BeforeClass(alwaysRun = true)
 //    public void setup() throws InterruptedException {
@@ -29,18 +30,20 @@ public class ANR extends BaseTest {
     int F2WFrequency = 1;
     int addCashFrequency = Integer.MAX_VALUE;
     int F2UFrequency = 1;
-    int bound = 5;
+    int bound = 20;
 
     @Test
     @Parameters(value={"deviceIndex"})
     public void anr(@Optional String deviceIndex) throws InterruptedException {
-        //flows.playYoutubeVideo(platform);
         flows.loginExistingUser(platform, deviceIndex);
+        ExecutorService executor = Executors.newSingleThreadExecutor();
 
         for (int i = 1; i <= noOfIterations; i++) {
 
             System.out.println("iteration: " + i); //Use logging
             try {
+                Future<?> popUpHandler = executor.submit(() -> flows.handlePopUp());
+
                 if (i % appLaunchFrequency == 0) {
                     Thread.sleep(5000);
                     flows.relaunchApp(platform);
@@ -78,5 +81,6 @@ public class ANR extends BaseTest {
                 Thread.sleep(2000);
             }
         }
+        executor.shutdown();
     }
 }

@@ -193,6 +193,17 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(xpath = "(//android.view.ViewGroup[contains(@content-desc, \"play video\")]/android.view.ViewGroup[1]/android.widget.ImageView)[2]")
     public WebElement youtubeVideo;
 
+    @AndroidFindBy(accessibility = "qa_1")
+    public WebElement selectEnvBox;
+
+    @AndroidFindBy(accessibility = "qa_8")
+    public WebElement QAEnv;
+
+    @AndroidFindBy(accessibility = "Proceed")
+    public WebElement proceed;
+
+    @AndroidFindBy(accessibility = "Rummy")
+    public WebElement rummy;
 
     public void clickAllowPermission()
     {
@@ -482,5 +493,21 @@ public class ANRLocators extends ActionUtils {
 
     public void clickOnVideo() {
         click(youtubeVideo);
+    }
+
+    public void clickOnSelectEnvBox() {
+        click(selectEnvBox);
+    }
+
+    public void clickOnQAEnv() {
+        click(QAEnv);
+    }
+
+    public void clickProceedBtn() {
+        click(proceed);
+    }
+
+    public void clickOnRummy() {
+        click(rummy);
     }
 }

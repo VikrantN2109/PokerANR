@@ -192,8 +192,8 @@ public class BaseTest {
         }
 
         HashMap<String, String> googleCredentials = new HashMap<>();
-        googleCredentials.put("username", "roohpreet002@gmail.com");
-        googleCredentials.put("password", "Roohpreet25!");
+        googleCredentials.put("username", "jungleetest123@gmail.com");
+        googleCredentials.put("password", "Test@123");
         capabilities.setCapability("browserstack.appStoreConfiguration", googleCredentials);
         //executeADBCommand("adb shell am broadcast -a android.intent.action.MEMORY_FULL");
         driver = new AndroidDriver(new URL("http://"+username+":"+accessKey+"@"+config.get("server")+"/wd/hub"), capabilities);
@@ -227,22 +227,7 @@ public class BaseTest {
         }
     }
 
-    public void captureScreenshot() {
-        String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
-        String fileName = "GameTable_" + timestamp + ".png";
-
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        Path destination = Paths.get("/Users/roohpreet.kaur/Desktop/ANR/ANR/src/test/resources/Screenshots/" + fileName);
-
-        try {
-            Files.copy(screenshot.toPath(), destination);
-            System.out.println("Screenshot captured: " + destination.toAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    //@AfterMethod(alwaysRun=true)
+    @AfterMethod(alwaysRun=true)
     public void tearDown() throws Exception {
         // Invoke driver.quit() to indicate that the test is completed.
         // Otherwise, it will appear as timed out on BrowserStack.
