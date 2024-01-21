@@ -63,6 +63,9 @@ public class ANRLocators extends ActionUtils {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Junglee Rummy\"]/XCUIElementTypeWindow[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
     public WebElement welcomeBanner;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Dismiss\"]/android.view.View/android.view.View/android.view.View/android.widget.Button")
+    public WebElement dismissBtn;
+
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Junglee Rummy\"]/XCUIElementTypeWindow[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
     public WebElement closeWelcomeBanner;
@@ -70,10 +73,6 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(accessibility = "OK")
     @iOSXCUITFindBy(accessibility = "OK")
     public WebElement okBtnReloadChips;
-
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView[2]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Junglee Rummy\"]/XCUIElementTypeWindow[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]")
-    public WebElement reloadChips;
 
     @AndroidFindBy(accessibility = "ADD CASH")
     @iOSXCUITFindBy(accessibility = "ADD CASH")
@@ -205,6 +204,12 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(accessibility = "Rummy")
     public WebElement rummy;
 
+    @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@content-desc, 'Chips')]")
+    public WebElement profile;
+
+    @AndroidFindBy(accessibility = "Reload Chips")
+    public WebElement reloadChips;
+
     public void clickAllowPermission()
     {
         if (isElementPresent(allowButton)) {
@@ -224,7 +229,7 @@ public class ANRLocators extends ActionUtils {
     public void ClickLoginUsingPassword() {
         if(isElementPresent(loginUsingPswd))
         {
-            waitAndClick(loginUsingPswd);
+            click(loginUsingPswd);
         }
     }
 
@@ -294,27 +299,32 @@ public class ANRLocators extends ActionUtils {
 
     public void clickReloadChips()
     {
-        waitAndClick(reloadChips);
+        click(reloadChips);
+    }
+
+    public void clickProfile()
+    {
+        click(profile);
     }
 
     public void clickOkBtnReloadChips()
     {
-        waitAndClick(okBtnReloadChips);
+        click(okBtnReloadChips);
     }
 
     public void clickAddCashLobby()
     {
-        waitAndClick(addCashLobby);
+        click(addCashLobby);
     }
 
     public void selectFirstTile()
     {
-        waitAndClick(firstTile);
+        click(firstTile);
     }
 
     public void clickSelectYourBank()
     {
-        waitAndClick(selectYourBank);
+        click(selectYourBank);
     }
 
     public void clickJusPayYesCancelBtn()
@@ -324,37 +334,37 @@ public class ANRLocators extends ActionUtils {
 
     public void ClickYes_Button()
     {
-        waitAndClick(yesButton);
+        click(yesButton);
     }
 
     public void unCheckExpressCheckout()
     {
-        waitAndClick(uncheckBtn);
+        click(uncheckBtn);
     }
 
     public void clickAnyBankInNetBanking()
     {
-        waitAndClick(bank);
+        click(bank);
     }
 
     public void clickSideMenuButton()
     {
-        waitAndClick(sideMenu);
+        click(sideMenu);
     }
 
     public void goToHelpFromSideMenu()
     {
-        waitAndClick(help);
+        click(help);
     }
 
     public void clickOnBackBtnHelp()
     {
-        waitAndClick(backBtnHelp);
+        click(backBtnHelp);
     }
 
     public void goToPromotions()
     {
-        waitAndClick(promotions);
+        click(promotions);
     }
 
     public void clickCloseButton()
@@ -364,23 +374,23 @@ public class ANRLocators extends ActionUtils {
 
     public void clickPaymentBackBtn()
     {
-        waitAndClick(paymentBackBtn);
+        click(paymentBackBtn);
     }
 
     public void clickSMBackBtn()
     {
-        waitAndClick(SMBackBtn);
+        click(SMBackBtn);
     }
 
     public void clickEABackBtn()
     {
-        waitAndClick(EABackBtn);
+        click(EABackBtn);
     }
 
     public void clickAllowWhileUsingApp()
     {
         try {
-            waitAndClick(allowWhileUsingApp);
+            click(allowWhileUsingApp);
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -420,29 +430,29 @@ public class ANRLocators extends ActionUtils {
 
     public void goToPracticeTab()
     {
-        waitAndClick(practiceTab);
+        click(practiceTab);
     }
 
     public void select2Player()
     {
-        waitAndClick(select2Player);
+        click(select2Player);
     }
 
     public void clickPlayNowBtn()
     {
-        waitAndClick(playNowBtn);
+        click(playNowBtn);
     }
 
     public void clickLocationOkBtn()
     {
-        waitAndClick(locationOkButton);
+        click(locationOkButton);
     }
 
     public void clickLeaderBoard()
     {
         if(isElementPresent(leaderBoard))
         {
-            waitAndClick(leaderBoard);
+            click(leaderBoard);
         }
     }
 
@@ -450,7 +460,7 @@ public class ANRLocators extends ActionUtils {
     {
         if(isElementPresent(optIn))
         {
-            waitAndClick(optIn);
+            click(optIn);
         }
     }
 
@@ -458,13 +468,13 @@ public class ANRLocators extends ActionUtils {
     {
         if(isElementPresent(lobby))
         {
-            waitAndClick(lobby);
+            click(lobby);
         }
     }
 
     public void goToLeaderBoardFromSideMenu()
     {
-        waitAndClick(leaderBoardAccess);
+        click(leaderBoardAccess);
     }
 
     public void scrollAndViewAll()
@@ -472,7 +482,7 @@ public class ANRLocators extends ActionUtils {
         scrollWithCoordinates(driver, 364, 1257, 350, 183);
         if(isElementPresent(viewALL))
         {
-            waitAndClick(viewALL);
+            click(viewALL);
         }
     }
 

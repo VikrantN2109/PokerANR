@@ -21,6 +21,7 @@ import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import pageObjects.ANRLocators;
 
 import java.io.File;
 import java.io.IOException;
@@ -59,9 +60,16 @@ public class ActionUtils {
     }
 
     public void click(WebElement locator, boolean... takeScreenshot) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-        element.click();
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+            element.click();
+        } catch (Exception e) {
+            ANRLocators anrLocators = new ANRLocators(driver, wait);
+            if (isElementPresent(anrLocators.dismissBtn)) {
+                anrLocators.dismissBtn.click();
+            }
+        }
     }
 
     public void tapByCoordinates(int x,int y){
@@ -267,7 +275,7 @@ public class ActionUtils {
         String fileName = "GameTable_" + timestamp + ".png";
 
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        Path destination = Paths.get("/Users/roohpreet.kaur/Desktop/ANR/ANR/src/test/resources/Screenshots/" + fileName);
+        Path destination = Paths.get("/Users/roohpreet.kaur/Desktop/ANRAutomation/ANR/src/test/resources/Screenshots/" + fileName);
 
         try {
             Files.copy(screenshot.toPath(), destination);

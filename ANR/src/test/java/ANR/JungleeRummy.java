@@ -1,28 +1,29 @@
 package ANR;
 
 import baseTest.BaseTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.io.IOException;
+import java.util.concurrent.*;
 
 public class JungleeRummy extends BaseTest {
 
-    //    @BeforeClass(alwaysRun = true)
-//    public void setup() throws InterruptedException {
-//        try {
-//            if(props.getProperty("runEnv").equalsIgnoreCase("local")) {
-//                driver = initAppiumDriver();
-//            } else {
-//                driver = launchBSDriverSingleDevice();
-//            }
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    @BeforeMethod(alwaysRun = true)
+    @Parameters(value = {"deviceIndex"})
+    public void setup(String deviceIndex) {
+        try {
+            if(props.getProperty("runEnv").equalsIgnoreCase("local")) {
+                driver = initAppiumDriver();
+            } else {
+                driver = launchBSDriverMultipleDevices(deviceIndex);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
     String platform = props.getProperty("platform");
     int noOfIterations = 100;
     int appLaunchFrequency = 4;
@@ -33,17 +34,14 @@ public class JungleeRummy extends BaseTest {
     int bound = 20;
 
     @Test
-    @Parameters(value={"deviceIndex"})
+    @Parameters(value = {"deviceIndex"})
     public void anr(@Optional String deviceIndex) throws InterruptedException {
         flows.loginExistingUser(platform, deviceIndex);
-        ExecutorService executor = Executors.newSingleThreadExecutor();
 
         for (int i = 1; i <= noOfIterations; i++) {
 
             System.out.println("iteration: " + i); //Use logging
             try {
-                Future<?> popUpHandler = executor.submit(() -> flows.handlePopUp());
-
                 if (i % appLaunchFrequency == 0) {
                     Thread.sleep(5000);
                     flows.relaunchApp(platform);
@@ -81,6 +79,5 @@ public class JungleeRummy extends BaseTest {
                 Thread.sleep(2000);
             }
         }
-        executor.shutdown();
     }
 }

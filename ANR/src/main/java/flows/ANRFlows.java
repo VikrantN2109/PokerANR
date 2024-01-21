@@ -14,6 +14,7 @@ import pageObjects.ANRLocators;
 
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.NoSuchElementException;
 import java.util.Random;
 
 public class ANRFlows extends ANRLocators {
@@ -26,19 +27,23 @@ public class ANRFlows extends ANRLocators {
     }
 
     public void loginExistingUser(String platform, String deviceIndex) throws InterruptedException {
-        selectQAEnv();
+        selectQAEnv(deviceIndex);
         timeStamp();// splash->login
         if (platform.equalsIgnoreCase("ipa")) {
             clickAllowPermission();
         }
         clickAllowPermission();
         Thread.sleep(2000);
+        if(deviceIndex.equalsIgnoreCase("2")) {
+            scrollWithCoordinates(driver, 1055, 480, 50, 480);
+            tapByCoordinates(600, 1739);
+        }
         ClickLogIn();
         ClickLoginUsingPassword();
         ClickLoginViaPassword();
         switch (deviceIndex) {
             case "0":
-                enterUsername("6386967595");
+                enterUsername("dbmundhra@gmail.com");
                 enterPassword("1234@Test");
                 break;
             case "1":
@@ -54,6 +59,8 @@ public class ANRFlows extends ANRLocators {
                 enterPassword("1234@Test");
                 break;
             case "4":
+//                enterUsername("7999465910");
+//                enterPassword("@Test1234");
                 enterUsername("8979561161");
                 enterPassword("Abcdef123!");
                 break;
@@ -73,6 +80,8 @@ public class ANRFlows extends ANRLocators {
     }
 
     public void reloadChips() {
+        clickSideMenuButton();
+        clickProfile();
         clickReloadChips();
         clickOkBtnReloadChips();
     }
@@ -96,7 +105,6 @@ public class ANRFlows extends ANRLocators {
                 driver.activateApp("com.jungleerummy.playcashgameonline");
                 break;
         }
-        //handle pop up here
     }
 
     public void flutterToWebviewPromotions(String platform) throws InterruptedException {
@@ -123,32 +131,38 @@ public class ANRFlows extends ANRLocators {
                 swipeToRight();
             } catch (Exception ex) {
                 System.out.println(ex);
+                relaunchApp(platform);
             }
         }
     }
 
     public void flutterToWebviewLeaderboard(String platform) throws InterruptedException {
-        clickSideMenuButton();
-        setNetworkSpeedBS("2g-gprs-lossy");
-        goToHelpFromSideMenu();
-        if (platform.equalsIgnoreCase("ipa")) {
+        try {
+            clickSideMenuButton();
+            setNetworkSpeedBS("2g-gprs-lossy");
+            goToHelpFromSideMenu();
+            if (platform.equalsIgnoreCase("ipa")) {
+                clickLobby();
+            } else {
+                clickBackButtonAndroid();
+            }
+            Thread.sleep(5000);
+            goToPromotions();
+            if (platform.equalsIgnoreCase("ipa")) {
+                clickLobby();
+            } else {
+                clickOnBackBtnHelp();
+            }
+            clickSideMenuButton();
+            setNetworkSpeedBS("reset");
+            goToLeaderBoardFromSideMenu();
+            Thread.sleep(5000);
+            scrollAndViewAll();
             clickLobby();
-        } else {
-            clickBackButtonAndroid();
+        } catch (Exception e) {
+            System.out.println(e);
+            relaunchApp(platform);
         }
-        Thread.sleep(5000);
-        goToPromotions();
-        if (platform.equalsIgnoreCase("ipa")) {
-            clickLobby();
-        } else {
-            clickOnBackBtnHelp();
-        }
-        clickSideMenuButton();
-        setNetworkSpeedBS("reset");
-        goToLeaderBoardFromSideMenu();
-        Thread.sleep(5000);
-        scrollAndViewAll();
-        clickLobby();
     }
 
     public void flutterToUnity(String platform) throws InterruptedException {
@@ -186,44 +200,47 @@ public class ANRFlows extends ANRLocators {
         } catch (Exception e) {
             System.out.println(e);
         }
-//        goToPromotions();
-//        clickLobby();
     }
 
     public void addCashJuspayFlow(String platform, String deviceIndex) throws InterruptedException {
-        closeRatingPopUp();
-        clickAddCashLobby();
-        setNetworkSpeedBS("2g-gprs-lossy");
-        selectFirstTile();
-        Thread.sleep(4000);
-        //unCheckExpressCheckout();
-        clickBackButtonAndroid();
-        //clickEABackBtn();
-        tapByCoordinates(542, 1328); //Not able to locate Add Cash Button (VIVO Y16)
-        //tapByCoordinates(538,1837); // vivo y11
-        clickSelectYourBank();
-        clickAnyBankInNetBanking();
-        randomRotation(5);
-        Thread.sleep(8000);
-        switch (platform) {
-            case "android":
-                clickBackButtonAndroid();
-                clickJusPayYesCancelBtn();
-                clickBackButtonAndroid();
-                clickBackButtonAndroid();
-                ClickYes_Button();
-                clickBackButtonAndroid();
-                break;
-            case "ipa":
-                clickCloseButton();
-                clickJusPayYesCancelBtn();
-                clickPaymentBackBtn();
-                clickSMBackBtn();
-                ClickYes_Button();
-                clickEABackBtn();
+        try {
+            closeRatingPopUp();
+            clickAddCashLobby();
+            setNetworkSpeedBS("2g-gprs-lossy");
+            selectFirstTile();
+            Thread.sleep(4000);
+            //unCheckExpressCheckout();
+            clickBackButtonAndroid();
+            //clickEABackBtn();
+            tapByCoordinates(542, 1328); //Not able to locate Add Cash Button (VIVO Y16)
+            //tapByCoordinates(538,1837); // vivo y11
+            clickSelectYourBank();
+            clickAnyBankInNetBanking();
+            randomRotation(5);
+            Thread.sleep(8000);
+            switch (platform) {
+                case "android":
+                    clickBackButtonAndroid();
+                    clickJusPayYesCancelBtn();
+                    clickBackButtonAndroid();
+                    clickBackButtonAndroid();
+                    ClickYes_Button();
+                    clickBackButtonAndroid();
+                    break;
+                case "ipa":
+                    clickCloseButton();
+                    clickJusPayYesCancelBtn();
+                    clickPaymentBackBtn();
+                    clickSMBackBtn();
+                    ClickYes_Button();
+                    clickEABackBtn();
+            }
+            Thread.sleep(2000);
+            setNetworkSpeedBS("reset");
+        } catch (Exception e) {
+            System.out.println(e);
+            relaunchApp(platform);
         }
-        Thread.sleep(2000);
-        setNetworkSpeedBS("reset");
     }
 
     public void dropTable() throws InterruptedException {
@@ -298,13 +315,16 @@ public class ANRFlows extends ANRLocators {
         }
     }
 
-    public void handlePopUp() {
-
-    }
-
-    public void selectQAEnv() {
-        clickOnSelectEnvBox();
-        clickOnQAEnv();
-        clickProceedBtn();
+    public void selectQAEnv(String deviceIndex) throws InterruptedException {
+        if (deviceIndex.equalsIgnoreCase("2")) {
+            Thread.sleep(5000);
+            scrollWithCoordinates(driver, 1065, 480, 37, 480);
+            tapByCoordinates(600, 1739);
+        }
+        if (isElementPresent(selectEnvBox)) {
+            clickOnSelectEnvBox();
+            clickOnQAEnv();
+            clickProceedBtn();
+        }
     }
 }

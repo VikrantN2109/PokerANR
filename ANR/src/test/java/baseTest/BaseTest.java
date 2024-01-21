@@ -65,11 +65,11 @@ public class BaseTest {
 //        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
 //        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
 
-//        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
-//        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
 
-        desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
-        desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");
+//        desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
+//        desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");
 
 
         desiredCapabilities.setCapability("simpleIsVisibleCheck", true);
@@ -80,7 +80,7 @@ public class BaseTest {
         AppiumServiceBuilder builder = new AppiumServiceBuilder();
         builder.withIPAddress("127.0.0.1");
         builder.usingAnyFreePort();
-        builder.withAppiumJS(new File("/opt/homebrew/bin/appium"));
+        builder.withAppiumJS(new File("/usr/local/bin/appium"));
         builder.withCapabilities(desiredCapabilities);
         builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
         builder.withArgument(GeneralServerFlag.LOG_LEVEL, "error");
@@ -132,7 +132,6 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeMethod(alwaysRun = true)
     @Parameters(value={"deviceIndex"})
     public AndroidDriver launchBSDriverMultipleDevices(String deviceIndex) throws Exception {
         JSONParser parser = new JSONParser();
@@ -227,7 +226,7 @@ public class BaseTest {
         }
     }
 
-    @AfterMethod(alwaysRun=true)
+   // @AfterMethod(alwaysRun=true)
     public void tearDown() throws Exception {
         // Invoke driver.quit() to indicate that the test is completed.
         // Otherwise, it will appear as timed out on BrowserStack.
