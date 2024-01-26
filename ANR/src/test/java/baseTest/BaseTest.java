@@ -58,7 +58,7 @@ public class BaseTest {
     public AndroidDriver initAppiumDriver() throws IOException, InterruptedException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
-        desiredCapabilities.setCapability("deviceName", "10BD7S02NE009SG");
+        desiredCapabilities.setCapability("deviceName", "RZ8M63E30VY");
         desiredCapabilities.setCapability("unicodeKeyboard", false);
         desiredCapabilities.setCapability("resetKeyboard", false);
 

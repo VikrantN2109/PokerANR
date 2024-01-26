@@ -86,6 +86,10 @@ public class ANRLocators extends ActionUtils {
     @iOSXCUITFindBy(accessibility = "Select your bank….")
     public WebElement selectYourBank;
 
+    @AndroidFindBy(xpath = "//android.widget.Button[contains(@content-desc,\"ADD \")]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[contains(@name, 'ADD')]")
+    public WebElement addCashButton;
+
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"State Bank of India\"]")
     @iOSXCUITFindBy(accessibility = "State Bank of India")
     public WebElement bank;
@@ -325,6 +329,11 @@ public class ANRLocators extends ActionUtils {
     public void clickSelectYourBank()
     {
         click(selectYourBank);
+    }
+
+    public void clickAddButton()
+    {
+        click(addCashButton);
     }
 
     public void clickJusPayYesCancelBtn()

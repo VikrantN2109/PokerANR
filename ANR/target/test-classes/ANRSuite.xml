@@ -13,7 +13,6 @@
             <class name="ANR.JungleeRummy"/>
         </classes>
     </test>
-
     <test name="ANR Device 3">
         <parameter name="deviceIndex" value="2"/>
         <classes>

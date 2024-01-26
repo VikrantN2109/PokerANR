@@ -34,7 +34,7 @@ public class ANRFlows extends ANRLocators {
         }
         clickAllowPermission();
         Thread.sleep(2000);
-        if(deviceIndex.equalsIgnoreCase("2")) {
+        if (deviceIndex.equalsIgnoreCase("2")) {
             scrollWithCoordinates(driver, 1055, 480, 50, 480);
             tapByCoordinates(600, 1739);
         }
@@ -181,14 +181,14 @@ public class ANRFlows extends ANRLocators {
             // Wait for both threads to finish
             setNetworkSpeedThread.join();
             clickPlayNowBtnThread.join();
-            //Thread.sleep(3000);
+            //Thread.sleep(6000);
             setNetworkSpeedBS("reset");
-            playYoutubeVideo(platform, 20);
+            //playYoutubeVideo(platform, 20);
             Thread.sleep(5000);
             captureScreenshot();
             randomRotation(5);
             setNetworkSpeedBS("2g-gprs-lossy");
-            Thread.sleep(2000);
+            Thread.sleep(5000);
             setNetworkSpeedBS("reset");
             Thread.sleep(90000);
             System.out.println("wait completed");
@@ -209,10 +209,10 @@ public class ANRFlows extends ANRLocators {
             setNetworkSpeedBS("2g-gprs-lossy");
             selectFirstTile();
             Thread.sleep(4000);
-            //unCheckExpressCheckout();
+            unCheckExpressCheckout();
             clickBackButtonAndroid();
             //clickEABackBtn();
-            tapByCoordinates(542, 1328); //Not able to locate Add Cash Button (VIVO Y16)
+            clickAddButton();//Not able to locate Add Cash Button (VIVO Y16)
             //tapByCoordinates(538,1837); // vivo y11
             clickSelectYourBank();
             clickAnyBankInNetBanking();

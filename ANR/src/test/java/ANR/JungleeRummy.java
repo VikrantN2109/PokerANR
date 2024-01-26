@@ -29,9 +29,9 @@ public class JungleeRummy extends BaseTest {
     int appLaunchFrequency = 4;
     int reloadChipsFrequency = 10;
     int F2WFrequency = 1;
-    int addCashFrequency = Integer.MAX_VALUE;
+    int addCashFrequency = 4;
     int F2UFrequency = 1;
-    int bound = 20;
+    int bound = 25;
 
     @Test
     @Parameters(value = {"deviceIndex"})
