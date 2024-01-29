@@ -2,8 +2,8 @@
   "server": "hub-cloud.browserstack.com",
   "username": "roohpreetkaur_rJOCtg",
   "access_key": "XgrmR7L4zwj9HHEpC6sB",
-  "native_app": "bs://d319ba2e9f340b4c0833dcd6b7bed81619717988",
-  "psrmg_app": "bs://1af4326b1c322cb0af1f625997838a1da6019d4a",
+  "native_app": "bs://93fbac749bd52d83b6339c845f31824b6306673a",
+  "psrmg_app": "bs://6be363a61933acf1b8af3558637af59d50c2027c",
   "ipa": "bs://2f64243f4da00c17fc3839e027207934d0fff91d",
   "rummycom_app": "bs://7ea36d5cba6eb4236407275fef3ea9b3df3f309e",
   "capabilities": {
@@ -26,7 +26,7 @@
     {
       "platformName": "android",
       "deviceName": "Samsung Galaxy S21",
-      "os_version": "12.0"
+      "os_version": "11.0"
     },
     {
       "platformName": "android",

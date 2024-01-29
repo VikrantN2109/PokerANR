@@ -3,7 +3,7 @@
   "username": "roohpreetkaur_rJOCtg",
   "access_key": "XgrmR7L4zwj9HHEpC6sB",
   "native_app": "bs://93fbac749bd52d83b6339c845f31824b6306673a",
-  "psrmg_app": "bs://2f24d1d244b8452a63340b5f91d5a5e6f496797e",
+  "psrmg_app": "bs://6be363a61933acf1b8af3558637af59d50c2027c",
   "ipa": "bs://2f64243f4da00c17fc3839e027207934d0fff91d",
   "rummycom_app": "bs://7ea36d5cba6eb4236407275fef3ea9b3df3f309e",
   "capabilities": {
@@ -25,12 +25,12 @@
   "androidEnvironments": [
     {
       "platformName": "android",
-      "deviceName": "Samsung Galaxy S22",
-      "os_version": "12.0"
+      "deviceName": "Samsung Galaxy S21",
+      "os_version": "11.0"
     },
     {
       "platformName": "android",
-      "deviceName": "Vivo V21",
+      "deviceName": "Vivo Y21",
       "os_version": "11.0"
     },
     {

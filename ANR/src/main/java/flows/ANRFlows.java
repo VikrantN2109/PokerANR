@@ -174,14 +174,14 @@ public class ANRFlows extends ANRLocators {
             select2Player();
             //clickPlayNowBtn();
             Thread clickPlayNowBtnThread = new Thread(() -> clickPlayNowBtn());
-            Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("2g-gprs-lossy"));
+            Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("no-network"));
             // Start both threads
             setNetworkSpeedThread.start();
             clickPlayNowBtnThread.start();
             // Wait for both threads to finish
             setNetworkSpeedThread.join();
             clickPlayNowBtnThread.join();
-            //Thread.sleep(6000);
+            Thread.sleep(6000);
             setNetworkSpeedBS("reset");
             //playYoutubeVideo(platform, 20);
             Thread.sleep(5000);
@@ -196,6 +196,7 @@ public class ANRFlows extends ANRLocators {
                 timeStamp();
                 System.out.println("Something went wrong. Relaunching the app!");
                 relaunchApp(platform);
+                driver.activateApp("com.jungleerummy.jungleerummy");
             }
         } catch (Exception e) {
             System.out.println(e);

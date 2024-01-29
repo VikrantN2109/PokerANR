@@ -57,11 +57,11 @@ public class JungleeRummy extends BaseTest {
                     flows.flutterToWebviewLeaderboard(platform);
                 }
 
-                if (i % addCashFrequency == 0) {
-                    System.out.println("Device Rotation Before Add Cash!");
-                    flows.randomRotation(bound);
-                    flows.addCashJuspayFlow(platform, deviceIndex);
-                }
+//                if (i % addCashFrequency == 0) {
+//                    System.out.println("Device Rotation Before Add Cash!");
+//                    flows.randomRotation(bound);
+//                    flows.addCashJuspayFlow(platform, deviceIndex);
+//                }
 
                 if (i % F2UFrequency == 0) {
                     System.out.println("Device Rotation Before Game table!");

@@ -68,6 +68,8 @@ public class ActionUtils {
             ANRLocators anrLocators = new ANRLocators(driver, wait);
             if (isElementPresent(anrLocators.dismissBtn)) {
                 anrLocators.dismissBtn.click();
+            } else {
+                anrLocators.closeWelcomeBanner.click();
             }
         }
     }

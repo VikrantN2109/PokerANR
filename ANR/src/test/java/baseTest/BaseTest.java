@@ -62,11 +62,11 @@ public class BaseTest {
         desiredCapabilities.setCapability("unicodeKeyboard", false);
         desiredCapabilities.setCapability("resetKeyboard", false);
 
-//        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
-//        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
-
-        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
         desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+//
+//        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+//        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
 
 //        desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
 //        desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");
@@ -191,8 +191,8 @@ public class BaseTest {
         }
 
         HashMap<String, String> googleCredentials = new HashMap<>();
-        googleCredentials.put("username", "jungleetest123@gmail.com");
-        googleCredentials.put("password", "Test@123");
+        googleCredentials.put("username", "");
+        googleCredentials.put("password", "");
         capabilities.setCapability("browserstack.appStoreConfiguration", googleCredentials);
         //executeADBCommand("adb shell am broadcast -a android.intent.action.MEMORY_FULL");
         driver = new AndroidDriver(new URL("http://"+username+":"+accessKey+"@"+config.get("server")+"/wd/hub"), capabilities);
