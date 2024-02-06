@@ -211,8 +211,8 @@ public class ANRLocators extends ActionUtils {
         }
     }
 
-    public void enterUsername(String userName)
-    {
+    public void enterUsername(String userName) throws InterruptedException {
+        Thread.sleep(2000);
         waitAndClick(enterUsername);
         sendText(enterUsername,userName);
     }

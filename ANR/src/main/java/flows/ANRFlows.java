@@ -1,11 +1,13 @@
 package flows;
 
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.DeviceRotation;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.support.PageFactory;
@@ -18,6 +20,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
+
+
 
 public class ANRFlows extends ANRLocators {
     AndroidDriver driver;
@@ -82,6 +86,7 @@ public class ANRFlows extends ANRLocators {
     }
 
     public void reloadChips() {
+      //  clickAvatar();
         clickReloadChips();
         clickOkBtnReloadChips();
     }
@@ -123,7 +128,7 @@ public class ANRFlows extends ANRLocators {
             clickLeaderBoard();
             Thread.sleep(7000);
             clickOptIn();
-            Thread.sleep(5000);
+            Thread.sleep(2000);
             clickLobby();
             //  clickBackButtonAndroid();
         } catch (TimeoutException e) {
@@ -166,7 +171,6 @@ public class ANRFlows extends ANRLocators {
         select2Player();
         clickPlayNowBtn();
        // driver.runAppInBackground(Duration.ofSeconds(10));
-       // printDeviceLogs(driver);
 
         System.out.println("Timestamp at Gametable :  ");
         Timestamp t1=timeStamp(); //t1
@@ -224,7 +228,7 @@ public class ANRFlows extends ANRLocators {
         randomRotation(5);
         Thread.sleep(8000);
         switch (platform) {
-            case "psrmg":
+            case "native":
                 clickBackButtonAndroid();
                 clickJusPayYesCancelBtn();
                 clickBackButtonAndroid();
@@ -284,14 +288,31 @@ public class ANRFlows extends ANRLocators {
         if (random <= 5) {
             for (int i = 0; i < 5; i++) {
                 try {
+//                    setOrientation(driver, ScreenOrientation.LANDSCAPE);
+//                    setOrientation(driver, ScreenOrientation.PORTRAIT);
+
                     driver.rotate(ScreenOrientation.LANDSCAPE);
                     driver.rotate(ScreenOrientation.PORTRAIT);
+
+//                    DeviceRotation landScape = new DeviceRotation(0, 0, 90);
+//                    driver.rotate(landScape);
+//
+//                    DeviceRotation portrait = new DeviceRotation(0, 0, 180);
+//                    driver.rotate(portrait);
+
+                  //  driver.rotate(new DeviceRotation(0, 0, 90) );
+
+
                 } catch (Exception e) {
                     System.out.println("Exception: " + e);
                 }
                 Thread.sleep(1000);
             }
         }
+    }
+
+    public static void setOrientation(AndroidDriver driver,ScreenOrientation orientation) {
+        driver.rotate(orientation);
     }
 
 //    private void diffenceinDuration(Timestamp t0, Timestamp t1) throws ParseException {
@@ -327,11 +348,11 @@ public class ANRFlows extends ANRLocators {
     public void toggleApps() throws InterruptedException {
         driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
         driver.activateApp("com.rummydotcom.indianrummycashgame");
-        Thread.sleep(2000);
+        Thread.sleep(4000);
         driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+       // driver.activateApp("io.jungleerummy.jungleegames");
         driver.activateApp("com.jungleerummy.playcashgameonline");
     }
-
 
 
 }

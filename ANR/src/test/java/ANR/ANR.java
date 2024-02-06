@@ -4,6 +4,7 @@ import baseTest.BaseTest;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.logging.LogEntry;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -20,10 +21,9 @@ import java.util.Random;
 public class ANR extends BaseTest {
 
     String platform = props.getProperty("platform");
-
     ReadLogs logs= new ReadLogs();
     int appLaunchFrequency = 4;
-    int reloadChipsFrequency = 45;
+    int reloadChipsFrequency = 10;
     int F2WFrequency = 1;
     int addCashFrequency =1;
     int F2UFrequency = 1;
@@ -32,9 +32,11 @@ public class ANR extends BaseTest {
     @Test
     @Parameters(value={"deviceIndex"})
     public void anr(String deviceIndex) throws InterruptedException, FileNotFoundException, ParseException {
-        int noOfIterations = 5;
+        int noOfIterations = 50;
 
         flows.loginExistingUser(platform, deviceIndex);
+
+//        flows.randomRotation(5);
 
         for (int i = 1; i <= noOfIterations; i++) {
             System.out.println("iteration: " + i); //Use logging
@@ -42,30 +44,30 @@ public class ANR extends BaseTest {
 //                if (i % appLaunchFrequency == 0) {
 //                    flows.relaunchApp(platform);
 //                }
-//
+
 //                if (i % reloadChipsFrequency == 0) {
 //                    flows.reloadChips();
 //                }
-//
-//                if (i % F2WFrequency == 0) {
-//                    flows.randomRotation(20);
-//                    flows.flutterToWebviewPromotions(platform);
-//                    flows.flutterToWebviewLeaderboard(platform);
-//                }
 
+                if (i % F2WFrequency == 0) {
+                    flows.randomRotation(20);
+                    flows.flutterToWebviewPromotions(platform);
+                    flows.flutterToWebviewLeaderboard(platform);
+                }
+//
 //                if (i % addCashFrequency == 0) {
 //                    System.out.println("Device Rotation Before Add Cash!");
 //                    flows.randomRotation(10);
 //                    flows.addCashJuspayFlow(platform);
 //                }
-
+//
 //                if(i % runAppInBackGround ==0) {
 //                    driver.runAppInBackground(Duration.ofSeconds(10));
 //                }
-
-//                if(i % toggleBetweenApps==0) {
-//                    flows.toggleApps();
-//                }
+//
+                if(i % toggleBetweenApps==0) {
+                    flows.toggleApps();
+                }
 
                 if (i % F2UFrequency == 0) {
                     System.out.println("Device Rotation Before Game table!");
@@ -76,7 +78,7 @@ public class ANR extends BaseTest {
                 }
 
                 System.out.println("Testcase Passed with All Condition=" + i);
-                Thread.sleep(4000);
+                //Thread.sleep(4000);
 
             } catch (Exception e) {
                 System.out.println("Exception =" + e);
@@ -95,7 +97,7 @@ public class ANR extends BaseTest {
 
 
 
-       flows.printDeviceLogs(driver);
+     //  flows.printDeviceLogs(driver);
 
 //        Thread.sleep(5000);
 //        logs.readLogs();
@@ -158,3 +160,4 @@ public class ANR extends BaseTest {
 
 }
 
+//    adb logcat | grep -E "(flutter|Unity)" > /Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/output.txt

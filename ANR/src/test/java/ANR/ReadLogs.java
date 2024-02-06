@@ -18,16 +18,23 @@ public class ReadLogs {
     public ArrayList<String> unityList= new ArrayList<>();
 
 
-    public static void main(String[] args) throws ParseException {
+    public static void main(String[] args) throws ParseException, IOException {
 
         ReadLogs test= new ReadLogs();
+        test.printDeviceLogs();
         test.readLogs();
         test.print2DArray();
         test.diffInDuration();
+
     }
 
-    public void printDeviceLogs() throws FileNotFoundException, ParseException {
-        String filePath="ANR/src/test/resources/logs.txt";
+
+    public void printDeviceLogs() throws IOException, ParseException {
+        String readFile="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/output.txt";
+        String writeFile="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/logs.txt";
+
+//        FileWriter fileWriter = new FileWriter("filePath");
+//        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 //        PrintStream fileStream = new PrintStream(new File(filePath));
 //        // Redirect System.out to the file stream
 //        System.setOut(fileStream);
@@ -50,10 +57,35 @@ public class ReadLogs {
 //        }
 //        fileStream.close();
 
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(readFile));
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(writeFile));)
+        {
+
+            String line;
+            while ((line = bufferedReader.readLine()) != null)
+            {
+                if(line.contains("flutter : Lobby Event Added ::  lobby_play_now_clicked"))
+                {
+                    bufferedWriter.write(line);
+                    bufferedWriter.newLine();
+                }
+                if(line.contains("Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft"))
+                {
+                    bufferedWriter.write(line);
+                    bufferedWriter.newLine();
+                }
+            }
+            System.out.println("File copied successfully.");
+
+        }catch (Exception e)
+        {
+            System.out.println(e);
+        }
+
     }
 
     public void readLogs() {
-        String filePath = "src/test/resources/output.txt"; // Replace with the actual path to your log file
+        String filePath = "/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/logs.txt"; // Replace with the actual path to your log file
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
             String line;
@@ -112,6 +144,7 @@ public class ReadLogs {
         System.out.println();
         twoDArray.add(flutterList);
         twoDArray.add(unityList);
+
 
         int numRows = twoDArray.size();
         int numCols = twoDArray.get(0).size();

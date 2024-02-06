@@ -56,15 +56,14 @@ public class BaseTest {
         desiredCapabilities.setCapability("unicodeKeyboard", false);
         desiredCapabilities.setCapability("resetKeyboard", false);
 
-        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
-        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
-
-//        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+//        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
 //        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+
+        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
 
 //        desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
 //        desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");
-
 
         desiredCapabilities.setCapability("simpleIsVisibleCheck", true);
         desiredCapabilities.setCapability("noReset", false);
@@ -85,7 +84,7 @@ public class BaseTest {
         driver = new AndroidDriver(url, desiredCapabilities);
        // driver.setNetworkSpeed(NetworkSpeed.valueOf("250")); // Replace with your desired speed
         Thread.sleep(4000);
-        System.out.println(driver.getContextHandles().toString());
+      //  System.out.println(driver.getContextHandles().toString());
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         locators=new ANRLocators(driver,wait);
         flows =new ANRFlows(driver,wait);
