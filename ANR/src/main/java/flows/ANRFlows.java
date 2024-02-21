@@ -43,7 +43,7 @@ public class ANRFlows extends ANRLocators {
         ClickLoginViaPassword();
         switch (deviceIndex) {
             case "0":
-                enterUsername("dbmundhra@gmail.com");
+                enterUsername("roohpreet.kaur@jungleegames.com");
                 enterPassword("1234@Test");
                 break;
             case "1":
@@ -86,7 +86,7 @@ public class ANRFlows extends ANRLocators {
         clickOkBtnReloadChips();
     }
 
-    public void relaunchApp(String platform) {
+    public void relaunchApp(String platform) throws InterruptedException {
         switch (platform) {
             case "ipa":
                 driver.terminateApp("com.jungleerummy.jungleerummy");
@@ -94,6 +94,7 @@ public class ANRFlows extends ANRLocators {
                 break;
             case "psrmg":
                 driver.terminateApp("com.jungleerummy.playcashgameonline");
+                Thread.sleep(1000);
                 driver.activateApp("com.jungleerummy.playcashgameonline");
                 break;
             case "native":
@@ -170,27 +171,28 @@ public class ANRFlows extends ANRLocators {
             if (platform.contains("rummysdk")) {
                 clickOnRummy();
             }
-            goToPracticeTab();
+            //goToPracticeTab();
             select2Player();
-            //clickPlayNowBtn();
-            Thread clickPlayNowBtnThread = new Thread(() -> clickPlayNowBtn());
-            Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("no-network"));
-            // Start both threads
-            setNetworkSpeedThread.start();
-            clickPlayNowBtnThread.start();
-            // Wait for both threads to finish
-            setNetworkSpeedThread.join();
-            clickPlayNowBtnThread.join();
+            clickPlayNowBtn();
+//            Thread clickPlayNowBtnThread = new Thread(() -> clickPlayNowBtn());
+//            Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("no-network"));
+//            // Start both threads
+//            setNetworkSpeedThread.start();
+//            clickPlayNowBtnThread.start();
+//            // Wait for both threads to finish
+//            setNetworkSpeedThread.join();
+//            clickPlayNowBtnThread.join();
             Thread.sleep(6000);
+            setNetworkSpeedBS("no-network");
+            Thread.sleep(5000);
             setNetworkSpeedBS("reset");
             //playYoutubeVideo(platform, 20);
-            Thread.sleep(5000);
-            captureScreenshot();
             randomRotation(5);
             setNetworkSpeedBS("2g-gprs-lossy");
             Thread.sleep(5000);
+            captureScreenshot();
             setNetworkSpeedBS("reset");
-            Thread.sleep(90000);
+            Thread.sleep(80000);
             System.out.println("wait completed");
             if (!(lobby.isDisplayed())) {
                 timeStamp();
@@ -291,7 +293,11 @@ public class ANRFlows extends ANRLocators {
         Random rand = new Random();
         int randomNumber = rand.nextInt(bound);
         if (randomNumber <= 5) {
-            driver.activateApp("com.google.android.youtube");
+            if (platform.equalsIgnoreCase("ipa")) {
+                driver.activateApp("com.google.ios.youtube");
+            } else {
+                driver.activateApp("com.google.android.youtube");
+            }
             driver.rotate(ScreenOrientation.PORTRAIT);
             clickSearchBtnYoutube();
             searchVideo();
@@ -326,6 +332,21 @@ public class ANRFlows extends ANRLocators {
             clickOnSelectEnvBox();
             clickOnQAEnv();
             clickProceedBtn();
+        }
+    }
+
+    public void gameTableLeaveFlow(String platform) throws InterruptedException {
+        try {
+            goToPracticeTab();
+            select2Player();
+            clickPlayNowBtn();
+            Thread.sleep(5000);
+            tapByCoordinates(86,32);
+            Thread.sleep(2000);
+            tapByCoordinates(620,531);
+        } catch (Exception e) {
+            System.out.println(e);
+            relaunchApp(platform);
         }
     }
 }

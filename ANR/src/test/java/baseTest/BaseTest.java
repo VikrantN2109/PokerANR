@@ -14,11 +14,13 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.helpers.Util;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import pageObjects.ANRLocators;
+import utils.ActionUtils;
 
 import java.io.*;
 import java.net.URL;
@@ -36,6 +38,7 @@ public class BaseTest {
     public AndroidDriver driver ;
     public ANRLocators locators;
     public ANRFlows flows;
+    public ActionUtils utils;
     public Properties props;
     private static ThreadLocal<Integer> currentDeviceIndex = new ThreadLocal<>();
 
@@ -191,8 +194,8 @@ public class BaseTest {
         }
 
         HashMap<String, String> googleCredentials = new HashMap<>();
-        googleCredentials.put("username", "");
-        googleCredentials.put("password", "");
+        googleCredentials.put("username", "jungleetest123@gmail.com");
+        googleCredentials.put("password", "Test@123");
         capabilities.setCapability("browserstack.appStoreConfiguration", googleCredentials);
         //executeADBCommand("adb shell am broadcast -a android.intent.action.MEMORY_FULL");
         driver = new AndroidDriver(new URL("http://"+username+":"+accessKey+"@"+config.get("server")+"/wd/hub"), capabilities);
