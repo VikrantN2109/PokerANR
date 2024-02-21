@@ -42,11 +42,21 @@ public class ANRLocators extends ActionUtils {
     @iOSXCUITFindBy(accessibility = "Login via password")
     public WebElement loginViaPswd;
 
-    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, \"7 Crore\")]/android.view.View[1]/android.widget.ImageView[1]")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"7 Crore+\n" +
+            "PLAYERS*\n" +
+            "No Bots\n" +
+            "certified\n" +
+            "RNG Certified\n" +
+            "Games\"]/android.view.View[1]/android.widget.ImageView[1]")
     @iOSXCUITFindBy(accessibility = "Email or Mobile")
     public WebElement enterUsername;
 
-    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, \"7 Crore\")]/android.view.View[1]/android.widget.ImageView[2]")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"7 Crore+\n" +
+            "PLAYERS*\n" +
+            "No Bots\n" +
+            "certified\n" +
+            "RNG Certified\n" +
+            "Games\"]/android.view.View[1]/android.widget.ImageView[2]")
     @iOSXCUITFindBy(accessibility = "Password")
     public WebElement enterPassword;
 

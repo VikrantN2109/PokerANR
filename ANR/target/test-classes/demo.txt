@@ -1,0 +1,29 @@
+02-16 19:41:03.661  4096  4548 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:41:20.196  4891  5025 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:41:20.737  4891  5330 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:41:36.979  5671  5771 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:41:37.473  5671  6029 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:42:14.264  7096  7224 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:42:14.797  7096  7493 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:42:51.447  8554  8669 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:42:52.049  8554  8952 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:43:10.968  9285  9389 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:43:11.506  9285  9656 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:43:29.135 10074 10171 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:43:29.677 10074 10440 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:43:47.113 10776 10879 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:43:47.680 10776 11147 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:44:06.783 11458 11554 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:44:07.325 11458 11834 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:44:26.477 12163 12264 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:44:26.981 12163 12533 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:44:44.102 12899 13004 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:44:44.653 12899 13283 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:45:03.589 13589 13691 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:45:04.137 13589 13974 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:45:24.560 14374 14477 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:45:25.080 14374 14756 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:45:44.015 15162 15273 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:45:44.642 15162 15551 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
+02-16 19:46:01.447 15968 16076 I flutter : Lobby Event Added ::  game_table_pushed_to_route
+02-16 19:46:01.971 15968 16370 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp

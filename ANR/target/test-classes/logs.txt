@@ -13,7 +13,6 @@
 01-28 14:57:07.528  4121  4247 I flutter : Lobby Event Added ::  lobby_play_now_clicked
 01-28 14:57:08.122  4121  4527 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
 01-28 14:59:33.765  4121  4247 I flutter : Lobby Event Added ::  lobby_play_now_clicked
-01-28 14:59:34.321  4121  4527 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
 01-28 15:01:30.784  4121  4247 I flutter : Lobby Event Added ::  lobby_play_now_clicked
 01-28 15:01:31.904  4121  4527 I Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft, deviceOrientation: FaceUp
 01-28 15:37:51.628 19501 19610 I flutter : Lobby Event Added ::  lobby_play_now_clicked

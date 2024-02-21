@@ -8,7 +8,6 @@ import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.logging.LogEntry;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,8 +20,7 @@ import java.util.Random;
 public class ANR extends BaseTest {
 
     String platform = props.getProperty("platform");
-    ReadLogs logs= new ReadLogs();
-    int appLaunchFrequency = 4;
+    int appLaunchFrequency = 1;
     int reloadChipsFrequency = 10;
     int F2WFrequency = 1;
     int addCashFrequency =1;
@@ -32,9 +30,11 @@ public class ANR extends BaseTest {
     @Test
     @Parameters(value={"deviceIndex"})
     public void anr(String deviceIndex) throws InterruptedException, FileNotFoundException, ParseException {
-        int noOfIterations = 50;
+        int noOfIterations = 100;
 
-        flows.loginExistingUser(platform, deviceIndex);
+        Thread.sleep(10000);
+
+//        flows.loginExistingUser(platform, deviceIndex);
 
 //        flows.randomRotation(5);
 
@@ -43,6 +43,8 @@ public class ANR extends BaseTest {
             try {
 //                if (i % appLaunchFrequency == 0) {
 //                    flows.relaunchApp(platform);
+//                    Thread.sleep(4000);
+//                    flows.captureScreenshot();
 //                }
 
 //                if (i % reloadChipsFrequency == 0) {
@@ -64,10 +66,10 @@ public class ANR extends BaseTest {
 //                if(i % runAppInBackGround ==0) {
 //                    driver.runAppInBackground(Duration.ofSeconds(10));
 //                }
-//
-                if(i % toggleBetweenApps==0) {
-                    flows.toggleApps();
-                }
+////
+//                if(i % toggleBetweenApps==0) {
+//                    flows.toggleApps();
+//                }
 
                 if (i % F2UFrequency == 0) {
                     System.out.println("Device Rotation Before Game table!");

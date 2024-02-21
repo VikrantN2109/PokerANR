@@ -8,9 +8,7 @@ import io.appium.java_client.touch.TapOptions;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.ElementOption;
 import io.appium.java_client.touch.offset.PointOption;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.logging.LogEntry;
@@ -19,6 +17,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -304,6 +305,20 @@ public class ActionUtils {
 //        }
 //    }
 
+    public void captureScreenshot() {
+        String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
+        String fileName = "GameTable_" + timestamp + ".png";
+
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        Path destination = Paths.get("/Users/anushkas.hrivastava/Desktop/Screenshots/" + fileName);
+
+        try {
+            Files.copy(screenshot.toPath(), destination);
+            System.out.println("Screenshot captured: " + destination.toAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

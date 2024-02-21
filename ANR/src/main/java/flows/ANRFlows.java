@@ -51,7 +51,7 @@ public class ANRFlows extends ANRLocators {
 //                enterUsername("dbmundhra@gmail.com");
 //                enterPassword("1234@Test");    //Abcdef123!
 
-                enterUsername("7999465910");
+                enterUsername("anushka.shrivastava@jungleegames.com"); //7999465910
                 enterPassword("@Test12345");
 
                 break;
@@ -170,15 +170,20 @@ public class ANRFlows extends ANRLocators {
         goToPracticeTab();
         select2Player();
         clickPlayNowBtn();
+
+        Thread.sleep(5000);
+        captureScreenshot();
+        relaunchApp("native");
+
        // driver.runAppInBackground(Duration.ofSeconds(10));
 
-        System.out.println("Timestamp at Gametable :  ");
-        Timestamp t1=timeStamp(); //t1
 
 //        diffenceinDuration(t0,t1);
 //        ArrayTimeStamp(t0,t1);
         //randomRotation(5);
-        Thread.sleep(80000);
+
+  //      Thread.sleep(80000);
+
         // dropTable();
 
         //goToPromotions();

@@ -2,7 +2,7 @@ package ANR;
 
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.data.time.*;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -11,8 +11,6 @@ import org.jfree.chart.axis.DateTickUnit;
 import org.jfree.chart.axis.DateTickUnitType;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.plot.XYPlot;
-import org.jfree.data.time.Second;
-import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
 
 import javax.swing.*;
@@ -23,7 +21,7 @@ import java.util.Date;
 
 public class TimestampPlotter extends JFrame{
 
-//    PrintLogs logs= new PrintLogs();
+    PrintLogs logs= new PrintLogs();
 //
 //    public static void main(String[] args) {
 //        SwingUtilities.invokeLater(() -> {
@@ -98,7 +96,7 @@ public class TimestampPlotter extends JFrame{
 //
 //    }
 
-    public TimestampPlotter(String title) {
+    public TimestampPlotter(String title) throws ParseException {
         super(title);
 
         // Read timestamps and create dataset
@@ -128,29 +126,54 @@ public class TimestampPlotter extends JFrame{
         setContentPane(chartPanel);
     }
 
-    private TimeSeriesCollection createDataset() {
+    private TimeSeriesCollection createDataset() throws ParseException {
         TimeSeries series = new TimeSeries("Data");
 
         // Provided timestamps
-        String[] timestamps = {
-                "01-21 15:56:45.577",
-                "01-21 15:58:46.416",
-                "01-21 17:00:15.846",
-                "01-21 18:30:59.421",
-                "01-21 19:14:00.127",
-                "01-21 20:27:26.504",
-                "01-21 21:30:27.151"
-        };
+//        String[] timestamps = {
+//                "01-28 14:45:15.790",
+//                "01-28 14:45:16.548",
+//                "01-28 14:47:43.440",
+//                "01-28 14:47:44.213",
+//                "01-28 14:49:38.229",
+//                "01-28 14:49:38.887",
+//                "01-28 14:51:50.590",
+//                "01-28 14:51:51.464",
+//                "01-28 14:53:54.546",
+//                "01-28 14:53:55.406",
+//                "01-28 14:55:31.750",
+//                "01-28 14:55:32.722",
+//                "01-28 14:57:07.528",
+//                "01-28 14:57:08.122",
+//                "01-28 14:59:33.765",
+//                "01-28 15:01:30.784",
+//                "01-28 15:01:31.904",
+//                "01-28 15:37:51.628"
+//        };
+
+        String [] timestamps= logs.commonListTimestamp.toArray(new String[0]);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd HH:mm:ss.SSS");
 
-        for (String timestamp : timestamps) {
-            try {
-                Date date = dateFormat.parse(timestamp);
-                series.add(new Second(date), 0); // Assuming a constant value (0) for demonstration
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+//        for (String timestamp : timestamps) {
+//            try {
+//                Date date = dateFormat.parse(timestamp);
+//                //series.add(new Second(date), 0); // Assuming a constant value (0) for demonstration
+//                series.addOrUpdate(new FixedMillisecond(date), 0);
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//        }
+
+        SimpleDateFormat standardDateFormat = new SimpleDateFormat("MM-dd HH:mm:ss.SSS");
+        Second current = new Second();
+        double count = 0.0;
+        for (String data : timestamps) {
+            Date myDate = standardDateFormat.parse(data);
+            System.err.println(myDate.toString());
+            count = count + 0.25;
+            series.addOrUpdate(new Millisecond(myDate), count);
+            current = (Second) current.next();
         }
 
         TimeSeriesCollection dataset = new TimeSeriesCollection();
@@ -161,7 +184,12 @@ public class TimestampPlotter extends JFrame{
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            TimestampPlotter plotter = new TimestampPlotter("Timestamp Plot");
+            TimestampPlotter plotter = null;
+            try {
+                plotter = new TimestampPlotter("Timestamp Plot");
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
             plotter.setSize(1000, 800);
             plotter.setLocationRelativeTo(null);
             plotter.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

@@ -8,20 +8,6 @@ import java.util.Collections;
 import java.util.Stack;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.axis.DateAxis;
-import org.jfree.chart.axis.DateTickUnit;
-import org.jfree.chart.axis.DateTickUnitType;
-import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.plot.XYPlot;
-import org.jfree.data.time.Second;
-import org.jfree.data.time.TimeSeries;
-import org.jfree.data.time.TimeSeriesCollection;
-
 import javax.swing.*;
 import java.awt.*;
 import java.text.ParseException;
@@ -31,6 +17,8 @@ import java.util.Date;
 public class PrintLogs extends JFrame{
 
     public ArrayList<String> commonList = new ArrayList<>();
+    public ArrayList<String> commonListTimestamp = new ArrayList<>();
+    public ArrayList<Pair<String,String>> commonListTimestampWithPlatform = new ArrayList<>();
     public boolean flag = false;
     public ArrayList<String> flutterList = new ArrayList<>();
     public ArrayList<String> unityList = new ArrayList<>();
@@ -64,30 +52,58 @@ public class PrintLogs extends JFrame{
 //            plotter.setVisible(true);
 //        });
 
+       // test.print();
+
     }
 
     public void getLogs() {
-        String filePath = "/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/logs.txt"; // Replace with the actual path to your log file
+        String filePath = "/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/demo1.txt"; // Replace with the actual path to your log file
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
             String line;
-            Pattern pattern = Pattern.compile("((.*?)\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+(.*?)) .* ((flutter|Unity))", Pattern.CASE_INSENSITIVE);
+          //  Pattern pattern = Pattern.compile("((.*?)\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+(.*?)) .* ((flutter|Unity))", Pattern.CASE_INSENSITIVE);
+
+            Pattern pattern = Pattern.compile("(\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+) (I/flutter|I/Unity  ) \\((\\d+)\\): (.*)");
+
 
             while ((line = bufferedReader.readLine()) != null) {
                 Matcher matcher = pattern.matcher(line);
                 if (matcher.find()) {
-                    String timestamp = matcher.group(1);
-                    String logType = matcher.group(4);
-                    //  System.out.printf("[%s] -> Log type (Flutter/Unity): [%s]%n", timestamp, logType);
+//                    String timestamp = matcher.group(1);
+//                    String logType = matcher.group(4);
+//                   //   System.out.printf("[%s] -> Log type (Flutter/Unity): [%s]%n", timestamp, logType);
 
-                    if (logType.equalsIgnoreCase("flutter")) {
+                    String timestamp = matcher.group(1);
+                    String logType = matcher.group(2);
+
+
+//                    if (logType.equalsIgnoreCase("flutter")) {
+//                        commonList.add(logType);
+//                        commonList.add(timestamp);
+//                        commonListTimestamp.add(timestamp);
+//                        commonListTimestampWithPlatform.add(new Pair<>(logType,timestamp));
+//                        stack.push(new Pair<>(logType, timestamp));
+//                    }
+//                    if (logType.equalsIgnoreCase("unity")) {
+//                        commonList.add(logType);
+//                        commonList.add(timestamp);
+//                        commonListTimestamp.add(timestamp);
+//                        commonListTimestampWithPlatform.add(new Pair<>(logType,timestamp));
+//                        stack.push(new Pair<>(logType, timestamp));
+//                    }
+
+                    if (logType.equalsIgnoreCase("I/flutter")) {
                         commonList.add(logType);
                         commonList.add(timestamp);
+                        commonListTimestamp.add(timestamp);
+                        commonListTimestampWithPlatform.add(new Pair<>(logType,timestamp));
                         stack.push(new Pair<>(logType, timestamp));
                     }
-                    if (logType.equalsIgnoreCase("unity")) {
+                    if (logType.equalsIgnoreCase("I/Unity  ")) {
                         commonList.add(logType);
                         commonList.add(timestamp);
+                        commonListTimestamp.add(timestamp);
+                        commonListTimestampWithPlatform.add(new Pair<>(logType,timestamp));
                         stack.push(new Pair<>(logType, timestamp));
                     }
                 }
@@ -97,6 +113,14 @@ public class PrintLogs extends JFrame{
             bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void print()
+    {
+        for(int i=0;i<commonListTimestamp.size();i++)
+        {
+            System.out.println(commonListTimestamp.get(i));
         }
     }
 
@@ -184,18 +208,22 @@ public class PrintLogs extends JFrame{
             String eventType = currentPair.first;
             String timestamp = currentPair.second;
 
-            if ("flutter".equals(eventType)) {
+            if ("I/flutter".equals(eventType)) {
                 //stack.pop();
-                unityListStack.add("     0           ");
+                unityListStack.add("     0            ");
                 flutterListSack.add(timestamp);
-            } else if ("Unity".equals(eventType)) {
+            } else if ("I/Unity  ".equals(eventType)) {
                 unityListStack.add(timestamp);
                 // Look for the corresponding "flutter" pair
-                Pair<String, String> flutterPair = stack.pop();
-                String currentEventType = flutterPair.first;
-                String currenttimestamp = flutterPair.second;
+                if(!stack.empty())
+                {
+                    Pair<String, String> flutterPair = stack.pop();
+                    String currentEventType = flutterPair.first;
+                    String currenttimestamp = flutterPair.second;
+                    flutterListSack.add(currenttimestamp);
+                }
 
-                flutterListSack.add(currenttimestamp);
+
             }
         }
 
@@ -284,5 +312,9 @@ public class PrintLogs extends JFrame{
 //        return dataset;
 //
 //    }
+
+
+
+
 
 }
