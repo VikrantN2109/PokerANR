@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,21 +43,26 @@ public class ANRLocators extends ActionUtils {
     @iOSXCUITFindBy(accessibility = "Login via password")
     public WebElement loginViaPswd;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"7 Crore+\n" +
-            "PLAYERS*\n" +
+    @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@content-desc,\"kaby\")]")
+    @iOSXCUITFindBy(xpath = "//android.widget.ImageView[contains(@content-desc,\"kaby\")]")
+    public WebElement clickAvatarButton;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"8 Crore+\n" +
+            "Players\n" +
+            "18+\n" +
             "No Bots\n" +
             "certified\n" +
-            "RNG Certified\n" +
-            "Games\"]/android.view.View[1]/android.widget.ImageView[1]")
-    @iOSXCUITFindBy(accessibility = "Email or Mobile")
+            "RNG\n" +
+            "Certified\"]/android.view.View[1]/android.widget.ImageView[1]")
     public WebElement enterUsername;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"7 Crore+\n" +
-            "PLAYERS*\n" +
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"8 Crore+\n" +
+            "Players\n" +
+            "18+\n" +
             "No Bots\n" +
             "certified\n" +
-            "RNG Certified\n" +
-            "Games\"]/android.view.View[1]/android.widget.ImageView[2]")
+            "RNG\n" +
+            "Certified\"]/android.view.View[1]/android.widget.ImageView[2]")
     @iOSXCUITFindBy(accessibility = "Password")
     public WebElement enterPassword;
 
@@ -78,10 +84,10 @@ public class ANRLocators extends ActionUtils {
 
     @AndroidFindBy(accessibility = "OK")
     @iOSXCUITFindBy(accessibility = "OK")
-    public WebElement okBtnReloadChips;
+    public WebElement okBtn;
 
-    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View/android.widget.ImageView[2]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Junglee Rummy\"]/XCUIElementTypeWindow[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeImage[2]")
+    @AndroidFindBy(accessibility = "Reload Chips")
+    @iOSXCUITFindBy(accessibility = "Reload Chips")
     public WebElement reloadChips;
 
     @AndroidFindBy(accessibility = "ADD CASH")
@@ -189,6 +195,57 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(accessibility = "Lobby")
     public WebElement rummyComLobby;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"8 Crore+\n" +
+            "Players\n" +
+            "18+\"]/android.view.View[1]/android.widget.ImageView[1]")
+    public WebElement sendKeysForUserName;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"8 Crore+\n" +
+            "Players\n" +
+            "18+\"]/android.view.View[1]/android.widget.ImageView[2]")
+    public WebElement sendKeysForPswd;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"10 Million+ Players\"]/android.view.View[1]/android.widget.ImageView[1]")
+    public WebElement rummyComUsername;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"10 Million+ Players\"]/android.view.View[1]/android.widget.ImageView[2]")
+    public WebElement rummyComPswd;
+
+    @AndroidFindBy(accessibility = "TOURNAMENTS")
+    @iOSXCUITFindBy(accessibility = "TOURNAMENTS")
+    public WebElement TOURNAMENTS;
+
+    @AndroidFindBy(accessibility = "Free")
+    @iOSXCUITFindBy(accessibility = "Free")
+    public WebElement FREE_TOURNAMENTS;
+
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Join\"]//parent::android.view.View/android.widget.ImageView")
+    @iOSXCUITFindBy(xpath = "//android.widget.Button[@content-desc=\"Join\"]//parent::android.view.View/android.widget.ImageView")
+    public WebElement clickDetails;
+
+    @AndroidFindBy(accessibility = "Join Now")
+    @iOSXCUITFindBy(accessibility = "Join Now")
+    public WebElement JOIN_NOW;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Dismiss\"]/android.view.View/android.view.View/android.view.View[1]")
+    @iOSXCUITFindBy(xpath = "//android.view.View[@content-desc=\"Dismiss\"]/android.view.View/android.view.View/android.view.View[1]")
+    public WebElement closePopUp;
+
+    @AndroidFindBy(accessibility = "Withdraw")
+    @iOSXCUITFindBy(accessibility = "Withdraw")
+    public WebElement withDrawFromTourn;
+
+    @AndroidFindBy(accessibility = "WITHDRAW")
+    @iOSXCUITFindBy(accessibility = "WITHDRAW")
+    public WebElement withDraw;
+
+    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, '8 Crore')]/android.view.View[1]/android.widget.ImageView[1]")
+    @iOSXCUITFindBy(accessibility = "Email or Mobile")
+    public WebElement oldenterUsername;
+
+    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, '8 Crore')]/android.view.View[1]/android.widget.ImageView[2]")
+    @iOSXCUITFindBy(accessibility = "Password")
+    public WebElement oldenterPassword;
 
     public void clickAllowPermission()
     {
@@ -215,22 +272,88 @@ public class ANRLocators extends ActionUtils {
 
     public void ClickLoginViaPassword()
     {
-        if(isElementPresent(loginViaPswd))
-        {
-            waitAndClick(loginViaPswd);
+        // old login page
+        if(isElementPresent(loginViaPswd)) {
+            Rectangle rect = loginViaPswd.getRect();
+            int x = rect.getX();
+            int y = rect.getY();
+            int height = rect.getHeight();
+            int width = rect.getWidth();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            tapByCoordinates(x + (width / 2), y + (height / 4));
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        // new login page
+        if(isElementPresent(loginViaPswd)) {
+            Rectangle rect = loginViaPswd.getRect();
+            int x = rect.getX();
+            int y = rect.getY();
+            int height = rect.getHeight();
+            int width = rect.getWidth();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            tapByCoordinates(x + (width / 2), y + (height / 3)+10);
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
     public void enterUsername(String userName) throws InterruptedException {
-        Thread.sleep(2000);
-        waitAndClick(enterUsername);
-        sendText(enterUsername,userName);
+
+        if(isElementPresent(oldenterUsername))
+        {
+            waitAndClick(oldenterUsername);
+            sendText(oldenterUsername,userName);
+        }
+
+        if(isElementPresent(enterUsername))
+        {
+            waitAndClick(enterUsername);
+            sendText(sendKeysForUserName,userName);
+        }
+
+        if(isElementPresent(rummyComUsername))
+        {
+            waitAndClick(rummyComUsername);
+            sendText(rummyComUsername,userName);
+        }
+
     }
 
     public void enterPassword(String password)
     {
-        waitAndClick(enterPassword);
-        sendText(enterPassword,password);
+        if(isElementPresent(oldenterPassword))
+        {
+            waitAndClick(oldenterPassword);
+            sendText(oldenterPassword,password);
+        }
+        if(isElementPresent(sendKeysForPswd))
+        {
+            waitAndClick(sendKeysForPswd);
+            sendText(sendKeysForPswd,password);
+        }
+
+        if(isElementPresent(rummyComPswd))
+        {
+            waitAndClick(rummyComPswd);
+            sendText(rummyComPswd,password);
+        }
+
     }
 
     public void clickLoginButtonExisting()
@@ -260,6 +383,11 @@ public class ANRLocators extends ActionUtils {
         }
     }
 
+    public void clickAvatar()
+    {
+        waitAndClick(clickAvatarButton);
+    }
+
     public void clickReloadChips()
     {
         waitAndClick(reloadChips);
@@ -267,7 +395,7 @@ public class ANRLocators extends ActionUtils {
 
     public void clickOkBtnReloadChips()
     {
-        waitAndClick(okBtnReloadChips);
+        waitAndClick(okBtn);
     }
 
     public void clickAddCashLobby()
@@ -466,5 +594,71 @@ public class ANRLocators extends ActionUtils {
         {
             waitAndClick(viewALL);
         }
+    }
+
+    public void clickTournamentTab()
+    {
+        if(isElementPresent(TOURNAMENTS))
+        {
+            waitAndClick(TOURNAMENTS);
+        }
+    }
+
+    public void clickOnFree(String platform)
+    {
+
+        if(platform.equalsIgnoreCase("rummydotcom"))
+        {
+            swipeToRight(553,65,430,430);
+        }
+        if(isElementPresent(FREE_TOURNAMENTS))
+        {
+            waitAndClick(FREE_TOURNAMENTS);
+        }
+    }
+
+    public void gotoDetailOfFreeTournament()
+    {
+        if(isElementPresent(clickDetails))
+        {
+            waitAndClick(clickDetails);
+        }
+    }
+    public void clickJoinNow()
+    {
+        if(isElementPresent(JOIN_NOW))
+        {
+            waitAndClick(JOIN_NOW);
+        }
+    }
+    public void clickPopUp()
+    {
+        if(isElementPresent(closePopUp))
+        {
+            waitAndClick(closePopUp);
+        }
+    }
+
+    public void withDrawFromTournament()
+    {
+        if(isElementPresent(withDrawFromTourn))
+        {
+            waitAndClick(withDrawFromTourn);
+            waitAndClick(withDraw);
+        }
+    }
+
+    public void clickOKOfTournament()
+    {
+        if(isElementPresent(okBtn))
+        {
+            waitAndClick(okBtn);
+        }
+    }
+
+    public boolean lobbyVisible()
+    {
+        if(isElementPresent(cashTabButton)) return true;
+        else return false;
     }
 }

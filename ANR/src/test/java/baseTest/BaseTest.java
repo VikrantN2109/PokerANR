@@ -31,7 +31,6 @@ public class BaseTest {
     public ANRLocators locators;
     public ANRFlows flows;
     public Properties props;
-
     public BaseTest(){
         FileReader propertyFile = null;
         try {
@@ -47,7 +46,6 @@ public class BaseTest {
         }
         System.out.println(props.getProperty("runEnv"));
     }
-
     @BeforeMethod(alwaysRun = true)
     public AndroidDriver initAppiumDriver() throws IOException, InterruptedException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
@@ -56,14 +54,20 @@ public class BaseTest {
         desiredCapabilities.setCapability("unicodeKeyboard", false);
         desiredCapabilities.setCapability("resetKeyboard", false);
 
-        desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
-        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
-
-//        desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
-//        desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
-
-//        desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
-//        desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");
+        if(props.getProperty("platform").equalsIgnoreCase("psrmg") || props.getProperty("platform").equalsIgnoreCase("ipa"))
+        {
+            desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
+            desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+        }
+        else if(props.getProperty("platform").equalsIgnoreCase("native"))
+        {
+            desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
+            desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+        }
+        else {
+            desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
+            desiredCapabilities.setCapability("appActivity", "com.rummydotcom.indianrummycashgame.MainActivity");
+        }
 
         desiredCapabilities.setCapability("simpleIsVisibleCheck", true);
         desiredCapabilities.setCapability("noReset", false);
@@ -103,7 +107,7 @@ public class BaseTest {
         desiredCapabilities.setCapability("browserstack.appStoreConfiguration", googleCredentials);
         desiredCapabilities.setCapability("browserstack.user", props.getProperty("browserstack_user"));
         desiredCapabilities.setCapability("browserstack.key", props.getProperty("browserstack_key"));
-        desiredCapabilities.setCapability("project", "Porduct Rummy");
+        desiredCapabilities.setCapability("project", "Product Rummy");
         desiredCapabilities.setCapability("build", "ANR Build : " + buildNumber);
         desiredCapabilities.setCapability("name", "ANR Suite");
         desiredCapabilities.setCapability("appiumVersion", "2.0.1");

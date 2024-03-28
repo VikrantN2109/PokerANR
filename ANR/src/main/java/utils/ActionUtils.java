@@ -32,6 +32,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.openqa.selenium.devtools.v116.dom.DOM.moveTo;
+
 public class ActionUtils {
    public AndroidDriver driver;
    public WebDriverWait wait;
@@ -126,29 +128,33 @@ public class ActionUtils {
         }
     }
 
-    public void swipeToRight()
+    public void swipeToRight(int startX,int endX,int startY,int endY)
     {
         try {
-            Dimension size = driver.manage().window().getSize();
-//            int startX = size.width / 2;
-//            int startY = (int) (size.height * 0.8); // Start from 80% down the screen
-//            int endY = (int) (size.height * 0.6); // End at 20% down the screen
+            final PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Point start = new Point(startX, startY);
+            Point end = new Point(endX, endY);
+            Sequence swipe = new Sequence(FINGER, 1)
+                    .addAction(
+                            FINGER.createPointerMove(
+                                    Duration.ofMillis(0),
+                                    PointerInput.Origin.viewport(),
+                                    start.getX(),
+                                    start.getY()))
+                    .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                    .addAction(
+                            FINGER.createPointerMove(
+                                    Duration.ofMillis(1000),
+                                    PointerInput.Origin.viewport(),
+                                    end.getX(),
+                                    end.getY()))
+                    .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+            driver.perform(java.util.Arrays.asList(swipe));
 
-            int startX = (int) (size.width * 0.8); // 80% from the left
-            int endX = (int) (size.width * 0.2);   // 20% from the left
-            int startY = size.height / 3;
-
-            TouchAction<?> action = new TouchAction<>(driver);
-            action.press(PointOption.point(startX, startY))
-                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500))) // Add a wait action
-                    .moveTo(PointOption.point(startX, endX))
-                    .release()
-                    .perform();
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println(e.getMessage() + "swipeToBottom method failed");
         }
-
 
     }
 

@@ -18,45 +18,42 @@ import java.util.List;
 import java.util.Random;
 
 public class ANR extends BaseTest {
-
     String platform = props.getProperty("platform");
-    int appLaunchFrequency = 1;
-    int reloadChipsFrequency = 10;
+    int appLaunchFrequency = 10; // Integer.MAX_VALUE
+    int reloadChipsFrequency = 40;
     int F2WFrequency = 1;
     int addCashFrequency =1;
     int F2UFrequency = 1;
-    int runAppInBackGround=10;
+    int runAppInBackGround=5;
     int toggleBetweenApps=5;
+    int tournamentsFrequency=1;
     @Test
     @Parameters(value={"deviceIndex"})
     public void anr(String deviceIndex) throws InterruptedException, FileNotFoundException, ParseException {
-        int noOfIterations = 100;
 
-        Thread.sleep(10000);
+        int noOfIterations = 250;
 
-//        flows.loginExistingUser(platform, deviceIndex);
-
-//        flows.randomRotation(5);
+        flows.loginExistingUser(platform, deviceIndex);
 
         for (int i = 1; i <= noOfIterations; i++) {
             System.out.println("iteration: " + i); //Use logging
             try {
 //                if (i % appLaunchFrequency == 0) {
 //                    flows.relaunchApp(platform);
-//                    Thread.sleep(4000);
-//                    flows.captureScreenshot();
+////                    Thread.sleep(4000);
+////                    flows.captureScreenshot();
 //                }
 
-//                if (i % reloadChipsFrequency == 0) {
-//                    flows.reloadChips();
-//                }
+                if (i % reloadChipsFrequency == 0) {
+                    flows.reloadChips();
+                }
 
                 if (i % F2WFrequency == 0) {
-                    flows.randomRotation(20);
+                  //  flows.randomRotation(20);
                     flows.flutterToWebviewPromotions(platform);
                     flows.flutterToWebviewLeaderboard(platform);
                 }
-//
+
 //                if (i % addCashFrequency == 0) {
 //                    System.out.println("Device Rotation Before Add Cash!");
 //                    flows.randomRotation(10);
@@ -66,21 +63,24 @@ public class ANR extends BaseTest {
 //                if(i % runAppInBackGround ==0) {
 //                    driver.runAppInBackground(Duration.ofSeconds(10));
 //                }
-////
+//
 //                if(i % toggleBetweenApps==0) {
 //                    flows.toggleApps();
 //                }
-
+//
                 if (i % F2UFrequency == 0) {
                     System.out.println("Device Rotation Before Game table!");
-                    flows.randomRotation(10);
-                    flows.flutterToUnity();
+                   // flows.randomRotation(10);
+                    flows.flutterToUnity(platform);
                     System.out.println("Device Rotation After Game table!");
                     flows.randomRotation(5);
                 }
 
+//                if(i % tournamentsFrequency==0)
+//                {
+//                    flows.tournamentFlow(platform);
+//                }
                 System.out.println("Testcase Passed with All Condition=" + i);
-                //Thread.sleep(4000);
 
             } catch (Exception e) {
                 System.out.println("Exception =" + e);

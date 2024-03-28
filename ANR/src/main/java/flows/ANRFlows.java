@@ -21,8 +21,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Random;
 
-
-
 public class ANRFlows extends ANRLocators {
     AndroidDriver driver;
 
@@ -41,7 +39,7 @@ public class ANRFlows extends ANRLocators {
             clickAllowPermission();
         }
         clickAllowPermission();
-         clickLocationOkBtn();
+        clickLocationOkBtn();
         Thread.sleep(2000);
         ClickLogIn();
         ClickLoginUsingPassword();
@@ -53,7 +51,6 @@ public class ANRFlows extends ANRLocators {
 
                 enterUsername("anushka.shrivastava@jungleegames.com"); //7999465910
                 enterPassword("@Test12345");
-
                 break;
             case "1":
                 enterUsername("7087537187");
@@ -81,12 +78,13 @@ public class ANRFlows extends ANRLocators {
             clickAllowPermission();
         }
         clickSkipButton();
-        closeWelcomeBanner();
-        closeWelcomeBanner();
+        Thread.sleep(2000);
+//        closeWelcomeBanner();
+//        closeWelcomeBanner();
     }
 
     public void reloadChips() {
-      //  clickAvatar();
+        clickAvatar();
         clickReloadChips();
         clickOkBtnReloadChips();
     }
@@ -105,9 +103,9 @@ public class ANRFlows extends ANRLocators {
                 driver.terminateApp("io.jungleerummy.jungleegames");
                 driver.activateApp("io.jungleerummy.jungleegames");
                 break;
-            case "rummy.com":
-                driver.terminateApp("com.jungleerummy.playcashgameonline");
-                driver.activateApp("com.jungleerummy.playcashgameonline");
+            case "rummydotcom":
+                driver.terminateApp("com.rummydotcom.indianrummycashgame");
+                driver.activateApp("com.rummydotcom.indianrummycashgame");
                 break;
         }
     }
@@ -131,11 +129,12 @@ public class ANRFlows extends ANRLocators {
             Thread.sleep(2000);
             clickLobby();
             //  clickBackButtonAndroid();
-        } catch (TimeoutException e) {
+        } catch (Exception e) {
             try {
-                swipeToRight();
+               // swipeToRight();
             } catch (Exception ex) {
                 System.out.println(ex);
+                relaunchApp(platform);
             }
         }
     }
@@ -162,7 +161,7 @@ public class ANRFlows extends ANRLocators {
         clickLobby();
     }
 
-    public void flutterToUnity() throws InterruptedException, ParseException {
+    public void flutterToUnity(String platform) throws InterruptedException, ParseException {
 
         System.out.println("Timestamp at lobby :  ");
         Timestamp t0=timeStamp();  // t0
@@ -171,19 +170,18 @@ public class ANRFlows extends ANRLocators {
         select2Player();
         clickPlayNowBtn();
 
-        Thread.sleep(5000);
-        captureScreenshot();
-        relaunchApp("native");
+ //       captureScreenshot();
+ //       relaunchApp(platform);
 
        // driver.runAppInBackground(Duration.ofSeconds(10));
-
 
 //        diffenceinDuration(t0,t1);
 //        ArrayTimeStamp(t0,t1);
         //randomRotation(5);
 
-  //      Thread.sleep(80000);
-
+        Thread.sleep(90500);
+        boolean flag=lobbyVisible();
+        if(!flag) relaunchApp(platform);
         // dropTable();
 
         //goToPromotions();
@@ -218,7 +216,6 @@ public class ANRFlows extends ANRLocators {
             System.out.println();
         }
     }
-
     public void addCashJuspayFlow(String platform) throws InterruptedException {
         Thread.sleep(2000);
         closeRatingPopUp();
@@ -251,7 +248,6 @@ public class ANRFlows extends ANRLocators {
         }
         Thread.sleep(2000);
     }
-
     public void dropTable() throws InterruptedException {
 //        Thread.sleep(20000);
 //        final PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "FINGER");
@@ -349,7 +345,6 @@ public class ANRFlows extends ANRLocators {
 //        }
 //
 //    }
-
     public void toggleApps() throws InterruptedException {
         driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
         driver.activateApp("com.rummydotcom.indianrummycashgame");
@@ -359,5 +354,18 @@ public class ANRFlows extends ANRLocators {
         driver.activateApp("com.jungleerummy.playcashgameonline");
     }
 
+    public void tournamentFlow(String platform) {
+        clickTournamentTab();
+        clickOnFree(platform);
+
+ //       goToDetailsOfTournament();
+
+//        gotoDetailOfFreeTournament();
+//        clickJoinNow();
+//        clickPopUp();
+//        withDrawFromTournament();
+//        clickOKOfTournament();
+        clickBackButtonAndroid();
+    }
 
 }
