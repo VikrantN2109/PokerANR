@@ -1,12 +1,11 @@
 package pageObjects;
 
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Rectangle;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -18,10 +17,11 @@ import java.util.NoSuchElementException;
 
 public class ANRLocators extends ActionUtils {
     AndroidDriver driver;
+
     public ANRLocators(AndroidDriver driver, WebDriverWait wait) {
         super(driver, wait);
         this.driver = driver;
-        PageFactory.initElements(new AppiumFieldDecorator(driver),this);
+        PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
     @AndroidFindBy(id = "com.android.permissioncontroller:id/permission_allow_foreground_only_button")
@@ -136,7 +136,7 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'Pay')]/android.widget.ImageView")
     public WebElement uncheckBtn;
 
-    @AndroidFindBy(xpath ="//android.view.View[@content-desc=\"Select Amount Enter Amount (Up to ₹10,000) You Get ₹1,000 Pay Using ****8622\"]/android.widget.ImageView")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Select Amount Enter Amount (Up to ₹10,000) You Get ₹1,000 Pay Using ****8622\"]/android.widget.ImageView")
     public WebElement uncheckBtnCard;
 
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.RelativeLayout/android.widget.RelativeLayout[2]/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.TextView[1]")
@@ -178,15 +178,15 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(id = "android:id/button1")
     public WebElement locationOkButton;
 
-    @AndroidFindBy(accessibility= "Leaderboard")
+    @AndroidFindBy(accessibility = "Leaderboard")
     public WebElement leaderBoardAccess;
-    @AndroidFindBy(accessibility= "View all")
+    @AndroidFindBy(accessibility = "View all")
     public WebElement viewALL;
 
-    @AndroidFindBy(xpath= "//android.widget.ImageView[@content-desc=\"CASH\"]")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"CASH\"]")
     public WebElement cashTabButton;
 
-    @AndroidFindBy(xpath= "//*[contains(@text,'LEADERBOARD')]")
+    @AndroidFindBy(xpath = "//*[contains(@text,'LEADERBOARD')]")
     public WebElement rummyComLeaderBoard;
 
     @AndroidFindBy(accessibility = "Opt-In Now")
@@ -219,8 +219,8 @@ public class ANRLocators extends ActionUtils {
     @iOSXCUITFindBy(accessibility = "Free")
     public WebElement FREE_TOURNAMENTS;
 
-    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc=\"Join\"]//parent::android.view.View/android.widget.ImageView")
-    @iOSXCUITFindBy(xpath = "//android.widget.Button[@content-desc=\"Join\"]//parent::android.view.View/android.widget.ImageView")
+    @AndroidFindBy(xpath = "//android.widget.Button[contains(@content-desc,\"View Winners\")]//parent::android.view.View")
+    @iOSXCUITFindBy(xpath = "//android.widget.Button[contains(@content-desc,\"View Winners\")]//parent::android.view.View")
     public WebElement clickDetails;
 
     @AndroidFindBy(accessibility = "Join Now")
@@ -247,33 +247,60 @@ public class ANRLocators extends ActionUtils {
     @iOSXCUITFindBy(accessibility = "Password")
     public WebElement oldenterPassword;
 
-    public void clickAllowPermission()
-    {
+    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,\"You're on Latest App Version\")]")
+    public WebElement latestVersionOfAppText;
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Help\n" +
+            "Reach us for support\"]")
+    public WebElement newSideMenuHelpBtn;
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Contact Us\"]")
+    public WebElement ContactUS;
+
+    @AndroidFindBy(accessibility = "Join")
+    public WebElement Join;
+
+    @AndroidFindBy(accessibility = "Verify KYC Via Another Method")
+    public WebElement verifyKYC;
+    @AndroidFindBy(accessibility = "COMPLETE KYC")
+    public WebElement completeKYC;
+    @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]")
+    public WebElement closeKycDialog;
+    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView//android.view.View[@content-desc=\"Free\"]")
+    public WebElement FREE_SCROLL_TAB;
+    @AndroidFindBy(xpath = "//android.widget.ImageView")
+    public WebElement closeLobbyPopUp;
+    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView")
+    public WebElement getFREE_SCROLL_TAB;
+
+    @AndroidFindBy(xpath="//android.view.View[@content-desc=\"Discover\n" +
+            "Do more on Junglee Rummy\"]")
+    public WebElement discover;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Leaderboard\"]")
+    public WebElement LEADERBOARD;
+
+
+    public void clickAllowPermission() {
         if (isElementPresent(allowButton)) {
             click(allowButton);
         }
     }
 
-    public void ClickLogIn()
-    {
-        if(isElementPresent(loginButton))
-        {
+    public void ClickLogIn() {
+        if (isElementPresent(loginButton)) {
             click(loginButton);
         }
 
     }
 
     public void ClickLoginUsingPassword() {
-        if(isElementPresent(loginUsingPswd))
-        {
+        if (isElementPresent(loginUsingPswd)) {
             waitAndClick(loginUsingPswd);
         }
     }
 
-    public void ClickLoginViaPassword()
-    {
+    public void ClickLoginViaPassword() {
         // old login page
-        if(isElementPresent(loginViaPswd)) {
+        if (isElementPresent(loginViaPswd)) {
             Rectangle rect = loginViaPswd.getRect();
             int x = rect.getX();
             int y = rect.getY();
@@ -293,7 +320,7 @@ public class ANRLocators extends ActionUtils {
         }
 
         // new login page
-        if(isElementPresent(loginViaPswd)) {
+        if (isElementPresent(loginViaPswd)) {
             Rectangle rect = loginViaPswd.getRect();
             int x = rect.getX();
             int y = rect.getY();
@@ -304,7 +331,7 @@ public class ANRLocators extends ActionUtils {
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            tapByCoordinates(x + (width / 2), y + (height / 3)+10);
+            tapByCoordinates(x + (width / 2), y + (height / 3) + 10);
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -315,59 +342,49 @@ public class ANRLocators extends ActionUtils {
 
     public void enterUsername(String userName) throws InterruptedException {
 
-        if(isElementPresent(oldenterUsername))
-        {
+        if (isElementPresent(oldenterUsername)) {
             waitAndClick(oldenterUsername);
-            sendText(oldenterUsername,userName);
+            sendText(oldenterUsername, userName);
         }
 
-        if(isElementPresent(enterUsername))
-        {
+        if (isElementPresent(enterUsername)) {
             waitAndClick(enterUsername);
-            sendText(sendKeysForUserName,userName);
+            sendText(sendKeysForUserName, userName);
         }
 
-        if(isElementPresent(rummyComUsername))
-        {
+        if (isElementPresent(rummyComUsername)) {
             waitAndClick(rummyComUsername);
-            sendText(rummyComUsername,userName);
+            sendText(rummyComUsername, userName);
         }
 
     }
 
-    public void enterPassword(String password)
-    {
-        if(isElementPresent(oldenterPassword))
-        {
+    public void enterPassword(String password) {
+        if (isElementPresent(oldenterPassword)) {
             waitAndClick(oldenterPassword);
-            sendText(oldenterPassword,password);
+            sendText(oldenterPassword, password);
         }
-        if(isElementPresent(sendKeysForPswd))
-        {
+        if (isElementPresent(sendKeysForPswd)) {
             waitAndClick(sendKeysForPswd);
-            sendText(sendKeysForPswd,password);
+            sendText(sendKeysForPswd, password);
         }
 
-        if(isElementPresent(rummyComPswd))
-        {
+        if (isElementPresent(rummyComPswd)) {
             waitAndClick(rummyComPswd);
-            sendText(rummyComPswd,password);
+            sendText(rummyComPswd, password);
         }
 
     }
 
-    public void clickLoginButtonExisting()
-    {
+    public void clickLoginButtonExisting() {
         waitAndClick(loginButtonExisting);
     }
 
-    public void clickSkipButton()
-    {
+    public void clickSkipButton() {
         waitAndClick(skipButton);
     }
 
-    public void closeWelcomeBanner()
-    {
+    public void closeWelcomeBanner() {
         try {
             Thread.sleep(2000);
             click(closeWelcomeBanner);
@@ -376,57 +393,46 @@ public class ANRLocators extends ActionUtils {
         }
     }
 
-    public void closeRatingPopUp()
-    {
+    public void closeRatingPopUp() {
         if (isElementPresent(ratingPopUp)) {
             click(ratingPopUp);
         }
     }
 
-    public void clickAvatar()
-    {
+    public void clickAvatar() {
         waitAndClick(clickAvatarButton);
     }
 
-    public void clickReloadChips()
-    {
+    public void clickReloadChips() {
         waitAndClick(reloadChips);
     }
 
-    public void clickOkBtnReloadChips()
-    {
+    public void clickOkBtnReloadChips() {
         waitAndClick(okBtn);
     }
 
-    public void clickAddCashLobby()
-    {
+    public void clickAddCashLobby() {
         waitAndClick(addCashLobby);
     }
 
-    public void selectFirstTile()
-    {
+    public void selectFirstTile() {
         waitAndClick(firstTile);
     }
 
-    public void clickSelectYourBank()
-    {
+    public void clickSelectYourBank() {
         waitAndClick(selectYourBank);
     }
 
-    public void clickJusPayYesCancelBtn()
-    {
+    public void clickJusPayYesCancelBtn() {
         click(juspayYesCancelBtn);
     }
 
-    public void ClickYes_Button()
-    {
+    public void ClickYes_Button() {
         waitAndClick(yesButton);
     }
 
-    public void unCheckExpressCheckout()
-    {
-        if(uncheckBtn.isDisplayed())
-        {
+    public void unCheckExpressCheckout() {
+        if (uncheckBtn.isDisplayed()) {
             waitAndClick(uncheckBtn);
         }
 //        if(uncheckBtnCard.isDisplayed())
@@ -436,53 +442,47 @@ public class ANRLocators extends ActionUtils {
 
     }
 
-    public void clickAnyBankInNetBanking()
-    {
+    public void clickAnyBankInNetBanking() {
         waitAndClick(bank);
     }
 
-    public void clickSideMenuButton()
-    {
+    public void clickSideMenuButton() {
         waitAndClick(sideMenu);
     }
 
-    public void goToHelpFromSideMenu()
-    {
-        waitAndClick(help);
+    public void goToHelpFromSideMenu() {
+        if(isElementPresent(help))
+        {
+            waitAndClick(help);
+        }
+        scrollUntilLast(help);
     }
 
-    public void clickOnBackBtnHelp()
-    {
+    public void clickOnBackBtnHelp() {
         waitAndClick(backBtnHelp);
     }
 
-    public void goToPromotions()
-    {
+    public void goToPromotions() {
         waitAndClick(promotions);
     }
 
-    public void clickCloseButton()
-    {
+    public void clickCloseButton() {
         click(closeButtonIPA);
     }
 
-    public void clickPaymentBackBtn()
-    {
+    public void clickPaymentBackBtn() {
         waitAndClick(paymentBackBtn);
     }
 
-    public void clickSMBackBtn()
-    {
+    public void clickSMBackBtn() {
         waitAndClick(SMBackBtn);
     }
 
-    public void clickEABackBtn()
-    {
+    public void clickEABackBtn() {
         waitAndClick(EABackBtn);
     }
 
-    public void clickAllowWhileUsingApp()
-    {
+    public void clickAllowWhileUsingApp() {
         try {
             waitAndClick(allowWhileUsingApp);
         } catch (Exception e) {
@@ -490,21 +490,19 @@ public class ANRLocators extends ActionUtils {
         }
     }
 
-    public void waitForNavHomeTabVisible()
-    {
-        try{
+    public void waitForNavHomeTabVisible() {
+        try {
             FluentWait<AndroidDriver> wait = new FluentWait<>(driver)
                     .withTimeout(Duration.ofSeconds(30))
                     .pollingEvery(Duration.ofSeconds(2))
                     .ignoring(NoSuchElementException.class);
             wait.until(ExpectedConditions.visibilityOf(navHomeTab));
-        }catch(Exception e){
-            System.out.println(navHomeTab.toString()+" not found");
+        } catch (Exception e) {
+            System.out.println(navHomeTab.toString() + " not found");
         }
     }
 
-    public void cashTab()
-    {
+    public void cashTab() {
 //        try{
 //            FluentWait<AndroidDriver> wait = new FluentWait<>(driver)
 //                    .withTimeout(Duration.ofSeconds(30))
@@ -522,143 +520,201 @@ public class ANRLocators extends ActionUtils {
         System.out.println("Timestamp form app launch to lobby ");
     }
 
-    public void goToPracticeTab()
-    {
+    public void goToPracticeTab() {
         waitAndClick(practiceTab);
     }
 
-    public void select2Player()
-    {
+    public void select2Player() {
         waitAndClick(select2Player);
     }
 
-    public void clickPlayNowBtn()
-    {
+    public void clickPlayNowBtn() {
         waitAndClick(playNowBtn);
     }
 
-    public void clickLocationOkBtn()
-    {
+    public void clickLocationOkBtn() {
         waitAndClick(locationOkButton);
     }
 
-    public void clickLeaderBoard()
-    {
-        if(isElementPresent(leaderBoard))
-        {
+    public void clickLeaderBoard() {
+        if (isElementPresent(leaderBoard)) {
             waitAndClick(leaderBoard);
         }
 
-        if(isElementPresent(rummyComLeaderBoard))
-        {
+        if (isElementPresent(rummyComLeaderBoard)) {
             waitAndClick(rummyComLeaderBoard);
         }
 
     }
 
-    public void clickOptIn()
-    {
-        if(isElementPresent(optIn))
-        {
+    public void clickOptIn() {
+        if (isElementPresent(optIn)) {
             waitAndClick(optIn);
         }
 
-        if(isElementPresent(optInRummyCom))
-        {
+        if (isElementPresent(optInRummyCom)) {
             waitAndClick(optInRummyCom);
         }
     }
 
-    public void clickLobby()
-    {
-        if(isElementPresent(lobby))
-        {
+    public void clickLobby() {
+        if (isElementPresent(lobby)) {
             waitAndClick(lobby);
         }
 
-        if(isElementPresent(rummyComLobby))
-        {
+        if (isElementPresent(rummyComLobby)) {
             waitAndClick(rummyComLobby);
         }
     }
 
-    public void goToLeaderBoardFromSideMenu()
-    {
+    public void goToLeaderBoardFromSideMenu() {
         waitAndClick(leaderBoardAccess);
     }
 
-    public void scrollAndViewAll()
-    {
+    public void scrollAndViewAll() {
         scrollWithCoordinates(driver, 364, 1257, 350, 183);
-        if(isElementPresent(viewALL))
-        {
+        if (isElementPresent(viewALL)) {
             waitAndClick(viewALL);
         }
     }
 
-    public void clickTournamentTab()
-    {
-        if(isElementPresent(TOURNAMENTS))
-        {
+    public void clickTournamentTab() {
+        if (isElementPresent(TOURNAMENTS)) {
             waitAndClick(TOURNAMENTS);
         }
     }
 
-    public void clickOnFree(String platform)
-    {
+    public void clickOnFreeTab() {
 
-        if(platform.equalsIgnoreCase("rummydotcom"))
-        {
-            swipeToRight(553,65,430,430);
-        }
-        if(isElementPresent(FREE_TOURNAMENTS))
-        {
+        if (isElementPresent(FREE_TOURNAMENTS)) {
             waitAndClick(FREE_TOURNAMENTS);
         }
+        try {
+            Point elementLocation = getFREE_SCROLL_TAB.getLocation();
+            Dimension size = getFREE_SCROLL_TAB.getSize();
+
+            // Calculate the bottom right corner coordinates
+            int bottomRightX = elementLocation.getX() + size.getWidth();
+            int bottomRightY = elementLocation.getY() + size.getHeight();
+
+            int startX = (int) (bottomRightX * 0.8);  // Start from 80% right of the screen
+            int endX = (int) (bottomRightX * 0.2);    // End at 20% left of the screen
+            int centerY = (int) (bottomRightY * 0.9);
+
+            swipeToLeft(startX, endX, centerY, centerY, FREE_TOURNAMENTS);
+
+           // scrollUntilElementView(FREE_SCROLL_TAB);
+
+        } catch (Exception e) {
+            System.out.println("Exception ---> " + e);
+        }
+
     }
 
-    public void gotoDetailOfFreeTournament()
-    {
-        if(isElementPresent(clickDetails))
-        {
+    public void gotoDetailOfFreeTournament() {
+        if (isElementPresent(clickDetails)) {
             waitAndClick(clickDetails);
         }
     }
-    public void clickJoinNow()
-    {
-        if(isElementPresent(JOIN_NOW))
-        {
+
+    public void clickJoinNow() {
+        if (isElementPresent(JOIN_NOW)) {
             waitAndClick(JOIN_NOW);
         }
     }
-    public void clickPopUp()
-    {
-        if(isElementPresent(closePopUp))
-        {
+
+    public void clickPopUpTournament() {
+        if (isElementPresent(closePopUp)) {
             waitAndClick(closePopUp);
         }
     }
 
-    public void withDrawFromTournament()
-    {
-        if(isElementPresent(withDrawFromTourn))
-        {
+    public void withDrawFromTournament() {
+        if (isElementPresent(withDrawFromTourn)) {
             waitAndClick(withDrawFromTourn);
             waitAndClick(withDraw);
         }
     }
 
-    public void clickOKOfTournament()
-    {
-        if(isElementPresent(okBtn))
-        {
+    public void clickOKOfTournament() {
+        if (isElementPresent(okBtn)) {
             waitAndClick(okBtn);
         }
     }
 
-    public boolean lobbyVisible()
-    {
-        if(isElementPresent(cashTabButton)) return true;
+    public boolean lobbyVisible() {
+        if (isElementPresent(cashTabButton)) return true;
         else return false;
     }
+
+    public boolean latestVersionOfapp() {
+        if (isElementPresent((latestVersionOfAppText))) return true;
+        else return false;
+    }
+
+    public void clickNewSideMenuHelp() {
+        if (isElementPresent(newSideMenuHelpBtn)) {
+            waitAndClick(newSideMenuHelpBtn);
+        }
+    }
+
+    public void clickContactUS() {
+        if (isElementPresent(ContactUS)) {
+            waitAndClick(ContactUS);
+        }
+    }
+
+    public boolean scrollToLast() {
+        if (scrollUntilLast(Join)) {
+            waitAndClick(Join);
+            return true;
+        }
+        return false;
+    }
+
+    public boolean verifyYourKycvisible() {
+        if (isElementPresent(verifyKYC) || isElementPresent(completeKYC)) {
+            return true;
+        }
+        return false;
+    }
+
+    public void closeKYCPopUp() {
+        if (isElementPresent(closeKycDialog))
+            waitAndClick(closeKycDialog);
+    }
+
+    public void closeVerifyKycToContinue() {
+        if (isElementPresent(verifyKYC)) {
+            waitAndClick(closeKycDialog);
+        }
+    }
+
+    public void closeLobbyPopUp() throws InterruptedException {
+        int maxCounter = 5;
+        do {
+            if (isElementPresent(closeLobbyPopUp)) {
+                Dimension size = closeLobbyPopUp.getRect().getDimension();
+                int x = size.getWidth();
+                int y = (int) (size.getHeight() * 0.53);
+                tapByCoordinates(x, y);
+                Thread.sleep(800);
+            }
+            maxCounter--;
+        } while (maxCounter > 0);
+    }
+
+    public void clickDiscover()
+    {
+        if(isElementPresent(discover))
+        {
+            waitAndClick(discover);
+        }
+    }
+    public void scrollForLeaderBoard()
+    {
+        scrollUntilLast(LEADERBOARD);
+    }
+
+
 }

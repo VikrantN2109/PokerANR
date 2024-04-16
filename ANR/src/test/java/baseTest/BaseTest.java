@@ -46,7 +46,7 @@ public class BaseTest {
         }
         System.out.println(props.getProperty("runEnv"));
     }
-    @BeforeMethod(alwaysRun = true)
+    //@BeforeMethod(alwaysRun = true)
     public AndroidDriver initAppiumDriver() throws IOException, InterruptedException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
@@ -123,13 +123,15 @@ public class BaseTest {
         desiredCapabilities.setCapability("noReset", false);
         desiredCapabilities.setCapability("fullReset", false);
         AndroidDriver driver = new AndroidDriver(new URL((browserstackHubURL)), desiredCapabilities);
+
+        System.out.println("Session ID : " + driver.getSessionId());
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         locators=new ANRLocators(driver,wait);
         flows =new ANRFlows(driver,wait);
         return driver;
     }
 
-  //  @BeforeMethod(alwaysRun = true)
+    @BeforeMethod(alwaysRun = true)
     @Parameters(value={"deviceIndex"})
     public AndroidDriver launchBS(String deviceIndex) throws Exception {
         JSONParser parser = new JSONParser();

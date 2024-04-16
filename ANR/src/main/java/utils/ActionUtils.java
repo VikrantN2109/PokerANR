@@ -1,5 +1,9 @@
 package utils;
 
+import com.google.common.collect.ImmutableMap;
+import io.appium.java_client.AppiumBy;
+import io.appium.java_client.PerformsActions;
+import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -12,10 +16,10 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -35,10 +39,10 @@ import java.util.regex.Pattern;
 import static org.openqa.selenium.devtools.v116.dom.DOM.moveTo;
 
 public class ActionUtils {
-   public AndroidDriver driver;
-   public WebDriverWait wait;
-   public ArrayList<Integer> timestamp=new ArrayList<Integer>();
-   public ArrayList<ArrayList<Long>> timeStamp2DArray = new ArrayList<ArrayList<Long>>();
+    public AndroidDriver driver;
+    public WebDriverWait wait;
+    public ArrayList<Integer> timestamp=new ArrayList<Integer>();
+    public ArrayList<ArrayList<Long>> timeStamp2DArray = new ArrayList<ArrayList<Long>>();
 
     public ActionUtils(AndroidDriver driver, WebDriverWait wait){
         this.driver=driver;
@@ -128,7 +132,7 @@ public class ActionUtils {
         }
     }
 
-    public void swipeToRight(int startX,int endX,int startY,int endY)
+    public void swipeToLeft(int startX,int endX,int startY,int endY,WebElement element)
     {
         try {
             final PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
@@ -150,6 +154,7 @@ public class ActionUtils {
                                     end.getY()))
                     .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
             driver.perform(java.util.Arrays.asList(swipe));
+            waitAndClick(element);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -267,50 +272,6 @@ public class ActionUtils {
         }
     }
 
-//    public void readLogs()
-//    {
-//        String filePath = "/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/output.txt"; // Replace with the actual path to your log file
-//        try {
-//
-//            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
-//            String line;
-//
-//            // DateTimeFormatter for parsing timestamps
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd HH:mm:ss.SSS");
-//
-//            while ((line = bufferedReader.readLine()) != null) {
-//                try {
-//                    // Attempt to parse timestamp in each line
-//                    String timestampString = line.substring(0, 18); // Assuming timestamp is always at the beginning
-//                   // formatter.parse(timestampString);
-//                    System.err.println("Timestamp: " + timestampString);
-//                } catch (Exception e) {
-//                    // Ignore lines without a valid timestamp
-//                    System.out.println("Exception is : " + e );
-//                }
-//            }
-//
-////        try {
-////            BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
-////            String line;
-////            // Regular expression pattern to match timestamps (assuming the format in your logs)
-////            Pattern pattern = Pattern.compile("((.*)\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\.\\d+(.*))");
-////            while ((line = bufferedReader.readLine()) != null) {
-////                // Find timestamp in each line using the regular expression
-////                Matcher matcher = pattern.matcher(line);
-////                if (matcher.find()) {
-////                    String timestamp = matcher.group();
-////                    System.out.println("Current Timestamp: " + timestamp);
-////                }
-////            }
-//
-//            // Close the resources
-//            bufferedReader.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     public void captureScreenshot() {
         String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());
         String fileName = "GameTable_" + timestamp + ".png";
@@ -326,5 +287,70 @@ public class ActionUtils {
         }
     }
 
+    public boolean scrollUntilLast(WebElement elementToFind) {
+        int maxScrollAttempts = 5; // Maximum number of scrolls
+        for (int i = 0; i < maxScrollAttempts; i++) {
+            try {
+                if (elementToFind.isDisplayed()) {
+                    return true; // Element found
+                }
+            } catch (Exception e) {
+                // Element not found, perform a scroll
+                swipeToUp(342,1250,342,558);
+            }
+        }
+        return false;
+    }
+    public void swipeToUp(int startX, int startY, int endX, int endY) {
+        try {
+            final PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Point start = new Point(startX, startY);
+            Point end = new Point(endX, endY);
+            Sequence swipe = new Sequence(FINGER, 1)
+                    .addAction(
+                            FINGER.createPointerMove(
+                                    Duration.ofMillis(0),
+                                    PointerInput.Origin.viewport(),
+                                    start.getX(),
+                                    start.getY()))
+                    .addAction(FINGER.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                    .addAction(
+                            FINGER.createPointerMove(
+                                    Duration.ofMillis(1000),
+                                    PointerInput.Origin.viewport(),
+                                    end.getX(),
+                                    end.getY()))
+                    .addAction(FINGER.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+            driver.perform(java.util.Arrays.asList(swipe));
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage() + " swipeToTop method failed");
+        }
+    }
+
+    public void scrollUntilElementView(WebElement element)
+    {
+         String text= element.getText();
+//        driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector())" +
+//                ".scrollIntoView(new UiSelector().text(\"" + text + "\"));")).click();
+//
+////        driver.findElement(AppiumBy.androidUIAutomator
+////                ("new UiScrollable(new UiSelector().scrollable(true).setAsHorizontalList().instance(0)).scrollIntoView" +
+////                        "(new UiSelector().text(\"" + text + "\"));")).click();
+
+         while (driver.findElements(AppiumBy.androidUIAutomator("new UiSelector().text(\"" + text + "\")")).size() == 0) {
+            Dimension size = driver.manage().window().getSize();
+            int startX = size.width / 2;
+            int startY = (int) (size.height * 0.8);
+            int endY = (int) (size.height * 0.2);
+
+            TouchAction<?> action = new TouchAction<>(driver);
+            action.press(PointOption.point(startX, startY))
+                    .moveTo(PointOption.point(startX, endY))
+                    .release()
+                    .perform();
+        }
+
+    }
 
 }

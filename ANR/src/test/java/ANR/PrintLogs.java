@@ -28,7 +28,7 @@ public class PrintLogs extends JFrame{
     int j;
     public ArrayList<ArrayList<String>> twoDArray = new ArrayList<>();
 
-    class Pair<T1, T2> {
+    static class Pair<T1, T2> {
         public T1 first;
         public T2 second;
 

@@ -1,31 +1,33 @@
 package flows;
 
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.PerformsActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.offset.PointOption;
-import org.openqa.selenium.DeviceRotation;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.ScreenOrientation;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.ANRLocators;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
+import java.time.Duration;
+import java.util.*;
 
 public class ANRFlows extends ANRLocators {
     AndroidDriver driver;
-
-  //  public ArrayList<Integer> timestamp=new ArrayList<Integer>();
-    public ArrayList<ArrayList<Date>> twoDArrayList = new ArrayList<ArrayList<Date>>();
 
     public ANRFlows(AndroidDriver driver, WebDriverWait wait) {
         super(driver, wait);
@@ -49,8 +51,11 @@ public class ANRFlows extends ANRLocators {
 //                enterUsername("dbmundhra@gmail.com");
 //                enterPassword("1234@Test");    //Abcdef123!
 
-                enterUsername("anushka.shrivastava@jungleegames.com"); //7999465910
-                enterPassword("@Test12345");
+                enterUsername("7290927380");
+                enterPassword("Test@123456");
+
+//                enterUsername("jgkaby1247@gmail.com");  //  anushka.shrivastava@jungleegames.com //
+//                enterPassword("@Test123"); //@Test12345
                 break;
             case "1":
                 enterUsername("7087537187");
@@ -79,8 +84,6 @@ public class ANRFlows extends ANRLocators {
         }
         clickSkipButton();
         Thread.sleep(2000);
-//        closeWelcomeBanner();
-//        closeWelcomeBanner();
     }
 
     public void reloadChips() {
@@ -112,9 +115,14 @@ public class ANRFlows extends ANRLocators {
 
     public void flutterToWebviewPromotions(String platform) throws InterruptedException {
         try {
-            //  cashTab();
+            closeLobbyPopUp();
             clickSideMenuButton();
-            goToHelpFromSideMenu();
+            if (latestVersionOfapp()) {
+                clickNewSideMenuHelp();
+                clickContactUS();
+            } else {
+                goToHelpFromSideMenu();
+            }
             if (platform.equalsIgnoreCase("ipa")) {
                 clickLobby();
             } else {
@@ -131,7 +139,7 @@ public class ANRFlows extends ANRLocators {
             //  clickBackButtonAndroid();
         } catch (Exception e) {
             try {
-               // swipeToRight();
+                relaunchApp(platform);
             } catch (Exception ex) {
                 System.out.println(ex);
                 relaunchApp(platform);
@@ -141,7 +149,12 @@ public class ANRFlows extends ANRLocators {
 
     public void flutterToWebviewLeaderboard(String platform) throws InterruptedException {
         clickSideMenuButton();
-        goToHelpFromSideMenu();
+        if (latestVersionOfapp()) {
+            clickNewSideMenuHelp();
+            clickContactUS();
+        } else {
+            goToHelpFromSideMenu();
+        }
         if (platform.equalsIgnoreCase("ipa")) {
             clickLobby();
         } else {
@@ -155,89 +168,43 @@ public class ANRFlows extends ANRLocators {
             clickOnBackBtnHelp();
         }
         clickSideMenuButton();
+
+        if(latestVersionOfapp())
+        {
+            clickDiscover();
+            scrollForLeaderBoard();
+        }
         goToLeaderBoardFromSideMenu();
         Thread.sleep(5000);
         scrollAndViewAll();
         clickLobby();
+
     }
 
     public void flutterToUnity(String platform) throws InterruptedException, ParseException {
-
         System.out.println("Timestamp at lobby :  ");
-        Timestamp t0=timeStamp();  // t0
-
+        Timestamp t0 = timeStamp();  // t0
         goToPracticeTab();
         select2Player();
         clickPlayNowBtn();
-
- //       captureScreenshot();
- //       relaunchApp(platform);
-
-       // driver.runAppInBackground(Duration.ofSeconds(10));
-
-//        diffenceinDuration(t0,t1);
-//        ArrayTimeStamp(t0,t1);
-        //randomRotation(5);
-
-        Thread.sleep(90500);
-        boolean flag=lobbyVisible();
-        if(!flag) relaunchApp(platform);
-        // dropTable();
-
-        //goToPromotions();
+        Thread.sleep(80000);//10000
+        closeLobbyPopUp();
+        clickLobby();
     }
 
-    public void ArrayTimeStamp(Timestamp t0, Timestamp t1) throws ParseException {
-
-        String timestamp0=t0.toString();
-        String timestamp1=t1.toString();
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date date1 = sdf.parse(timestamp0);
-        Date date2 = sdf.parse(timestamp1);
-
-        ArrayList<Date> innerList = new ArrayList<>();
-        innerList.add(0,date1);
-        innerList.add(1,date2);
-
-        twoDArrayList.add(innerList);
-    }
-
-    public void printTwoDArray()
-    {
-
-        System.out.print("             t0 (lobby)      " + " || ");
-        System.out.print("        t1 (game table)            " );
-        System.out.println();
-        for (int i = 0; i < twoDArrayList.size(); i++) {
-            for (int j = 0; j < twoDArrayList.get(i).size(); j++) {
-                System.out.print(twoDArrayList.get(i).get(j) + " || ");
-            }
-            System.out.println();
-        }
-    }
     public void addCashJuspayFlow(String platform) throws InterruptedException {
         Thread.sleep(2000);
         closeRatingPopUp();
         clickAddCashLobby();
-      //  selectFirstTile();
+        //  selectFirstTile();
         Thread.sleep(4000);
         unCheckExpressCheckout();
         tapByCoordinates(542, 1328); //Not able to locate Add Cash Button (VIVO Y16)
-        //tapByCoordinates(538,1837); // vivo y11
         clickSelectYourBank();
         clickAnyBankInNetBanking();
         randomRotation(5);
         Thread.sleep(8000);
         switch (platform) {
-            case "native":
-                clickBackButtonAndroid();
-                clickJusPayYesCancelBtn();
-                clickBackButtonAndroid();
-                clickBackButtonAndroid();
-                ClickYes_Button();
-                clickBackButtonAndroid();
-                break;
             case "ipa":
                 clickCloseButton();
                 clickJusPayYesCancelBtn();
@@ -245,10 +212,36 @@ public class ANRFlows extends ANRLocators {
                 clickSMBackBtn();
                 ClickYes_Button();
                 clickEABackBtn();
+                break;
+            default :
+                clickBackButtonAndroid();
+                clickJusPayYesCancelBtn();
+                clickBackButtonAndroid();
+                clickBackButtonAndroid();
+                ClickYes_Button();
+                clickBackButtonAndroid();
         }
+
         Thread.sleep(2000);
     }
+
     public void dropTable() throws InterruptedException {
+        Thread.sleep(7000);
+        Dimension size = driver.manage().window().getSize();
+        System.out.println(size);
+
+        Point topRightPoint = new Point((int) (size.width), (int) (size.height));
+        PointerInput input = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence tapAtTopRight = new Sequence(input, 0);
+
+        tapAtTopRight.addAction(input.createPointerMove(Duration.ofMillis(0), PointerInput.Origin.viewport(), topRightPoint.getX(), topRightPoint.getY()));
+        tapAtTopRight.addAction(input.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+        tapAtTopRight.addAction(input.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+        // Perform the tap action in the top-right corner
+        driver.perform(Arrays.asList(tapAtTopRight));
+
+
 //        Thread.sleep(20000);
 //        final PointerInput FINGER = new PointerInput(PointerInput.Kind.TOUCH, "FINGER");
 //        Point tapPoint = new Point(80, 28);
@@ -275,12 +268,6 @@ public class ANRFlows extends ANRLocators {
 //        driver.perform(Arrays.asList(tap1));
 
 
-        // Perform the tap action
-        new TouchAction<>(driver)
-                .press(PointOption.point(65, 304))
-                .release()
-                .perform();
-
     }
 
     public void randomRotation(int bound) throws InterruptedException {
@@ -301,7 +288,7 @@ public class ANRFlows extends ANRLocators {
 //                    DeviceRotation portrait = new DeviceRotation(0, 0, 180);
 //                    driver.rotate(portrait);
 
-                  //  driver.rotate(new DeviceRotation(0, 0, 90) );
+                    //  driver.rotate(new DeviceRotation(0, 0, 90) );
 
 
                 } catch (Exception e) {
@@ -312,11 +299,11 @@ public class ANRFlows extends ANRLocators {
         }
     }
 
-    public static void setOrientation(AndroidDriver driver,ScreenOrientation orientation) {
+    public static void setOrientation(AndroidDriver driver, ScreenOrientation orientation) {
         driver.rotate(orientation);
     }
 
-//    private void diffenceinDuration(Timestamp t0, Timestamp t1) throws ParseException {
+    //    private void diffenceinDuration(Timestamp t0, Timestamp t1) throws ParseException {
 //
 //        String timestamp0=t0.toString();
 //        String timestamp1=t1.toString();
@@ -350,22 +337,31 @@ public class ANRFlows extends ANRLocators {
         driver.activateApp("com.rummydotcom.indianrummycashgame");
         Thread.sleep(4000);
         driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
-       // driver.activateApp("io.jungleerummy.jungleegames");
+        // driver.activateApp("io.jungleerummy.jungleegames");
         driver.activateApp("com.jungleerummy.playcashgameonline");
     }
 
     public void tournamentFlow(String platform) {
         clickTournamentTab();
-        clickOnFree(platform);
-
- //       goToDetailsOfTournament();
-
-//        gotoDetailOfFreeTournament();
-//        clickJoinNow();
-//        clickPopUp();
-//        withDrawFromTournament();
-//        clickOKOfTournament();
+        clickOnFreeTab();
+        boolean flag = scrollToLast();
+        if (flag) {
+            if (verifyYourKycvisible()) {
+                closeKYCPopUp();          // handle when users kyc is not done {psrmg}
+            } else {
+                clickPopUpTournament();
+                withDrawFromTournament();
+                clickOKOfTournament();
+            }
+        } else {
+            gotoDetailOfFreeTournament();
+        }
         clickBackButtonAndroid();
+    }
+
+    public void addCashFlowForNonKycUser() {
+        clickAddCashLobby();
+        closeVerifyKycToContinue();
     }
 
 }
