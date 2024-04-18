@@ -10,12 +10,13 @@ import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.*;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.ANRLocators;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,6 +26,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
+import java.util.Arrays;
+import java.util.NoSuchElementException;
+import java.util.Random;
 
 public class ANRFlows extends ANRLocators {
     AndroidDriver driver;
@@ -36,6 +40,7 @@ public class ANRFlows extends ANRLocators {
     }
 
     public void loginExistingUser(String platform, String deviceIndex) throws InterruptedException {
+        selectQAEnv(deviceIndex);
         timeStamp();// splash->login
         if (platform.equalsIgnoreCase("ipa")) {
             clickAllowPermission();
@@ -43,6 +48,11 @@ public class ANRFlows extends ANRLocators {
         clickAllowPermission();
         clickLocationOkBtn();
         Thread.sleep(2000);
+        Thread.sleep(2000);
+        if (deviceIndex.equalsIgnoreCase("2")) {
+            scrollWithCoordinates(driver, 1055, 480, 50, 480);
+            tapByCoordinates(600, 1739);
+        }
         ClickLogIn();
         ClickLoginUsingPassword();
         ClickLoginViaPassword();
@@ -92,7 +102,7 @@ public class ANRFlows extends ANRLocators {
         clickOkBtnReloadChips();
     }
 
-    public void relaunchApp(String platform) {
+    public void relaunchApp(String platform) throws InterruptedException {
         switch (platform) {
             case "ipa":
                 driver.terminateApp("com.jungleerummy.jungleerummy");
@@ -182,20 +192,49 @@ public class ANRFlows extends ANRLocators {
     }
 
     public void flutterToUnity(String platform) throws InterruptedException, ParseException {
-        System.out.println("Timestamp at lobby :  ");
-        Timestamp t0 = timeStamp();  // t0
-        goToPracticeTab();
-        select2Player();
-        clickPlayNowBtn();
-        Thread.sleep(80000);//10000
-        closeLobbyPopUp();
-        clickLobby();
+        try {
+            if (platform.contains("rummysdk")) {
+                clickOnRummy();
+            }
+            //goToPracticeTab();
+            select2Player();
+            clickPlayNowBtn();
+//            Thread clickPlayNowBtnThread = new Thread(() -> clickPlayNowBtn());
+//            Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("no-network"));
+//            // Start both threads
+//            setNetworkSpeedThread.start();
+//            clickPlayNowBtnThread.start();
+//            // Wait for both threads to finish
+//            setNetworkSpeedThread.join();
+//            clickPlayNowBtnThread.join();
+            Thread.sleep(6000);
+            setNetworkSpeedBS("no-network");
+            Thread.sleep(5000);
+            setNetworkSpeedBS("reset");
+            //playYoutubeVideo(platform, 20);
+            randomRotation(5);
+            setNetworkSpeedBS("2g-gprs-lossy");
+            Thread.sleep(5000);
+            captureScreenshot();
+            setNetworkSpeedBS("reset");
+            Thread.sleep(80000);
+            System.out.println("wait completed");
+            if (!(lobby.isDisplayed())) {
+                timeStamp();
+                System.out.println("Something went wrong. Relaunching the app!");
+                relaunchApp(platform);
+                driver.activateApp("com.jungleerummy.jungleerummy");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void addCashJuspayFlow(String platform) throws InterruptedException {
         Thread.sleep(2000);
         closeRatingPopUp();
         clickAddCashLobby();
+        setNetworkSpeedBS("2g-gprs-lossy");
         //  selectFirstTile();
         Thread.sleep(4000);
         unCheckExpressCheckout();
@@ -222,7 +261,8 @@ public class ANRFlows extends ANRLocators {
                 clickBackButtonAndroid();
         }
 
-        Thread.sleep(2000);
+        Thread.sleep(2000); 
+        setNetworkSpeedBS("reset");       
     }
 
     public void dropTable() throws InterruptedException {
@@ -272,8 +312,8 @@ public class ANRFlows extends ANRLocators {
 
     public void randomRotation(int bound) throws InterruptedException {
         Random rand = new Random();
-        int random = rand.nextInt(bound);
-        if (random <= 5) {
+        int randomNumber = rand.nextInt(bound);
+        if (randomNumber <= 5) {
             for (int i = 0; i < 5; i++) {
                 try {
 //                    setOrientation(driver, ScreenOrientation.LANDSCAPE);
@@ -364,4 +404,65 @@ public class ANRFlows extends ANRLocators {
         closeVerifyKycToContinue();
     }
 
+
+    public void playYoutubeVideo(String platform, int bound) throws InterruptedException {
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(bound);
+        if (randomNumber <= 5) {
+            if (platform.equalsIgnoreCase("ipa")) {
+                driver.activateApp("com.google.ios.youtube");
+            } else {
+                driver.activateApp("com.google.android.youtube");
+            }
+            driver.rotate(ScreenOrientation.PORTRAIT);
+            clickSearchBtnYoutube();
+            searchVideo();
+            clickSearchIcon();
+            clickOnVideo();
+            Thread.sleep(20000);
+            driver.terminateApp("com.google.android.youtube");
+            switch (platform) {
+                case "ipa":
+                    driver.activateApp("com.jungleerummy.jungleerummy");
+                    break;
+                case "psrmg":
+                    driver.activateApp("com.jungleerummy.playcashgameonline");
+                    break;
+                case "native":
+                    driver.activateApp("io.jungleerummy.jungleegames");
+                    break;
+                case "rummy.com":
+                    driver.activateApp("com.jungleerummy.playcashgameonline");
+                    break;
+            }
+        }
+    }
+
+    public void selectQAEnv(String deviceIndex) throws InterruptedException {
+        if (deviceIndex.equalsIgnoreCase("2")) {
+            Thread.sleep(5000);
+            scrollWithCoordinates(driver, 1065, 480, 37, 480);
+            tapByCoordinates(600, 1739);
+        }
+        if (isElementPresent(selectEnvBox)) {
+            clickOnSelectEnvBox();
+            clickOnQAEnv();
+            clickProceedBtn();
+        }
+    }
+
+    public void gameTableLeaveFlow(String platform) throws InterruptedException {
+        try {
+            goToPracticeTab();
+            select2Player();
+            clickPlayNowBtn();
+            Thread.sleep(5000);
+            tapByCoordinates(86,32);
+            Thread.sleep(2000);
+            tapByCoordinates(620,531);
+        } catch (Exception e) {
+            System.out.println(e);
+            relaunchApp(platform);
+        }
+    }
 }

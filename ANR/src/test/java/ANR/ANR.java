@@ -17,6 +17,7 @@ import java.text.ParseException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
+
 public class ANR extends BaseTest {
     String platform = props.getProperty("platform");
     int appLaunchFrequency = 1; // Integer.MAX_VALUE
@@ -83,8 +84,7 @@ public class ANR extends BaseTest {
                     flows.tournamentFlow(platform);
                 }
 
-                if(i % addCashFlowForNonKycUserFrequency==0)
-                {
+                if (i % addCashFlowForNonKycUserFrequency == 0) {
                     flows.addCashFlowForNonKycUser();
                 }
 

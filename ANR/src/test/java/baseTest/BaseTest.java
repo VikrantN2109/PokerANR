@@ -14,11 +14,22 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.helpers.Util;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Parameters;
 import pageObjects.ANRLocators;
-
+import utils.ActionUtils;
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
@@ -30,7 +41,10 @@ public class BaseTest {
     public AndroidDriver driver ;
     public ANRLocators locators;
     public ANRFlows flows;
+    public ActionUtils utils;
     public Properties props;
+    private static ThreadLocal<Integer> currentDeviceIndex = new ThreadLocal<>();
+
     public BaseTest(){
         FileReader propertyFile = null;
         try {
@@ -191,10 +205,10 @@ public class BaseTest {
         }
 
         HashMap<String, String> googleCredentials = new HashMap<>();
-        googleCredentials.put("username", "roohpreet002@gmail.com");
-        googleCredentials.put("password", "Roohpreet25!");
+        googleCredentials.put("username", "jungleetest123@gmail.com");
+        googleCredentials.put("password", "Test@123");
         capabilities.setCapability("browserstack.appStoreConfiguration", googleCredentials);
-        executeADBCommand("adb shell am broadcast -a android.intent.action.MEMORY_FULL");
+        //executeADBCommand("adb shell am broadcast -a android.intent.action.MEMORY_FULL");
         driver = new AndroidDriver(new URL("http://"+username+":"+accessKey+"@"+config.get("server")+"/wd/hub"), capabilities);
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         locators=new ANRLocators(driver,wait);
@@ -226,7 +240,7 @@ public class BaseTest {
         }
     }
 
-    @AfterMethod(alwaysRun=true)
+   // @AfterMethod(alwaysRun=true)
     public void tearDown() throws Exception {
         // Invoke driver.quit() to indicate that the test is completed.
         // Otherwise, it will appear as timed out on BrowserStack.

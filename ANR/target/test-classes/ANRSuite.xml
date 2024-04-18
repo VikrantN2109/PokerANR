@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Parallel" thread-count="5" parallel="tests">
+<suite name="Parallel Script" thread-count="5" parallel="tests">
     <test name="ANR Device 1">
         <parameter name="deviceIndex" value="0"/>
         <classes>
-            <class name="ANR.ANR"/>
+            <class name="ANR.JungleeRummy"/>
         </classes>
     </test>
-
     <test name="ANR Device 2">
         <parameter name="deviceIndex" value="1"/>
         <classes>
-            <class name="ANR.ANR"/>
+            <class name="ANR.JungleeRummy"/>
         </classes>
     </test>
-
     <test name="ANR Device 3">
         <parameter name="deviceIndex" value="2"/>
         <classes>
-            <class name="ANR.ANR"/>
+            <class name="ANR.JungleeRummy"/>
         </classes>
     </test>
-
     <test name="ANR Device 4">
         <parameter name="deviceIndex" value="3"/>
         <classes>
-            <class name="ANR.ANR"/>
+            <class name="ANR.JungleeRummy"/>
         </classes>
     </test>
-
     <test name="ANR Device 5">
         <parameter name="deviceIndex" value="4"/>
         <classes>
-            <class name="ANR.ANR"/>
+            <class name="ANR.JungleeRummy"/>
         </classes>
     </test>
 </suite>

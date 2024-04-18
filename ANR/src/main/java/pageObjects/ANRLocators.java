@@ -6,6 +6,9 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
@@ -54,15 +57,13 @@ public class ANRLocators extends ActionUtils {
             "certified\n" +
             "RNG\n" +
             "Certified\"]/android.view.View[1]/android.widget.ImageView[1]")
+    @iOSXCUITFindBy(accessibility = "Email or Mobile")
     public WebElement enterUsername;
 
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"8 Crore+\n" +
-            "Players\n" +
-            "18+\n" +
-            "No Bots\n" +
-            "certified\n" +
-            "RNG\n" +
-            "Certified\"]/android.view.View[1]/android.widget.ImageView[2]")
+
+    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, '7 Crore')]/android.view.View[1]/android.widget.ImageView[2]")
+
+    
     @iOSXCUITFindBy(accessibility = "Password")
     public WebElement enterPassword;
 
@@ -78,6 +79,9 @@ public class ANRLocators extends ActionUtils {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Junglee Rummy\"]/XCUIElementTypeWindow[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
     public WebElement welcomeBanner;
 
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Dismiss\"]/android.view.View/android.view.View/android.view.View/android.widget.Button")
+    public WebElement dismissBtn;
+
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeApplication[@name=\"Junglee Rummy\"]/XCUIElementTypeWindow[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]/XCUIElementTypeOther")
     public WebElement closeWelcomeBanner;
@@ -86,9 +90,11 @@ public class ANRLocators extends ActionUtils {
     @iOSXCUITFindBy(accessibility = "OK")
     public WebElement okBtn;
 
-    @AndroidFindBy(accessibility = "Reload Chips")
-    @iOSXCUITFindBy(accessibility = "Reload Chips")
-    public WebElement reloadChips;
+    // @AndroidFindBy(accessibility = "Reload Chips")
+    // @iOSXCUITFindBy(accessibility = "Reload Chips")
+    // public WebElement reloadChips;
+
+    public WebElement okBtnReloadChips;
 
     @AndroidFindBy(accessibility = "ADD CASH")
     @iOSXCUITFindBy(accessibility = "ADD CASH")
@@ -101,6 +107,10 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(accessibility = "Select your bank….")
     @iOSXCUITFindBy(accessibility = "Select your bank….")
     public WebElement selectYourBank;
+
+    @AndroidFindBy(xpath = "//android.widget.Button[contains(@content-desc,\"ADD \")]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[contains(@name, 'ADD')]")
+    public WebElement addCashButton;
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"State Bank of India\"]")
     @iOSXCUITFindBy(accessibility = "State Bank of India")
@@ -165,22 +175,28 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc, 'How would you rate')]/android.view.View")
     public WebElement ratingPopUp;
 
+    @iOSXCUITFindBy(accessibility = "LEADERBOARD")
     @AndroidFindBy(xpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[1]/android.view.View/android.webkit.WebView/android.webkit.WebView/android.view.View/android.view.View/android.view.View/android.view.View/android.view.View[2]/android.view.View[2]/android.view.View/android.view.View[2]/android.widget.ListView/android.view.View[3]")
     public WebElement leaderBoard;
 
     @AndroidFindBy(accessibility = "Opt- in Now")
+    @iOSXCUITFindBy(accessibility = "Opt- in Now")
     public WebElement optIn;
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"LOBBY\"]")
     @iOSXCUITFindBy(accessibility = "LOBBY")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeImage[@name=\"LOBBY\"]")
     public WebElement lobby;
 
     @AndroidFindBy(id = "android:id/button1")
     public WebElement locationOkButton;
 
     @AndroidFindBy(accessibility = "Leaderboard")
+    @iOSXCUITFindBy(accessibility = "Leaderboard")
     public WebElement leaderBoardAccess;
+
     @AndroidFindBy(accessibility = "View all")
+    @iOSXCUITFindBy(xpath= "(//XCUIElementTypeStaticText[@name=\"View all\"])[2]")
     public WebElement viewALL;
 
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"CASH\"]")
@@ -278,6 +294,35 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc=\"Leaderboard\"]")
     public WebElement LEADERBOARD;
 
+    @AndroidFindBy(accessibility = "Search")
+    public WebElement youtubeSearchBtn;
+
+    @AndroidFindBy(id = "com.google.android.youtube:id/search_edit_text")
+    public WebElement editSearch;
+
+    @AndroidFindBy(id = "com.google.android.youtube:id/search_type_icon")
+    public WebElement searchIcon;
+
+    @AndroidFindBy(xpath = "(//android.view.ViewGroup[contains(@content-desc, \"play video\")]/android.view.ViewGroup[1]/android.widget.ImageView)[2]")
+    public WebElement youtubeVideo;
+
+    @AndroidFindBy(accessibility = "qa_1")
+    public WebElement selectEnvBox;
+
+    @AndroidFindBy(accessibility = "qa_8")
+    public WebElement QAEnv;
+
+    @AndroidFindBy(accessibility = "Proceed")
+    public WebElement proceed;
+
+    @AndroidFindBy(accessibility = "Rummy")
+    public WebElement rummy;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@content-desc, 'Chips')]")
+    public WebElement profile;
+
+    @AndroidFindBy(accessibility = "Reload Chips")
+    public WebElement reloadChips;
 
     public void clickAllowPermission() {
         if (isElementPresent(allowButton)) {
@@ -293,8 +338,66 @@ public class ANRLocators extends ActionUtils {
     }
 
     public void ClickLoginUsingPassword() {
-        if (isElementPresent(loginUsingPswd)) {
-            waitAndClick(loginUsingPswd);
+        if(isElementPresent(loginUsingPswd))
+        {
+            click(loginUsingPswd);
+        }
+    }
+
+    public void ClickLoginViaPassword()
+    {
+        if(isElementPresent(loginViaPswd)) {
+//        {
+//            click(loginViaPswd);
+//        }
+            Rectangle rect = loginViaPswd.getRect();
+            int x = rect.getX();
+            int y = rect.getY();
+            int height = rect.getHeight();
+            int width = rect.getWidth();
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+            tapByCoordinates(x + (width / 2), y + (height / 4));
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    public void enterUsername(String userName)
+    {
+        waitAndClick(enterUsername);
+        sendText(enterUsername,userName);
+    }
+
+    public void enterPassword(String password)
+    {
+        waitAndClick(enterPassword);
+        sendText(enterPassword,password);
+    }
+
+    public void clickLoginButtonExisting()
+    {
+        waitAndClick(loginButtonExisting);
+    }
+
+    public void clickSkipButton()
+    {
+        waitAndClick(skipButton);
+    }
+
+    public void closeWelcomeBanner()
+    {
+        try {
+            Thread.sleep(2000);
+            click(closeWelcomeBanner);
+        } catch (InterruptedException e) {
+            System.out.println("Banner not present");
         }
     }
 
@@ -421,6 +524,42 @@ public class ANRLocators extends ActionUtils {
 
     public void clickSelectYourBank() {
         waitAndClick(selectYourBank);
+
+    }
+
+    public void clickReloadChips()
+    {
+        click(reloadChips);
+    }
+
+    public void clickProfile()
+    {
+        click(profile);
+    }
+
+    public void clickOkBtnReloadChips()
+    {
+        click(okBtnReloadChips);
+    }
+
+    public void clickAddCashLobby()
+    {
+        click(addCashLobby);
+    }
+
+    public void selectFirstTile()
+    {
+        click(firstTile);
+    }
+
+    public void clickSelectYourBank()
+    {
+        click(selectYourBank);
+    }
+
+    public void clickAddButton()
+    {
+        click(addCashButton);
     }
 
     public void clickJusPayYesCancelBtn() {
@@ -464,6 +603,70 @@ public class ANRLocators extends ActionUtils {
 
     public void goToPromotions() {
         waitAndClick(promotions);
+    }
+
+    public void ClickYes_Button()
+    {
+        click(yesButton);
+    }
+
+    public void unCheckExpressCheckout()
+    {
+        click(uncheckBtn);
+    }
+
+    public void clickAnyBankInNetBanking()
+    {
+        click(bank);
+    }
+
+    public void clickSideMenuButton()
+    {
+        click(sideMenu);
+    }
+
+    public void goToHelpFromSideMenu()
+    {
+        click(help);
+    }
+
+    public void clickOnBackBtnHelp()
+    {
+        click(backBtnHelp);
+    }
+
+    public void goToPromotions()
+    {
+        click(promotions);
+    }
+
+    public void clickCloseButton()
+    {
+        click(closeButtonIPA);
+    }
+
+    public void clickPaymentBackBtn()
+    {
+        click(paymentBackBtn);
+    }
+
+    public void clickSMBackBtn()
+    {
+        click(SMBackBtn);
+    }
+
+    public void clickEABackBtn()
+    {
+        click(EABackBtn);
+    }
+
+    public void clickAllowWhileUsingApp()
+    {
+        try {
+            click(allowWhileUsingApp);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     public void clickCloseButton() {
@@ -716,5 +919,97 @@ public class ANRLocators extends ActionUtils {
         scrollUntilLast(LEADERBOARD);
     }
 
+    public void goToPracticeTab()
+    {
+        click(practiceTab);
+    }
+
+    public void select2Player()
+    {
+        click(select2Player);
+    }
+
+    public void clickPlayNowBtn()
+    {
+        click(playNowBtn);
+    }
+
+    public void clickLocationOkBtn()
+    {
+        click(locationOkButton);
+    }
+
+    public void clickLeaderBoard()
+    {
+        if(isElementPresent(leaderBoard))
+        {
+            click(leaderBoard);
+        }
+    }
+
+    public void clickOptIn()
+    {
+        if(isElementPresent(optIn))
+        {
+            click(optIn);
+        }
+    }
+
+    public void clickLobby()
+    {
+        if(isElementPresent(lobby))
+        {
+            click(lobby);
+        }
+    }
+
+    public void goToLeaderBoardFromSideMenu()
+    {
+        click(leaderBoardAccess);
+    }
+
+    public void scrollAndViewAll()
+    {
+        scrollWithCoordinates(driver, 364, 1257, 350, 183);
+        if(isElementPresent(viewALL))
+        {
+            click(viewALL);
+        }
+    }
+
+    public void clickSearchBtnYoutube()
+    {
+        click(youtubeSearchBtn);
+    }
+
+    public void searchVideo()
+    {
+        sendText(editSearch, "4k video");
+    }
+
+    public void clickSearchIcon()
+    {
+        click(searchIcon);
+    }
+
+    public void clickOnVideo() {
+        click(youtubeVideo);
+    }
+
+    public void clickOnSelectEnvBox() {
+        click(selectEnvBox);
+    }
+
+    public void clickOnQAEnv() {
+        click(QAEnv);
+    }
+
+    public void clickProceedBtn() {
+        click(proceed);
+    }
+
+    public void clickOnRummy() {
+        click(rummy);
+    }
 
 }

@@ -21,6 +21,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import java.io.*;
+import org.apache.commons.exec.CommandLine;
+import org.apache.commons.exec.DefaultExecutor;
+import org.apache.commons.exec.ExecuteException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import pageObjects.ANRLocators;
+
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -37,6 +54,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static org.openqa.selenium.devtools.v116.dom.DOM.moveTo;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.time.Duration;
+import java.util.List;
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 
 public class ActionUtils {
     public AndroidDriver driver;
@@ -62,10 +87,18 @@ public class ActionUtils {
     }
 
     public void click(WebElement locator, boolean... takeScreenshot) {
-        TouchAction touchAction = new TouchAction(driver);
-        TapOptions tapOptions = new TapOptions();
-        tapOptions.withElement(ElementOption.element(locator)).withTapsCount(1);
-        touchAction.tap(tapOptions).perform();
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+            element.click();
+        } catch (Exception e) {
+            ANRLocators anrLocators = new ANRLocators(driver, wait);
+            if (isElementPresent(anrLocators.dismissBtn)) {
+                anrLocators.dismissBtn.click();
+            } else {
+                anrLocators.closeWelcomeBanner.click();
+            }
+        }
     }
 
     public void tapByCoordinates(int x,int y){
@@ -88,15 +121,24 @@ public class ActionUtils {
     }
 
     public void waitAndClick(WebElement locator) {
-        int n=3;
-        while(n>1) {
-            try {
-                wait.until(ExpectedConditions.visibilityOf(locator)).click();
-                return;
-            } catch (Exception e) {
-                n -= 1;
-            }
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));
+        try{
+            // Wait for the element to be clickable
+            wait.until(ExpectedConditions.elementToBeClickable(locator));
+            // Click on the element
+            locator.click();
+        }catch(Exception e){
+            System.out.println(locator.toString()+" not found");
         }
+        // int n=3;
+        // while(n>1) {
+        //     try {
+        //         wait.until(ExpectedConditions.visibilityOf(locator)).click();
+        //         return;
+        //     } catch (Exception e) {
+        //         n -= 1;
+        //     }
+        // }
     }
 
     public void keyCodeBack(){
@@ -160,6 +202,30 @@ public class ActionUtils {
             e.printStackTrace();
             System.out.println(e.getMessage() + "swipeToBottom method failed");
         }
+    }
+
+    public void swipeToRight()
+    {
+        try {
+            Dimension size = driver.manage().window().getSize();
+//            int startX = size.width / 2;
+//            int startY = (int) (size.height * 0.8); // Start from 80% down the screen
+//            int endY = (int) (size.height * 0.6); // End at 20% down the screen
+
+            int startX = (int) (size.width * 0.8); // 80% from the left
+            int endX = (int) (size.width * 0.2);   // 20% from the left
+            int startY = size.height / 3;
+
+            TouchAction<?> action = new TouchAction<>(driver);
+            action.press(PointOption.point(startX, startY))
+                    .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500))) // Add a wait action
+                    .moveTo(PointOption.point(startX, endX))
+                    .release()
+                    .perform();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage() + "swipeToBottom method failed");
+        }
 
     }
 
@@ -185,90 +251,91 @@ public class ActionUtils {
         driver.perform(java.util.Arrays.asList(swipe));
     }
 
-    public Timestamp timeStamp()
+    public void setNetworkSpeedBS(String networkProfile) {
+        String username = "roohpreetkaur_rJOCtg";
+        String accessKey = "XgrmR7L4zwj9HHEpC6sB";
+        String sessionId = String.valueOf(driver.getSessionId());
+        String apiUrl = "https://api-cloud.browserstack.com/app-automate/sessions/" + sessionId + "/update_network.json";
+        String customNetworkProfile = networkProfile; //150,90,600,5
+        String payload = "{\"networkProfile\":\"" + customNetworkProfile + "\"}";
+
+        HttpClient client = HttpClient.newHttpClient();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(apiUrl))
+                .header("Content-Type", "application/json")
+                .header("Authorization", "Basic " + getAuthHeader(username, accessKey))
+                .PUT(HttpRequest.BodyPublishers.ofString(payload))
+                .build();
+
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            System.out.println("Response Code: " + response.statusCode());
+            System.out.println("Response Body: " + response.body());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static String getAuthHeader(String username, String accessKey) {
+        return java.util.Base64.getEncoder().encodeToString((username + ":" + accessKey).getBytes());
+    }
+
+    public void timeStamp()
     {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         System.out.println(timestamp);
-        return timestamp;
     }
 
-    public void printDeviceLogs(AndroidDriver driver) throws FileNotFoundException, ParseException, InterruptedException {
-        String filePath="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/output.txt";
-        PrintStream fileStream = new PrintStream(new File(filePath));
-        // Redirect System.out to the file stream
-        System.setOut(fileStream);
+    public static void executeADBCommand(AndroidDriver driver, String command) {
+        driver.executeScript("mobile: shell", "adb shell " + command);
+    }
 
-        long t0 = 0;
-        long t1 = 0;
+    public static void enableWifi(AndroidDriver driver) {
+        executeADBCommand(driver, "svc wifi enable");
+    }
 
-        List<org.openqa.selenium.logging.LogEntry> logEntries = driver.manage().logs().get("logcat").getAll();
-        for (LogEntry logEntry : logEntries) {
+    public static void disableWifi(AndroidDriver driver) {
+        executeADBCommand(driver, "svc wifi disable");
+    }
 
-//            if (logEntry.getMessage().contains("flutter : Lobby Event Added ::  lobby_play_now_clicked")) {
-//                t0=logEntry.getTimestamp();
-//                System.out.println(logEntry.getMessage());
-//            }
-//
-//            if (logEntry.getMessage().contains("Unity   : Changing orientation from Game Table current Orientation Portrait change to LandscapeLeft")) {
-//                t1=logEntry.getTimestamp();
-//                System.out.println(logEntry.getMessage());
-//            }
-
-            System.out.println(logEntry.getMessage());
-
-
+    public static void runShellScript(String command) {
+        int iExitValue;
+        String sCommandString;
+        sCommandString = command;
+        CommandLine oCmdLine = CommandLine.parse(sCommandString);
+        DefaultExecutor oDefaultExecutor = new DefaultExecutor();
+        oDefaultExecutor.setExitValue(0);
+        try {
+            iExitValue = oDefaultExecutor.execute(oCmdLine);
+        } catch (ExecuteException e){
+            System.out.println("Fail");
+            e.printStackTrace();
+        } catch (IOException e){
+            System.out.println("Denied");
+            e.printStackTrace();
         }
-        Thread.sleep(20000);
-        fileStream.close();
-
     }
 
-//    public void print2DArray()
-//    {
-//        System.out.print("             t0 (lobby)      " + " || ");
-//        System.out.print("        t1 (game table)            " );
-//        System.out.println();
-//        for (int i = 0; i < timeStamp2DArray.size(); i++) {
-//            for (int j = 0; j < timeStamp2DArray.get(i).size(); j++) {
-//                System.out.print(timeStamp2DArray.get(i).get(j) + " || ");
-//            }
-//            System.out.println();
-//        }
-//    }
+    public static void toggleNetworkSpeed(String speed) throws IOException {
+        String charlesControlUrl = "http://localhost:8888/control/throttle/" + speed;
 
-    public void diffenceinDuration(long t0, long t1) throws ParseException {
+        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+            HttpPost httpPost = new HttpPost(charlesControlUrl);
 
-//        String timestamp0=t0.toString();
-//        String timestamp1=t1.toString();
-
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-        String timestamp0 = sdf.format(new Date(t0));
-        String timestamp1 = sdf.format(new Date(t1));
-
-        Date date1 = sdf.parse(timestamp0);
-        Date date2 = sdf.parse(timestamp1);
-
-        // Calculate the time difference in milliseconds
-        long timeDifference = date2.getTime() - date1.getTime();
-
-        // Convert milliseconds to seconds
-        long secondsDifference = timeDifference / 1000;
-
-        // Print the result
-        System.out.println("Time difference: " + secondsDifference + " seconds");
-
-        timestamp.add((int) secondsDifference);
-
+            try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
+                handleResponse(response);
+            }
+        }
     }
 
-    public void printTimestamp()
-    {
-        // Print elements using a traditional for loop
-        System.out.println("AFTER FILESTREAM CLOSE");
+    private static void handleResponse(CloseableHttpResponse response) {
+        int statusCode = response.getStatusLine().getStatusCode();
 
-        for (int i = 0; i < timestamp.size(); i++) {
-            System.out.println("iteration " + i + " : " + timestamp.get(i) + " secs ");
+        if (statusCode == 200) {
+            System.out.println("Network speed changed successfully.");
+        } else {
+            System.err.println("Failed to change network speed. Response code: " + statusCode);
         }
     }
 
@@ -354,3 +421,4 @@ public class ActionUtils {
     }
 
 }
+

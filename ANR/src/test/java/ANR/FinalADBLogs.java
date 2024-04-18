@@ -38,7 +38,6 @@ public class FinalADBLogs {
         }
     }
     public static void main(String[] args) throws ParseException, IOException {
-
         String platform ="ipa";
         FinalADBLogs object = new FinalADBLogs();
         object.extractLogs(platform);
