@@ -87,17 +87,25 @@ public class ActionUtils {
     }
 
     public void click(WebElement locator, boolean... takeScreenshot) {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-            element.click();
-        } catch (Exception e) {
-            ANRLocators anrLocators = new ANRLocators(driver, wait);
-            if (isElementPresent(anrLocators.dismissBtn)) {
-                anrLocators.dismissBtn.click();
-            } else {
-                anrLocators.closeWelcomeBanner.click();
-            }
+//        try {
+//            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+//            element.click();
+//        } catch (Exception e) {
+//            ANRLocators anrLocators = new ANRLocators(driver, wait);
+//            if (isElementPresent(anrLocators.dismissBtn)) {
+//                anrLocators.dismissBtn.click();
+//            } else {
+//                anrLocators.closeWelcomeBanner.click();
+//            }
+//        }
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(8));
+        try{
+            wait.until(ExpectedConditions.elementToBeClickable(locator));
+            locator.click();
+        }catch(Exception e){
+            System.out.println(locator.toString()+" not found");
         }
     }
 
@@ -317,27 +325,27 @@ public class ActionUtils {
         }
     }
 
-    public static void toggleNetworkSpeed(String speed) throws IOException {
-        String charlesControlUrl = "http://localhost:8888/control/throttle/" + speed;
-
-        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            HttpPost httpPost = new HttpPost(charlesControlUrl);
-
-            try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
-                handleResponse(response);
-            }
-        }
-    }
-
-    private static void handleResponse(CloseableHttpResponse response) {
-        int statusCode = response.getStatusLine().getStatusCode();
-
-        if (statusCode == 200) {
-            System.out.println("Network speed changed successfully.");
-        } else {
-            System.err.println("Failed to change network speed. Response code: " + statusCode);
-        }
-    }
+//    public static void toggleNetworkSpeed(String speed) throws IOException {
+//        String charlesControlUrl = "http://localhost:8888/control/throttle/" + speed;
+//
+//        try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
+//            HttpPost httpPost = new HttpPost(charlesControlUrl);
+//
+//            try (CloseableHttpResponse response = httpClient.execute(httpPost)) {
+//                handleResponse(response);
+//            }
+//        }
+//    }
+//
+//    private static void handleResponse(CloseableHttpResponse response) {
+//        int statusCode = response.getStatusLine().getStatusCode();
+//
+//        if (statusCode == 200) {
+//            System.out.println("Network speed changed successfully.");
+//        } else {
+//            System.err.println("Failed to change network speed. Response code: " + statusCode);
+//        }
+//    }
 
     public void captureScreenshot() {
         String timestamp = new SimpleDateFormat("yyyyMMdd-HHmmss").format(new Date());

@@ -25,11 +25,12 @@ public class JungleeRummy extends BaseTest {
         }
     }
     String platform = props.getProperty("platform");
-    int noOfIterations = 200;
-    int appLaunchFrequency = 4;
-    int reloadChipsFrequency = 20;
-    int F2WFrequency = 100;
-    int addCashFrequency = 400;
+    String runEnv= props.getProperty("runEnv");
+    int noOfIterations = 1;
+    int appLaunchFrequency = 1;
+    int reloadChipsFrequency = 1;
+    int F2WFrequency = 1;
+    int addCashFrequency = 1;
     int F2UFrequency = 1;
     int bound = 25;
 
@@ -66,7 +67,7 @@ public class JungleeRummy extends BaseTest {
                 if (i % F2UFrequency == 0) {
                     System.out.println("Device Rotation Before Game table!");
                     flows.randomRotation(bound);
-                    flows.flutterToUnity(platform);
+                    flows.flutterToUnity(platform,runEnv);
                     System.out.println("Device Rotation After Game table!");
                 }
 

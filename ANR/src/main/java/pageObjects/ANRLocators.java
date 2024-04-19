@@ -324,6 +324,9 @@ public class ANRLocators extends ActionUtils {
     @AndroidFindBy(accessibility = "Reload Chips")
     public WebElement reloadChips;
 
+    @AndroidFindBy(accessibility = "Your Club has been Upgraded")
+    public WebElement ClubHasBeenUpgraded;
+
     public void clickAllowPermission() {
         if (isElementPresent(allowButton)) {
             click(allowButton);
@@ -343,64 +346,6 @@ public class ANRLocators extends ActionUtils {
             click(loginUsingPswd);
         }
     }
-
-    public void ClickLoginViaPassword()
-    {
-        if(isElementPresent(loginViaPswd)) {
-//        {
-//            click(loginViaPswd);
-//        }
-            Rectangle rect = loginViaPswd.getRect();
-            int x = rect.getX();
-            int y = rect.getY();
-            int height = rect.getHeight();
-            int width = rect.getWidth();
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-            tapByCoordinates(x + (width / 2), y + (height / 4));
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        }
-    }
-
-    public void enterUsername(String userName)
-    {
-        waitAndClick(enterUsername);
-        sendText(enterUsername,userName);
-    }
-
-    public void enterPassword(String password)
-    {
-        waitAndClick(enterPassword);
-        sendText(enterPassword,password);
-    }
-
-    public void clickLoginButtonExisting()
-    {
-        waitAndClick(loginButtonExisting);
-    }
-
-    public void clickSkipButton()
-    {
-        waitAndClick(skipButton);
-    }
-
-    public void closeWelcomeBanner()
-    {
-        try {
-            Thread.sleep(2000);
-            click(closeWelcomeBanner);
-        } catch (InterruptedException e) {
-            System.out.println("Banner not present");
-        }
-    }
-
     public void ClickLoginViaPassword() {
         // old login page
         if (isElementPresent(loginViaPswd)) {
@@ -486,16 +431,6 @@ public class ANRLocators extends ActionUtils {
     public void clickSkipButton() {
         waitAndClick(skipButton);
     }
-
-    public void closeWelcomeBanner() {
-        try {
-            Thread.sleep(2000);
-            click(closeWelcomeBanner);
-        } catch (InterruptedException e) {
-            System.out.println("Banner not present");
-        }
-    }
-
     public void closeRatingPopUp() {
         if (isElementPresent(ratingPopUp)) {
             click(ratingPopUp);
@@ -513,43 +448,17 @@ public class ANRLocators extends ActionUtils {
     public void clickOkBtnReloadChips() {
         waitAndClick(okBtn);
     }
-
-    public void clickAddCashLobby() {
-        waitAndClick(addCashLobby);
-    }
-
     public void selectFirstTile() {
         waitAndClick(firstTile);
     }
-
-    public void clickSelectYourBank() {
-        waitAndClick(selectYourBank);
-
-    }
-
-    public void clickReloadChips()
-    {
-        click(reloadChips);
-    }
-
     public void clickProfile()
     {
         click(profile);
     }
 
-    public void clickOkBtnReloadChips()
-    {
-        click(okBtnReloadChips);
-    }
-
     public void clickAddCashLobby()
     {
         click(addCashLobby);
-    }
-
-    public void selectFirstTile()
-    {
-        click(firstTile);
     }
 
     public void clickSelectYourBank()
@@ -564,45 +473,6 @@ public class ANRLocators extends ActionUtils {
 
     public void clickJusPayYesCancelBtn() {
         click(juspayYesCancelBtn);
-    }
-
-    public void ClickYes_Button() {
-        waitAndClick(yesButton);
-    }
-
-    public void unCheckExpressCheckout() {
-        if (uncheckBtn.isDisplayed()) {
-            waitAndClick(uncheckBtn);
-        }
-//        if(uncheckBtnCard.isDisplayed())
-//        {
-//            waitAndClick(uncheckBtnCard);
-//        }
-
-    }
-
-    public void clickAnyBankInNetBanking() {
-        waitAndClick(bank);
-    }
-
-    public void clickSideMenuButton() {
-        waitAndClick(sideMenu);
-    }
-
-    public void goToHelpFromSideMenu() {
-        if(isElementPresent(help))
-        {
-            waitAndClick(help);
-        }
-        scrollUntilLast(help);
-    }
-
-    public void clickOnBackBtnHelp() {
-        waitAndClick(backBtnHelp);
-    }
-
-    public void goToPromotions() {
-        waitAndClick(promotions);
     }
 
     public void ClickYes_Button()
@@ -622,17 +492,17 @@ public class ANRLocators extends ActionUtils {
 
     public void clickSideMenuButton()
     {
-        click(sideMenu);
+        waitAndClick(sideMenu);
     }
 
     public void goToHelpFromSideMenu()
     {
-        click(help);
+        waitAndClick(help);
     }
 
     public void clickOnBackBtnHelp()
     {
-        click(backBtnHelp);
+        waitAndClick(backBtnHelp);
     }
 
     public void goToPromotions()
@@ -640,26 +510,10 @@ public class ANRLocators extends ActionUtils {
         click(promotions);
     }
 
-    public void clickCloseButton()
-    {
-        click(closeButtonIPA);
-    }
-
     public void clickPaymentBackBtn()
     {
         click(paymentBackBtn);
     }
-
-    public void clickSMBackBtn()
-    {
-        click(SMBackBtn);
-    }
-
-    public void clickEABackBtn()
-    {
-        click(EABackBtn);
-    }
-
     public void clickAllowWhileUsingApp()
     {
         try {
@@ -673,10 +527,6 @@ public class ANRLocators extends ActionUtils {
         click(closeButtonIPA);
     }
 
-    public void clickPaymentBackBtn() {
-        waitAndClick(paymentBackBtn);
-    }
-
     public void clickSMBackBtn() {
         waitAndClick(SMBackBtn);
     }
@@ -684,15 +534,6 @@ public class ANRLocators extends ActionUtils {
     public void clickEABackBtn() {
         waitAndClick(EABackBtn);
     }
-
-    public void clickAllowWhileUsingApp() {
-        try {
-            waitAndClick(allowWhileUsingApp);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
     public void waitForNavHomeTabVisible() {
         try {
             FluentWait<AndroidDriver> wait = new FluentWait<>(driver)
@@ -723,21 +564,21 @@ public class ANRLocators extends ActionUtils {
         System.out.println("Timestamp form app launch to lobby ");
     }
 
-    public void goToPracticeTab() {
-        waitAndClick(practiceTab);
-    }
-
-    public void select2Player() {
-        waitAndClick(select2Player);
-    }
-
-    public void clickPlayNowBtn() {
-        waitAndClick(playNowBtn);
-    }
-
-    public void clickLocationOkBtn() {
-        waitAndClick(locationOkButton);
-    }
+//    public void goToPracticeTab() {
+//        waitAndClick(practiceTab);
+//    }
+//
+//    public void select2Player() {
+//        waitAndClick(select2Player);
+//    }
+//
+//    public void clickPlayNowBtn() {
+//        waitAndClick(playNowBtn);
+//    }
+//
+//    public void clickLocationOkBtn() {
+//        waitAndClick(locationOkButton);
+//    }
 
     public void clickLeaderBoard() {
         if (isElementPresent(leaderBoard)) {
@@ -770,14 +611,10 @@ public class ANRLocators extends ActionUtils {
         }
     }
 
-    public void goToLeaderBoardFromSideMenu() {
-        waitAndClick(leaderBoardAccess);
-    }
-
     public void scrollAndViewAll() {
         scrollWithCoordinates(driver, 364, 1257, 350, 183);
         if (isElementPresent(viewALL)) {
-            waitAndClick(viewALL);
+            click(viewALL);
         }
     }
 
@@ -894,7 +731,7 @@ public class ANRLocators extends ActionUtils {
     }
 
     public void closeLobbyPopUp() throws InterruptedException {
-        int maxCounter = 5;
+        int maxCounter = 7;
         do {
             if (isElementPresent(closeLobbyPopUp)) {
                 Dimension size = closeLobbyPopUp.getRect().getDimension();
@@ -936,45 +773,12 @@ public class ANRLocators extends ActionUtils {
 
     public void clickLocationOkBtn()
     {
-        click(locationOkButton);
-    }
-
-    public void clickLeaderBoard()
-    {
-        if(isElementPresent(leaderBoard))
-        {
-            click(leaderBoard);
-        }
-    }
-
-    public void clickOptIn()
-    {
-        if(isElementPresent(optIn))
-        {
-            click(optIn);
-        }
-    }
-
-    public void clickLobby()
-    {
-        if(isElementPresent(lobby))
-        {
-            click(lobby);
-        }
+        waitAndClick(locationOkButton);
     }
 
     public void goToLeaderBoardFromSideMenu()
     {
         click(leaderBoardAccess);
-    }
-
-    public void scrollAndViewAll()
-    {
-        scrollWithCoordinates(driver, 364, 1257, 350, 183);
-        if(isElementPresent(viewALL))
-        {
-            click(viewALL);
-        }
     }
 
     public void clickSearchBtnYoutube()
@@ -1010,6 +814,14 @@ public class ANRLocators extends ActionUtils {
 
     public void clickOnRummy() {
         click(rummy);
+    }
+
+    public void closeLoyaltyPopUp()
+    {
+        if(isElementPresent(ClubHasBeenUpgraded))
+        {
+            waitAndClick(playNowBtn);
+        }
     }
 
 }

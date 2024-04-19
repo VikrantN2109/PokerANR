@@ -38,13 +38,12 @@ public class BaseTest {
 
     public WebDriverWait wait;
     public AppiumDriverLocalService appiumService;
-    public AndroidDriver driver ;
+    public AndroidDriver driver = null;
     public ANRLocators locators;
     public ANRFlows flows;
     public ActionUtils utils;
     public Properties props;
     private static ThreadLocal<Integer> currentDeviceIndex = new ThreadLocal<>();
-
     public BaseTest(){
         FileReader propertyFile = null;
         try {
@@ -60,7 +59,7 @@ public class BaseTest {
         }
         System.out.println(props.getProperty("runEnv"));
     }
-    //@BeforeMethod(alwaysRun = true)
+  //  @BeforeMethod(alwaysRun = true)
     public AndroidDriver initAppiumDriver() throws IOException, InterruptedException {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
         desiredCapabilities.setCapability("platformName", "Android");
@@ -100,9 +99,9 @@ public class BaseTest {
         service.start();
         URL url = service.getUrl();
         driver = new AndroidDriver(url, desiredCapabilities);
-       // driver.setNetworkSpeed(NetworkSpeed.valueOf("250")); // Replace with your desired speed
+        // driver.setNetworkSpeed(NetworkSpeed.valueOf("250")); // Replace with your desired speed
         Thread.sleep(4000);
-      //  System.out.println(driver.getContextHandles().toString());
+        //  System.out.println(driver.getContextHandles().toString());
         wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         locators=new ANRLocators(driver,wait);
         flows =new ANRFlows(driver,wait);
@@ -145,9 +144,9 @@ public class BaseTest {
         return driver;
     }
 
-    @BeforeMethod(alwaysRun = true)
+   // @BeforeMethod(alwaysRun = true)
     @Parameters(value={"deviceIndex"})
-    public AndroidDriver launchBS(String deviceIndex) throws Exception {
+    public AndroidDriver launchBSDriverMultipleDevices(String deviceIndex) throws Exception {
         JSONParser parser = new JSONParser();
         JSONObject config = (JSONObject) parser.parse(new FileReader("src/test/resources/ANRConfig.json"));
         JSONArray envs = new JSONArray();
@@ -240,7 +239,7 @@ public class BaseTest {
         }
     }
 
-   // @AfterMethod(alwaysRun=true)
+  //  @AfterMethod(alwaysRun=true)
     public void tearDown() throws Exception {
         // Invoke driver.quit() to indicate that the test is completed.
         // Otherwise, it will appear as timed out on BrowserStack.

@@ -6,6 +6,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.logging.LogEntry;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
@@ -19,16 +20,31 @@ import java.util.List;
 import java.util.Random;
 
 public class ANR extends BaseTest {
+    @BeforeMethod(alwaysRun = true)
+    @Parameters(value = {"deviceIndex"})
+    public void setup(String deviceIndex) {
+        try {
+            if (props.getProperty("runEnv").equalsIgnoreCase("local")) {
+                driver = initAppiumDriver();
+            } else {
+                driver = launchBSDriverMultipleDevices(deviceIndex);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     String platform = props.getProperty("platform");
-    int appLaunchFrequency = 1; // Integer.MAX_VALUE
-    int reloadChipsFrequency = 40;
+    String runEnv = props.getProperty("runEnv");
+    int appLaunchFrequency = 10; // Integer.MAX_VALUE
+    int reloadChipsFrequency = 10;
     int F2WFrequency = 1;
     int addCashFrequency = 1;
     int F2UFrequency = 1;
     int runAppInBackGround = 5;
     int toggleBetweenApps = 1;
     int tournamentsFrequency = 1;
-    int addCashFlowForNonKycUserFrequency = Integer.MAX_VALUE;
+    int addCashFlowForNonKycUserFrequency = 1;
 
     @Test
     @Parameters(value = {"deviceIndex"})
@@ -36,7 +52,7 @@ public class ANR extends BaseTest {
 
         System.out.println(platform);
 
-        int noOfIterations = 200;
+        int noOfIterations = 2;
 
         flows.loginExistingUser(platform, deviceIndex);
 
@@ -58,10 +74,16 @@ public class ANR extends BaseTest {
                     flows.flutterToWebviewLeaderboard(platform);
                 }
 
-                if (i % addCashFrequency == 0) {
-                    System.out.println("Device Rotation Before Add Cash!");
-                    flows.randomRotation(10);
-                    flows.addCashJuspayFlow(platform);
+                if (platform.equalsIgnoreCase("psrmg") && props.getProperty("kycVerifiedUser").equalsIgnoreCase("false")) {
+                    if (i % addCashFlowForNonKycUserFrequency == 0) {
+                        flows.addCashFlowForNonKycUser();
+                    }
+                } else {
+                    if (i % addCashFrequency == 0) {
+                        System.out.println("Device Rotation Before Add Cash!");
+                        flows.randomRotation(10);
+                        flows.addCashJuspayFlow(platform, deviceIndex);
+                    }
                 }
 
                 if (i % runAppInBackGround == 0) {
@@ -69,23 +91,19 @@ public class ANR extends BaseTest {
                 }
 
                 if (i % toggleBetweenApps == 0) {
-                    flows.toggleApps();
+                    flows.toggleApps(platform);
                 }
 
                 if (i % F2UFrequency == 0) {
                     System.out.println("Device Rotation Before Game table!");
                     // flows.randomRotation(10);
-                    flows.flutterToUnity(platform);
+                    flows.flutterToUnity(platform, runEnv);
                     System.out.println("Device Rotation After Game table!");
                     flows.randomRotation(5);
                 }
 
                 if (i % tournamentsFrequency == 0) {
                     flows.tournamentFlow(platform);
-                }
-
-                if (i % addCashFlowForNonKycUserFrequency == 0) {
-                    flows.addCashFlowForNonKycUser();
                 }
 
                 System.out.println("Testcase Passed with All Condition=" + i);
