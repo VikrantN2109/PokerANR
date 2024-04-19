@@ -64,16 +64,21 @@ public class ANRFlows extends ANRLocators {
 //                enterUsername("7290927380");
 //                enterPassword("Test@123456");
 
-                enterUsername("jgkaby1247@gmail.com");
-                enterPassword("@Test123");
+//                enterUsername("anushka.shrivastava@jungleegames.com");
+//                enterPassword("@Test12345");
+
                 break;
             case "1":
                 enterUsername("7087537187");
                 enterPassword("Abcdef123!");    //Abcdef123!
                 break;
             case "2":
-                enterUsername("roohpreet.kaur@jungleegames.com");
-                enterPassword("1234@Test");    //Abcdef123!
+//                enterUsername("roohpreet.kaur@jungleegames.com");
+//                enterPassword("1234@Test");    //Abcdef123!
+
+                enterUsername("7290927380");
+                enterPassword("Test@123456");
+
                 break;
             case "3":
                 enterUsername("roohpreet002@gmail.com");
@@ -96,10 +101,16 @@ public class ANRFlows extends ANRLocators {
         Thread.sleep(2000);
     }
 
-    public void reloadChips() {
-        clickAvatar();
+    public void reloadChips() throws InterruptedException {
+//        clickAvatar();
+//        clickReloadChips();
+//        clickOkBtnReloadChips();
+        clickSideMenuButton();
+        clickProfile();
         clickReloadChips();
         clickOkBtnReloadChips();
+        closeLobbyPopUp();
+        clickLobby();
     }
 
     public void relaunchApp(String platform) throws InterruptedException {
@@ -357,27 +368,33 @@ public class ANRFlows extends ANRLocators {
         driver.rotate(orientation);
     }
 
-    public void toggleApps(String platform) throws InterruptedException {
-        driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
-        driver.activateApp("com.rummydotcom.indianrummycashgame");
-        Thread.sleep(4000);
-        driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
-        switch (platform) {
-            case "ipa":
-                driver.activateApp("com.jungleerummy.jungleerummy");
-                break;
-            case "psrmg":
-                driver.activateApp("com.jungleerummy.playcashgameonline");
-                break;
-            case "native":
-                driver.activateApp("io.jungleerummy.jungleegames");
-                break;
-            case "rummydotcom":
-                driver.activateApp("com.jungleerummy.playcashgameonline");
-                break;
+    public void toggleApps(String platform,String runEnv) throws InterruptedException {
+        if(runEnv.equalsIgnoreCase("local"))
+        {
+            driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+            driver.activateApp("com.rummydotcom.indianrummycashgame");
+            Thread.sleep(4000);
+            driver.pressKey(new KeyEvent().withKey(AndroidKey.HOME));
+            switch (platform) {
+                case "ipa":
+                    driver.activateApp("com.jungleerummy.jungleerummy");
+                    break;
+                case "psrmg":
+                    driver.activateApp("com.jungleerummy.playcashgameonline");
+                    break;
+                case "native":
+                    driver.activateApp("io.jungleerummy.jungleegames");
+                    break;
+                case "rummydotcom":
+                    driver.activateApp("com.jungleerummy.playcashgameonline");
+                    break;
+            }
+        }
+        else {
+            playYoutubeVideo(platform,5);
         }
         clickLobby();
-     //   playYoutubeVideo(platform,5);
+       // playYoutubeVideo(platform,5);
     }
 
     public void tournamentFlow(String platform) {

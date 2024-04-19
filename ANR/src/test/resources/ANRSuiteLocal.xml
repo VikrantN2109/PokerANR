@@ -4,7 +4,7 @@
     <test name="ANR Device 1">
         <parameter name="deviceIndex" value="0"/>
         <classes>
-            <class name="ANR.ANR"/>
+            <class name="ANR.JungleeRummy"/>
         </classes>
     </test>
 </suite>

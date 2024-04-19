@@ -144,7 +144,6 @@ public class BaseTest {
         return driver;
     }
 
-   // @BeforeMethod(alwaysRun = true)
     @Parameters(value={"deviceIndex"})
     public AndroidDriver launchBSDriverMultipleDevices(String deviceIndex) throws Exception {
         JSONParser parser = new JSONParser();
@@ -195,7 +194,7 @@ public class BaseTest {
             case "native":
                 app = (String) config.get("native_app");
                 break;
-            case "rummy.com":
+            case "rummydotcom":
                 app = (String) config.get("rummycom_app");
                 break;
         }

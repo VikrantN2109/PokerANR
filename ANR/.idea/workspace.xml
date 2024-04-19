@@ -92,9 +92,9 @@
       <recent name="$PROJECT_DIR$/src/test/resources" />
     </key>
   </component>
-  <component name="RunManager" selected="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml">
-    <configuration name="ADBCommands" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ANR.ADBCommands" />
+  <component name="RunManager" selected="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuite.xml">
+    <configuration name="FinalADBLogs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ANR.FinalADBLogs" />
       <module name="ANR" />
       <extension name="coverage">
         <pattern>
@@ -106,8 +106,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FinalADBLogs" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ANR.FinalADBLogs" />
+    <configuration name="JungleeRummy" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ANR" />
       <extension name="coverage">
         <pattern>
@@ -115,6 +114,11 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="ANR" />
+      <option name="MAIN_CLASS_NAME" value="ANR.JungleeRummy" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -144,8 +148,21 @@
     </configuration>
     <configuration name="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuite.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ANR" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/ANRSuite.xml" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="SUITE" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="PROPERTIES_FILE" value="" />
+      <envs>
+        <env name="ANDROID_SDK_ROOT" value="$USER_HOME$/Library/Android/sdk" />
+        <env name="ANDROID_HOME" value="$USER_HOME$/Library/Android/sdk" />
+      </envs>
       <properties />
       <listeners />
       <method v="2">
@@ -154,8 +171,17 @@
     </configuration>
     <configuration name="/Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="ANR" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
       <option name="SUITE_NAME" value="$PROJECT_DIR$/src/test/resources/ANRSuiteiOS.xml" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="SUITE" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="PROPERTIES_FILE" value="" />
       <properties />
       <listeners />
       <method v="2">
@@ -164,18 +190,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.FinalADBLogs" />
-      <item itemvalue="Application.ADBCommands" />
+      <item itemvalue="TestNG.JungleeRummy" />
       <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuite.xml" />
       <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml" />
       <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml" />
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuite.xml" />
+        <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteLocal.xml" />
+        <item itemvalue="TestNG.JungleeRummy" />
         <item itemvalue="Application.FinalADBLogs" />
         <item itemvalue="TestNG./Users/anushkas.hrivastava/Desktop/ANR/ANR/src/test/resources/ANRSuiteiOS.xml" />
-        <item itemvalue="Application.ADBCommands" />
       </list>
     </recent_temporary>
   </component>
@@ -209,7 +235,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/baseTest/BaseTest.java</url>
-          <line>217</line>
+          <line>216</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -224,7 +250,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
-          <line>334</line>
+          <line>347</line>
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -258,7 +284,7 @@
           <option name="timeStamp" value="141" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ANR/ANR.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/ANR/JungleeRummy.java</url>
           <line>105</line>
           <option name="timeStamp" value="142" />
         </line-breakpoint>
@@ -274,38 +300,38 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ANR/JungleeRummy.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="179" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/ANR/ANR.java</url>
           <line>96</line>
           <option name="timeStamp" value="193" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
-          <line>202</line>
+          <line>215</line>
           <option name="timeStamp" value="194" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
-          <line>379</line>
+          <line>398</line>
           <option name="timeStamp" value="198" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
-          <line>385</line>
+          <line>404</line>
           <option name="timeStamp" value="199" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
-          <line>128</line>
+          <line>141</line>
           <option name="timeStamp" value="200" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/flows/ANRFlows.java</url>
-          <line>127</line>
+          <line>140</line>
           <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/ANR/JungleeRummy.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="202" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/test/java/baseTest/BaseTest.java</url>
