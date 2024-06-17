@@ -6,6 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.PokerStarLocators;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class PokerStarANRFlow extends PokerStarLocators {
     AndroidDriver driver;
 
@@ -33,11 +35,60 @@ public class PokerStarANRFlow extends PokerStarLocators {
         //Enter OTP
         enterNumber(otp);
 
-        //Click on Allow Location Permission
-        allowLocationPermission();
-
+        //handle location permission
+        if(isLocationPermissionPopupPresent()) {
+            //Click on Allow Location Permission
+            allowLocationPermission();
+        }
         //Click to close illustration popup
         clickToCloseIllustration();
+
+    }
+
+    public void lobbyToGameTable() throws InterruptedException {
+
+        //Click on lobby
+        clickLobby();
+
+        //Click on practice option
+        clickPracticeButton();
+
+        //Click on MIN BUY-IN
+        clickMinBuyIn();
+
+        //click on skip tour button if present
+        if(isSkipTourButtonPresent()){
+            clickSkipTourButton();
+        }
+
+        Thread.sleep(5000);
+
+        //Tap on Buy-in via coordinates
+        tapByCoordinates(518,599);
+
+        Thread.sleep(2000);
+
+        //Tap on Ok button via coordinates
+        tapByCoordinates(528,1251);
+
+        //Tap on hamburger icon on game table screen
+        tapByCoordinates(1008,161);
+
+        Thread.sleep(2000);
+
+        //Tap on leave table option
+        tapByCoordinates(541,1956);
+
+        Thread.sleep(2000);
+
+        //Click Yes on Confirmation popup
+        tapByCoordinates(309,2065);
+
+        //Click back on game table screen
+//        clickBackButtonAndroid();
+    }
+
+    public void logoutFlow(){
 
         //Click on More Button
         clickMoreButton();

@@ -36,6 +36,18 @@ public class PokerStarLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='Log Out']")
     public WebElement logoutOption;
 
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='PRACTICE']")
+    public WebElement practiceButton;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[contains(@content-desc , 'MIN BUY-IN')]")
+    public WebElement minBuyIn;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='LOBBY']")
+    public WebElement lobby;
+
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Skip Tour']")
+    public WebElement skipTourButton;
+
 
     public void clickLoginField(){
         if (isElementPresent(loginField)) {
@@ -45,6 +57,10 @@ public class PokerStarLocators extends ActionUtils {
 
     public void enterNumber(String number){
         sendText(loginField, number);
+    }
+
+    public boolean isLocationPermissionPopupPresent(){
+        return isElementPresent(locationPermission);
     }
 
     public void allowLocationPermission(){
@@ -68,6 +84,34 @@ public class PokerStarLocators extends ActionUtils {
     public void clickLogoutOption(){
         if (isElementPresent(logoutOption)) {
             click(logoutOption);
+        }
+    }
+
+    public void clickPracticeButton(){
+        if (isElementPresent(practiceButton)) {
+            click(practiceButton);
+        }
+    }
+
+    public void clickMinBuyIn(){
+        if (isElementPresent(minBuyIn)) {
+            click(minBuyIn);
+        }
+    }
+
+    public void clickLobby(){
+        if (isElementPresent(lobby)) {
+            click(lobby);
+        }
+    }
+
+    public boolean isSkipTourButtonPresent(){
+        return isElementPresent(skipTourButton);
+    }
+
+    public void clickSkipTourButton(){
+        if (isSkipTourButtonPresent()) {
+            click(skipTourButton);
         }
     }
 
