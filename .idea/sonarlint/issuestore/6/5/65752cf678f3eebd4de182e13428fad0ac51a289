@@ -1,0 +1,105 @@
+
+n	java:S117¼"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÎœã8‘ÇÕ§‚2
+n	java:S117ñ"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÎœã8‘ÇÕ§‚2
+n	java:S117ı"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(êÎœã8‘ÇÕ§‚2
+t
+java:S1104C"RMake driver a static final constant or non-public and provide accessors if needed.(Ì±½îûÿÿÿÿ8’ÇÕ§‚2
+m
+java:S1104D"PMake wait a static final constant or non-public and provide accessors if needed.(ÇªŠÄ8’ÇÕ§‚2
+w
+java:S1104E"UMake timestamp a static final constant or non-public and provide accessors if needed.(ÅÀ×øÿÿÿÿ8’ÇÕ§‚2
+~
+java:S1104F"\Make timeStamp2DArray a static final constant or non-public and provide accessors if needed.(ÄÔù„øÿÿÿÿ8’ÇÕ§‚2
+‹
+java:S1319E"iThe type of "timestamp" should be an interface such as "List" rather than the implementation "ArrayList".(ÅÀ×øÿÿÿÿ8’ÇÕ§‚2
+’
+java:S1319F"pThe type of "timeStamp2DArray" should be an interface such as "List" rather than the implementation "ArrayList".(ÄÔù„øÿÿÿÿ8’ÇÕ§‚2
+{
+java:S2293E"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÅÀ×øÿÿÿÿ8’ÇÕ§‚2
+{
+java:S2293F"YReplace the type specification in this constructor call with the diamond operator ("<>").(ÄÔù„øÿÿÿÿ8’ÇÕ§‚2
+Q
+java:S3740q"/Provide the parametrized type for this generic.(‚ˆÁÚøÿÿÿÿ8–ÇÕ§‚2
+Q
+java:S3740q"/Provide the parametrized type for this generic.(‚ˆÁÚøÿÿÿÿ8–ÇÕ§‚2
+e
+java:S1192¼"GDefine a constant instead of duplicating this literal "finger" 3 times.(êÎœã8—ÇÕ§‚2
+h
+java:S1192l"KDefine a constant instead of duplicating this literal " not found" 3 times.(šÃ©ï8—ÇÕ§‚2
+“
+java:S1845D"vRename field "wait" to prevent any misunderstanding/clash with method "wait" defined in superclass "java.lang.Object".(ÇªŠÄ8˜ÇÕ§‚2
+z
+java:S1845¤"WRename method "timeStamp" to prevent any misunderstanding/clash with field "timestamp".(ûŒ•šıÿÿÿÿ8˜ÇÕ§‚2
+{
+java:S2142T"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(ä ¹€8ŸÇÕ§‚2
+R
+java:S1172Y"5Remove this unused method parameter "takeScreenshot".(Å“Ÿà8¢ÇÕ§‚2
+U
+java:S1117g"8Rename "wait" which hides the field declared at line 68.(ÆÏ‚Ç8¢ÇÕ§‚2
+]	java:S125Z"<This block of commented-out lines of code should be removed.(ñ¥ùšøÿÿÿÿ8¤ÇÕ§‚2
+G	java:S106l"+Replace this use of System.out by a logger.(šÃ©ï8¦ÇÕ§‚2
+U
+java:S1874q"3Remove this use of "TouchAction"; it is deprecated.(‚ˆÁÚøÿÿÿÿ8§ÇÕ§‚2
+U
+java:S1874q"3Remove this use of "TouchAction"; it is deprecated.(‚ˆÁÚøÿÿÿÿ8«ÇÕ§‚2
+G	java:S106~"+Replace this use of System.out by a logger.(«³€ì8¬ÇÕ§‚2
+V
+java:S1117„"8Rename "wait" which hides the field declared at line 68.(ÆÏ‚Ç8®ÇÕ§‚2
+H	java:S106‹"+Replace this use of System.out by a logger.(šÃ©ï8»ÇÕ§‚2
+^	java:S125"<This block of commented-out lines of code should be removed.(¿²æìúÿÿÿÿ8»ÇÕ§‚2
+p	java:S100¯"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¦ôæ´øÿÿÿÿ8¼ÇÕ§‚2
+F	java:S108´")Either remove or fill this block of code.(”ı¾8½ÇÕ§‚2
+M	java:S106Ó"+Replace this use of System.out by a logger.(êú„Äşÿÿÿÿ8ÀÇÕ§‚2
+X	java:S125Û"<This block of commented-out lines of code should be removed.(È¹­Q8ÂÇÕ§‚2
+V
+java:S1874ã"3Remove this use of "TouchAction"; it is deprecated.(‹¾…çşÿÿÿÿ8ÂÇÕ§‚2
+V
+java:S1874ã"3Remove this use of "TouchAction"; it is deprecated.(‹¾…çşÿÿÿÿ8ÂÇÕ§‚2
+M	java:S106ë"+Replace this use of System.out by a logger.(êú„Äşÿÿÿÿ8ÃÇÕ§‚2
+|
+java:S2142›"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8İÇÕ§‚2
+M	java:S106™"+Replace this use of System.out by a logger.(˜Ü©åşÿÿÿÿ8İÇÕ§‚2
+H	java:S106š"+Replace this use of System.out by a logger.(ùÒØĞ8İÇÕ§‚2
+`
+java:S1117¦"=Rename "timestamp" which hides the field declared at line 69.(À‚–™ùÿÿÿÿ8ŞÇÕ§‚2
+H	java:S106§"+Replace this use of System.out by a logger.(¡õÈå8ŞÇÕ§‚2
+\
+java:S1854¾">Remove this useless assignment to local variable "iExitValue".(áªÇ¶8ßÇÕ§‚2
+R
+java:S1481·"/Remove this unused "iExitValue" local variable.(ûÑï¡ÿÿÿÿÿ8ßÇÕ§‚2
+Z
+java:S1874»"7Remove this use of "DefaultExecutor"; it is deprecated.(«²Ò÷úÿÿÿÿ8àÇÕ§‚2
+M	java:S106À"+Replace this use of System.out by a logger.(â‹ùíıÿÿÿÿ8âÇÕ§‚2
+M	java:S106Ã"+Replace this use of System.out by a logger.(§Ööıÿÿÿÿ8âÇÕ§‚2
+Y	java:S125È"<This block of commented-out lines of code should be removed.(ÕõŞŒ8âÇÕ§‚2
+`
+java:S1117ß"=Rename "timestamp" which hides the field declared at line 69.(Ñ¶ÿËıÿÿÿÿ8âÇÕ§‚2
+M	java:S106ç"+Replace this use of System.out by a logger.(ˆó©¶ıÿÿÿÿ8äÇÕ§‚2
+M	java:S106’"+Replace this use of System.out by a logger.(ñ•İ­şÿÿÿÿ8çÇÕ§‚2
+X	java:S125š"<This block of commented-out lines of code should be removed.(—íĞ8çÇÕ§‚2
+\
+java:S1155 ">Use isEmpty() to check whether the collection is empty or not.(·ò…Ï8çÇÕ§‚2
+V
+java:S1874¦"3Remove this use of "TouchAction"; it is deprecated.(‹¾…çşÿÿÿÿ8èÇÕ§‚2
+V
+java:S1874¦"3Remove this use of "TouchAction"; it is deprecated.(‹¾…çşÿÿÿÿ8èÇÕ§‚2
+R
+java:S1128"0Remove this unused import 'org.openqa.selenium'.(–Öã½ûÿÿÿÿ8éÇÕ§‚2
+;
+java:S1128 "Remove this duplicated import.(Šœ¢ñ8éÇÕ§‚2
+;
+java:S1128!"Remove this duplicated import.(û”‘¤8éÇÕ§‚2
+@
+java:S1128""Remove this duplicated import.(û€Èéúÿÿÿÿ8éÇÕ§‚2
+;
+java:S1128#"Remove this duplicated import.(¥÷ó8éÇÕ§‚2
+;
+java:S1128$"Remove this duplicated import.(Ø£ÿ§8éÇÕ§‚2
+;
+java:S11289"Remove this duplicated import.(ú¡ÙÛ8éÇÕ§‚2
+;
+java:S1128:"Remove this duplicated import.(¸…¼ü8éÇÕ§‚2
+@
+java:S1128;"Remove this duplicated import.(ëá¯‰üÿÿÿÿ8éÇÕ§‚2
+@
+java:S1128<"Remove this duplicated import.(Õë±Äøÿÿÿÿ8éÇÕ§‚2

@@ -1,0 +1,46 @@
+
+:
+java:S2187&"Add some tests to this class.(žŸÒð8þó™¨‚2
+T
+java:S1144æ"6Remove this unused private "executeADBCommand" method.(§ç¥Ñ8þó™¨‚2
+‰
+java:S1130A"lRemove the declaration of thrown exception 'java.io.IOException', as it cannot be thrown from method's body.(ÀÑðß8€ô™¨‚2
+A
+java:S2925i"$Remove this use of "Thread.sleep()".(Úõôñ8€ô™¨‚2
+W	java:S125j"<This block of commented-out lines of code should be removed.(óµA8€ô™¨‚2
+[
+java:S1854œ"8Remove this useless assignment to local variable "envs".(Ê‹‚Ùþÿÿÿÿ8‚ô™¨‚2
+X	java:S125r"<This block of commented-out lines of code should be removed.(È§‹8‚ô™¨‚2
+^	java:S125Ö"<This block of commented-out lines of code should be removed.(É‡ôÉýÿÿÿÿ8‚ô™¨‚2
+Š
+java:S1130÷"lRemove the declaration of thrown exception 'java.lang.Exception', as it cannot be thrown from method's body.(«¤ÜÕ8ƒô™¨‚2
+d
+java:S1128"GRemove this unused import 'io.appium.java_client.android.NetworkSpeed'.(Ô†‡…8ƒô™¨‚2
+@
+java:S1128"Remove this duplicated import.(ÙÅ«§ÿÿÿÿÿ8ƒô™¨‚2
+@
+java:S1128"Remove this duplicated import.(‹åóùùÿÿÿÿ8ƒô™¨‚2
+]
+java:S1128";Remove this unused import 'org.openqa.selenium.OutputType'.(Ð³—õýÿÿÿÿ8ƒô™¨‚2
+b
+java:S1128"@Remove this unused import 'org.openqa.selenium.TakesScreenshot'.(Žç³Üÿÿÿÿÿ8ƒô™¨‚2
+;
+java:S1128"Remove this duplicated import.(¦ò©Š8ƒô™¨‚2
+;
+java:S1128"Remove this duplicated import.(¥÷ó8ƒô™¨‚2
+P
+java:S1128"3Remove this unused import 'org.slf4j.helpers.Util'.(ì†È¸8ƒô™¨‚2
+@
+java:S1128"Remove this duplicated import.(ÙÅ«§ÿÿÿÿÿ8ƒô™¨‚2
+@
+java:S1128"Remove this duplicated import.(‹åóùùÿÿÿÿ8ƒô™¨‚2
+]
+java:S1128"@Remove this unused import 'org.testng.annotations.DataProvider'.(§„´ï8ƒô™¨‚2
+M
+java:S1128"0Remove this unused import 'java.nio.file.Files'.(‚ƒü8ƒô™¨‚2
+L
+java:S1128 "/Remove this unused import 'java.nio.file.Path'.(×²êÂ8ƒô™¨‚2
+M
+java:S1128!"0Remove this unused import 'java.nio.file.Paths'.(áè°¯8ƒô™¨‚2
+T
+java:S1128""7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ8ƒô™¨‚2

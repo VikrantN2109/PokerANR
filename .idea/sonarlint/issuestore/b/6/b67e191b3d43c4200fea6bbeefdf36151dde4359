@@ -1,0 +1,101 @@
+
+c
+java:S1192z"FDefine a constant instead of duplicating this literal "psrmg" 3 times.(‡îšÒ8µÈÕ§‚2
+i
+java:S1192~"GDefine a constant instead of duplicating this literal "native" 3 times.(¼ÛÑ¥ùÿÿÿÿ8µÈÕ§‚2
+{
+java:S1192w"^Define a constant instead of duplicating this literal "com.jungleerummy.jungleerummy" 5 times.(ïÖò8µÈÕ§‚2
+
+java:S1192{"dDefine a constant instead of duplicating this literal "com.jungleerummy.playcashgameonline" 6 times.(ØÌŞµ8µÈÕ§‚2
+‚
+java:S1192ƒ"dDefine a constant instead of duplicating this literal "com.rummydotcom.indianrummycashgame" 3 times.(¾Û”ß8µÈÕ§‚2
+i
+java:S1192æ"FDefine a constant instead of duplicating this literal "reset" 3 times.(Ìşç¥şÿÿÿÿ8µÈÕ§‚2
+o
+java:S1192‚"LDefine a constant instead of duplicating this literal "rummydotcom" 3 times.(›¾Á§üÿÿÿÿ8µÈÕ§‚2
+
+java:S1192"]Define a constant instead of duplicating this literal "io.jungleerummy.jungleegames" 4 times.(ì´×şÿÿÿÿ8µÈÕ§‚2
+S
+java:S2387""1"driver" is the name of a field in "ANRLocators".(âªõòÿÿÿÿÿ8µÈÕ§‚2
+¨
+java:S1845h"‹Rename method "reloadChips" to prevent any misunderstanding/clash with field "reloadChips" defined in superclass "pageObjects.ANRLocators".(±¿¤'8¶ÈÕ§‚2
+C	java:S131;""Add a default case to this switch.(¹È½Àşÿÿÿÿ8¹ÈÕ§‚2
+X	java:S125="<This block of commented-out lines of code should be removed.( Æ®û8ºÈÕ§‚2
+]	java:S125@"<This block of commented-out lines of code should be removed.(“É¾ïşÿÿÿÿ8ºÈÕ§‚2
+]	java:S125C"<This block of commented-out lines of code should be removed.(¡¯¡Äıÿÿÿÿ8ºÈÕ§‚2
+X	java:S125L"<This block of commented-out lines of code should be removed.(¯€–ß8ºÈÕ§‚2
+X	java:S125i"<This block of commented-out lines of code should be removed.(ïĞ´·8»ÈÕ§‚2
+”
+java:S1130t"wRemove the declaration of thrown exception 'java.lang.InterruptedException', as it cannot be thrown from method's body.(Ç«ÏÄ8¼ÈÕ§‚2
+>	java:S131u""Add a default case to this switch.(œ‘½ö8¼ÈÕ§‚2
+|
+java:S2142£"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8½ÈÕ§‚2
+^	java:S125¢"<This block of commented-out lines of code should be removed.(üÈ¹•úÿÿÿÿ8¾ÈÕ§‚2
+
+java:S2142¦"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(±Ÿ—±ÿÿÿÿÿ8¾ÈÕ§‚2
+H	java:S106§"+Replace this use of System.out by a logger.(ö¬8¾ÈÕ§‚2
+
+java:S1130Ğ"qRemove the declaration of thrown exception 'java.text.ParseException', as it cannot be thrown from method's body.(›üª¢8ÀÈÕ§‚2
+|
+java:S2142ö"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8ÀÈÕ§‚2
+Y	java:S125ç"<This block of commented-out lines of code should be removed.(ıôƒ£8ÂÈÕ§‚2
+M	java:S106ï"+Replace this use of System.out by a logger.(—ø×¾ùÿÿÿÿ8ÂÈÕ§‚2
+M	java:S106ò"+Replace this use of System.out by a logger.(òªÿûÿÿÿÿ8ÂÈÕ§‚2
+M	java:S106÷"+Replace this use of System.out by a logger.(¨¶ÑÍşÿÿÿÿ8ÃÈÕ§‚2
+U
+java:S1172û"2Remove this unused method parameter "deviceIndex".(“Ã°Êıÿÿÿÿ8ÃÈÕ§‚2
+|
+java:S2142Ÿ"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8ÃÈÕ§‚2
+^	java:S125ƒ"<This block of commented-out lines of code should be removed.(üÈ¹•úÿÿÿÿ8ÄÈÕ§‚2
+i
+java:S1301‹"KReplace this "switch" statement by "if" statements to increase readability.(œ‘½ö8ÄÈÕ§‚2
+M	java:S106 "+Replace this use of System.out by a logger.(¨¶ÑÍşÿÿÿÿ8ÅÈÕ§‚2
+H	java:S106¨"+Replace this use of System.out by a logger.(–İÅ8ÆÈÕ§‚2
+I
+java:S1905ª"&Remove this unnecessary cast to "int".(Ë«Ûûÿÿÿÿ8ÆÈÕ§‚2
+I
+java:S1905ª"&Remove this unnecessary cast to "int".(Ë«Ûûÿÿÿÿ8ÆÈÕ§‚2
+^	java:S125¶"<This block of commented-out lines of code should be removed.(º‰á†ıÿÿÿÿ8ÈÈÕ§‚2
+A
+java:S2119Ó"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ÈÈÕ§‚2
+Y	java:S125Ø"<This block of commented-out lines of code should be removed.(Ğø’Ê8ÉÈÕ§‚2
+^	java:S125Ş"<This block of commented-out lines of code should be removed.(µ©¾’ûÿÿÿÿ8ÉÈÕ§‚2
+Y	java:S125ä"<This block of commented-out lines of code should be removed.(·Îó‹8ÉÈÕ§‚2
+M	java:S106è"+Replace this use of System.out by a logger.(²àéÁüÿÿÿÿ8ÉÈÕ§‚2
+?	java:S131ú""Add a default case to this switch.(œ‘½ö8ÊÈÕ§‚2
+^	java:S125"<This block of commented-out lines of code should be removed.(¿Êîÿÿÿÿÿ8ÊÈÕ§‚2
+M
+java:S1172"/Remove this unused method parameter "platform".(ª®¿ÿ8ËÈÕ§‚2
+^	java:S125–"<This block of commented-out lines of code should be removed.(°×Çäıÿÿÿÿ8ËÈÕ§‚2
+A
+java:S2119©"Save and re-use this "Random".(šŸ«íøÿÿÿÿ8ËÈÕ§‚2
+?	java:S131¸""Add a default case to this switch.(œ‘½ö8ÌÈÕ§‚2
+|
+java:S2142ß"^Either re-interrupt this method or rethrow the "InterruptedException" that can be caught here.(”ı¾8ÍÈÕ§‚2
+M	java:S106à"+Replace this use of System.out by a logger.(¨¶ÑÍşÿÿÿÿ8ÎÈÕ§‚2
+e
+java:S1128"CRemove this unused import 'com.google.common.collect.ImmutableMap'.(İéùÿÿÿÿ8ÎÈÕ§‚2
+\
+java:S1128"?Remove this unused import 'io.appium.java_client.AppiumDriver'.(òš‹­8ÎÈÕ§‚2
+d
+java:S1128"BRemove this unused import 'io.appium.java_client.PerformsActions'.(ñîşØıÿÿÿÿ8ÎÈÕ§‚2
+[
+java:S1128">Remove this unused import 'io.appium.java_client.TouchAction'.( èæ¤8ÎÈÕ§‚2
+h
+java:S1128"KRemove this unused import 'io.appium.java_client.touch.offset.PointOption'.(£ÿÙÂ8ÎÈÕ§‚2
+P
+java:S1128"3Remove this unused import 'java.io.BufferedReader'.(€é²Å8ÎÈÕ§‚2
+R
+java:S1128"0Remove this unused import 'java.io.IOException'.(ªº»Úıÿÿÿÿ8ÎÈÕ§‚2
+S
+java:S1128"6Remove this unused import 'java.io.InputStreamReader'.(ãˆÎÉ8ÎÈÕ§‚2
+X
+java:S1128";Remove this unused import 'java.net.MalformedURLException'.(ªËŞˆ8ÎÈÕ§‚2
+K
+java:S1128"/Remove this unused import 'java.sql.Timestamp'.(èò½+8ÎÈÕ§‚2
+T
+java:S1128"7Remove this unused import 'java.text.SimpleDateFormat'.(ú¡ÙÛ8ÎÈÕ§‚2
+C
+java:S1128"&Remove this unused import 'java.util'.(Î€ŒÙ8ÎÈÕ§‚2
+_
+java:S1128"=Remove this unused import 'java.util.NoSuchElementException'.(®“ÿéúÿÿÿÿ8ÎÈÕ§‚2
