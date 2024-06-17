@@ -48,12 +48,7 @@ public class PokerStarLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Skip Tour']")
     public WebElement skipTourButton;
 
-
-    public void clickLoginField(){
-        if (isElementPresent(loginField)) {
-            click(loginField);
-        }
-    }
+    public void clickLoginField(){ click(loginField); }
 
     public void enterNumber(String number){
         sendText(loginField, number);
@@ -67,6 +62,10 @@ public class PokerStarLocators extends ActionUtils {
         if (isElementPresent(locationPermission)) {
             click(locationPermission);
         }
+    }
+
+    public boolean isIllustrationPopupPresent(){
+        return isElementPresent(oneStopWallet);
     }
 
     public void clickToCloseIllustration(){

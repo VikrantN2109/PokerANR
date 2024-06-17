@@ -40,9 +40,11 @@ public class PokerStarANRFlow extends PokerStarLocators {
             //Click on Allow Location Permission
             allowLocationPermission();
         }
-        //Click to close illustration popup
-        clickToCloseIllustration();
-
+        //Handle Illustration popup
+        if(isIllustrationPopupPresent()) {
+            //Click to close illustration popup
+            clickToCloseIllustration();
+        }
     }
 
     public void lobbyToGameTable() throws InterruptedException {
