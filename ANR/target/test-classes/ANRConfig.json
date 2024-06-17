@@ -1,15 +1,15 @@
 {
   "server": "hub-cloud.browserstack.com",
-  "username": "anushkashrivasta_vUJhd7",
-  "access_key": "2WcMqxo9njWPKm9FuUby",
-  "native_app": "bs://ecd03e80d45407109d35748c0fd7da1b67bd572c",
+  "username": "vikrantnagar_B7UGbD",
+  "access_key": "uMocAyReRqyhsqtBChFG",
+  "native_app": "bs://e32bf28001149a695e1b33103d61ade8bedf9323",
   "psrmg_app": "bs://5e4610227d5c986873350e6182a337712025939b",
   "ipa": "bs://b08196b158f5e3e032d7f02a723bd55f162b7baa",
   "rummycom_app": "",
   "capabilities": {
-    "project": "ANR",
-    "build": "ANR Build",
-    "name": "ANR Script",
+    "project": "PokerApp",
+    "build": "PokerBuild",
+    "name": "PokerTest",
     "browserstack.debug": true,
     "interactiveDebugging": true,
     "newCommandTimeout": 500,
@@ -31,7 +31,7 @@
     },
     {
       "platformName": "android",
-      "deviceName": "Vivo Y21",
+      "deviceName": "Vivo V21",
       "os_version": "11.0"
     },
     {

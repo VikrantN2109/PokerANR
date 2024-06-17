@@ -2,6 +2,7 @@ package baseTest;
 
 import com.google.common.collect.ImmutableMap;
 import flows.ANRFlows;
+import flows.PokerStarANRFlow;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.NetworkSpeed;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -43,6 +44,7 @@ public class BaseTest {
     public ANRFlows flows;
     public ActionUtils utils;
     public Properties props;
+    public PokerStarANRFlow pokerStarANRFlow ;
     private static ThreadLocal<Integer> currentDeviceIndex = new ThreadLocal<>();
     public BaseTest(){
         FileReader propertyFile = null;
@@ -74,8 +76,8 @@ public class BaseTest {
         }
         else if(props.getProperty("platform").equalsIgnoreCase("native"))
         {
-            desiredCapabilities.setCapability("appPackage", "io.jungleerummy.jungleegames");
-            desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+            desiredCapabilities.setCapability("appPackage", "com.jungleegames.poker.cash.game");
+            desiredCapabilities.setCapability("appActivity", "com.howzat.howzatfantasy.MainActivity");
         }
         else {
             desiredCapabilities.setCapability("appPackage", "com.rummydotcom.indianrummycashgame");
@@ -108,6 +110,7 @@ public class BaseTest {
         return driver;
     }
 
+    /*
     public AndroidDriver launchBSDriverSingleDevice() throws IOException {
         String browserstackHubURL = "https://" + props.getProperty("browserstack_user") + ":" + props.getProperty("browserstack_key") +
                 "@hub-cloud.browserstack.com/wd/hub/";
@@ -143,6 +146,8 @@ public class BaseTest {
         flows =new ANRFlows(driver,wait);
         return driver;
     }
+     */
+
 
     @Parameters(value={"deviceIndex"})
     public AndroidDriver launchBSDriverMultipleDevices(String deviceIndex) throws Exception {
