@@ -33,7 +33,7 @@ public class TestPokerANR extends BaseTest {
         pokerStarANRFlow = new PokerStarANRFlow(driver, wait);
 
             pokerStarANRFlow.doLoginFlow("8527029916", "123456");
-            pokerStarANRFlow.lobbyToGameTable();
+            pokerStarANRFlow.lobbyToGameTable(platform, runEnv);
 //            flows.randomRotation(10);
 
 //            flows.playYoutubeVideo(platform,5);

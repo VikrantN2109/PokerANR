@@ -62,7 +62,7 @@ public class PokerStarANRFlow extends PokerStarLocators {
 
     }
 
-    public void lobbyToGameTable() throws InterruptedException {
+    public void lobbyToGameTable(String platform, String runEnv) throws InterruptedException {
 
         //Click on lobby
         clickLobby();
@@ -78,7 +78,24 @@ public class PokerStarANRFlow extends PokerStarLocators {
             clickSkipTourButton();
         }
 
+        if(runEnv.equalsIgnoreCase("BS"))
+        {
+//          Thread clickMinBuyInThread = new Thread(() -> clickMinBuyIn());
+            Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("no-network"));
+
+            // Start both threads
+            setNetworkSpeedThread.start();
+
+            setNetworkSpeedThread.join();
+
+            Thread.sleep(5000);
+
+            //Reset network speed
+            setNetworkSpeedBS("reset");
+        }
         Thread.sleep(20000);
+
+//        Thread.sleep(20000);
 /*
         //Tap on Buy-in via coordinates
         tapByCoordinates(518,599);

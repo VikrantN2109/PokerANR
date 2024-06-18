@@ -260,8 +260,8 @@ public class ActionUtils {
     }
 
     public void setNetworkSpeedBS(String networkProfile) {
-        String username = "roohpreetkaur_rJOCtg";
-        String accessKey = "XgrmR7L4zwj9HHEpC6sB";
+        String username = "vikrantnagar_B7UGbD";
+        String accessKey = "uMocAyReRqyhsqtBChFG";
         String sessionId = String.valueOf(driver.getSessionId());
         String apiUrl = "https://api-cloud.browserstack.com/app-automate/sessions/" + sessionId + "/update_network.json";
         String customNetworkProfile = networkProfile; //150,90,600,5
