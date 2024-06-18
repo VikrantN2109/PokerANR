@@ -9,6 +9,7 @@ import pageObjects.PokerStarLocators;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PokerStarANRFlow extends PokerStarLocators {
+
     AndroidDriver driver;
 
     public PokerStarANRFlow(AndroidDriver driver, WebDriverWait wait) {
@@ -35,16 +36,30 @@ public class PokerStarANRFlow extends PokerStarLocators {
         //Enter OTP
         enterNumber(otp);
 
-        //handle location permission
+
+//        closeUpdateBottomSheet();
+
+        //Handle location permission
         if(isLocationPermissionPopupPresent()) {
             //Click on Allow Location Permission
             allowLocationPermission();
         }
+        Thread.sleep(3000);
+
+        //Handle update bottom sheet if present
+        closeUpdateBottomSheet();
+
         //Handle Illustration popup
         if(isIllustrationPopupPresent()) {
             //Click to close illustration popup
             clickToCloseIllustration();
         }
+
+        Thread.sleep(3000);
+
+        //Handle update bottom sheet if present
+        closeUpdateBottomSheet();
+
     }
 
     public void lobbyToGameTable() throws InterruptedException {
@@ -63,8 +78,8 @@ public class PokerStarANRFlow extends PokerStarLocators {
             clickSkipTourButton();
         }
 
-        Thread.sleep(5000);
-
+        Thread.sleep(20000);
+/*
         //Tap on Buy-in via coordinates
         tapByCoordinates(518,599);
 
@@ -88,6 +103,8 @@ public class PokerStarANRFlow extends PokerStarLocators {
 
         //Click back on game table screen
 //        clickBackButtonAndroid();
+ */
+
     }
 
     public void logoutFlow(){

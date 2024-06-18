@@ -48,6 +48,13 @@ public class PokerStarLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Skip Tour']")
     public WebElement skipTourButton;
 
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Update Now']")
+    public WebElement updateBottomSheet;
+
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Scrim']")
+    public WebElement closeUpdateBottomSheet;
+
+
     public void clickLoginField(){ click(loginField); }
 
     public void enterNumber(String number){
@@ -114,5 +121,10 @@ public class PokerStarLocators extends ActionUtils {
         }
     }
 
+    public void closeUpdateBottomSheet(){
+        if (isElementPresent(updateBottomSheet)) {
+            click(closeUpdateBottomSheet);
+        }
+    }
 
 }
