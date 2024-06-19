@@ -213,7 +213,7 @@ public class ANRFlows extends ANRLocators {
             clickLobby();
             goToPracticeTab();
             select2Player();
-            clickPlayNowBtn();
+//            clickPlayNowBtn();
             if(runEnv.equalsIgnoreCase("BS"))
             {
                 Thread clickPlayNowBtnThread = new Thread(() -> clickPlayNowBtn());

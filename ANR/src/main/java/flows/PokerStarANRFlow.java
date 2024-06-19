@@ -21,7 +21,7 @@ public class PokerStarANRFlow extends PokerStarLocators {
 
     public void doLoginFlow(String number, String otp) throws InterruptedException {
 
-        Thread.sleep(5000);
+        Thread.sleep(6000);
 
         //Click on Login/Signup Field
         clickLoginField();
@@ -35,9 +35,6 @@ public class PokerStarANRFlow extends PokerStarLocators {
 
         //Enter OTP
         enterNumber(otp);
-
-
-//        closeUpdateBottomSheet();
 
         //Handle location permission
         if(isLocationPermissionPopupPresent()) {
@@ -71,24 +68,33 @@ public class PokerStarANRFlow extends PokerStarLocators {
         clickPracticeButton();
 
         //Click on MIN BUY-IN
-        clickMinBuyIn();
+//        clickMinBuyIn();
 
         //click on skip tour button if present
-        if(isSkipTourButtonPresent()){
-            clickSkipTourButton();
-        }
+//        if(isSkipTourButtonPresent()){
+//            clickSkipTourButton();
+//        }
 
         if(runEnv.equalsIgnoreCase("BS"))
         {
-//          Thread clickMinBuyInThread = new Thread(() -> clickMinBuyIn());
-            Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("no-network"));
+          Thread clickMinBuyInThread = new Thread(() -> clickMinBuyIn());
+          Thread setNetworkSpeedThread = new Thread(() -> setNetworkSpeedBS("2g-gprs-lossy"));
 
             // Start both threads
             setNetworkSpeedThread.start();
+            clickMinBuyInThread.start();
 
             setNetworkSpeedThread.join();
+            clickMinBuyInThread.join();
 
-            Thread.sleep(5000);
+            Thread.sleep(4000);
+
+            //click on skip tour button if present
+            if(isSkipTourButtonPresent()){
+                clickSkipTourButton();
+            }
+
+            Thread.sleep(4000);
 
             //Reset network speed
             setNetworkSpeedBS("reset");

@@ -24,7 +24,9 @@ public class TestPokerANR extends BaseTest {
 
     String platform = props.getProperty("platform");
     String runEnv = props.getProperty("runEnv");
-    int noOfIterations = 10;
+    int noOfIterations = 25;
+    int toggleBtwApps = 1;
+    int F2UFrequency = 1;
 
     @Test
     @Parameters(value = {"deviceIndex"})
@@ -32,14 +34,20 @@ public class TestPokerANR extends BaseTest {
 
         pokerStarANRFlow = new PokerStarANRFlow(driver, wait);
 
+        for(int i=0 ; i<noOfIterations ; i++) {
+
             pokerStarANRFlow.doLoginFlow("8527029916", "123456");
-            pokerStarANRFlow.lobbyToGameTable(platform, runEnv);
-//            flows.randomRotation(10);
 
-//            flows.playYoutubeVideo(platform,5);
+            flows.randomRotation(10);
 
+            if(i % F2UFrequency == 0) {
+                pokerStarANRFlow.lobbyToGameTable(platform, runEnv);
+            }
+            if(i % toggleBtwApps == 0) {
+                flows.playYoutubeVideo(platform, 5);
+            }
             pokerStarANRFlow.logoutFlow();
-
+        }
     }
 }
 
