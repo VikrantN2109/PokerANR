@@ -2,10 +2,12 @@ package flows;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.PokerStarLocators;
 
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class PokerStarANRFlow extends PokerStarLocators {
@@ -68,13 +70,19 @@ public class PokerStarANRFlow extends PokerStarLocators {
         clickPracticeButton();
 
         //Click on MIN BUY-IN
-//        clickMinBuyIn();
+        clickMinBuyIn();
+
+        //Set network to no network
+        setNetworkSpeedBS("2g-gprs-lossy");
+
+        randomRotation(10);
 
         //click on skip tour button if present
-//        if(isSkipTourButtonPresent()){
-//            clickSkipTourButton();
-//        }
+        if(isSkipTourButtonPresent()){
+            clickSkipTourButton();
+        }
 
+        /*
         if(runEnv.equalsIgnoreCase("BS"))
         {
           Thread clickMinBuyInThread = new Thread(() -> clickMinBuyIn());
@@ -99,34 +107,12 @@ public class PokerStarANRFlow extends PokerStarLocators {
             //Reset network speed
             setNetworkSpeedBS("reset");
         }
-        Thread.sleep(20000);
+         */
 
-//        Thread.sleep(20000);
-/*
-        //Tap on Buy-in via coordinates
-        tapByCoordinates(518,599);
+        // Reset network speed
+        setNetworkSpeedBS("reset");
 
-        Thread.sleep(2000);
-
-        //Tap on Ok button via coordinates
-        tapByCoordinates(528,1251);
-
-        //Tap on hamburger icon on game table screen
-        tapByCoordinates(1008,161);
-
-        Thread.sleep(2000);
-
-        //Tap on leave table option
-        tapByCoordinates(541,1956);
-
-        Thread.sleep(2000);
-
-        //Click Yes on Confirmation popup
-        tapByCoordinates(309,2065);
-
-        //Click back on game table screen
-//        clickBackButtonAndroid();
- */
+        Thread.sleep(10000);
 
     }
 
@@ -141,5 +127,23 @@ public class PokerStarANRFlow extends PokerStarLocators {
         //Click on Logout Option
         clickLogoutOption();
 
+    }
+
+    public void randomRotation(int bound) throws InterruptedException {
+        Random rand = new Random();
+        int randomNumber = rand.nextInt(bound);
+        if (randomNumber <= 5) {
+            for (int i = 0; i < 5; i++) {
+                try {
+
+                    driver.rotate(ScreenOrientation.LANDSCAPE);
+                    driver.rotate(ScreenOrientation.PORTRAIT);
+
+                } catch (Exception e) {
+                    System.out.println("Exception: " + e);
+                }
+                Thread.sleep(1000);
+            }
+        }
     }
 }

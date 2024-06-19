@@ -24,7 +24,7 @@ public class TestPokerANR extends BaseTest {
 
     String platform = props.getProperty("platform");
     String runEnv = props.getProperty("runEnv");
-    int noOfIterations = 25;
+    int noOfIterations = 30;
     int toggleBtwApps = 1;
     int F2UFrequency = 1;
 
@@ -35,6 +35,8 @@ public class TestPokerANR extends BaseTest {
         pokerStarANRFlow = new PokerStarANRFlow(driver, wait);
 
         for(int i=0 ; i<noOfIterations ; i++) {
+
+            System.out.println("Iteration : " + i );
 
             pokerStarANRFlow.doLoginFlow("8527029916", "123456");
 
