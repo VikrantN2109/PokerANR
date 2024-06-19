@@ -57,8 +57,16 @@ public class PokerStarLocators extends ActionUtils {
 
     public void clickLoginField(){ click(loginField); }
 
+    public void clickOTPField(){ click(loginField); }
+
     public void enterNumber(String number){
+        loginField.clear();
         sendText(loginField, number);
+    }
+
+    public void enterOTP(String otp){
+//        loginField.clear();
+        sendText(loginField, otp);
     }
 
     public boolean isLocationPermissionPopupPresent(){

@@ -23,7 +23,7 @@ public class PokerStarANRFlow extends PokerStarLocators {
 
         Thread.sleep(6000);
 
-        //Click on Login/Signup Field
+        //Click on Login/Signup Field two times
         clickLoginField();
         clickLoginField();
 
@@ -31,10 +31,10 @@ public class PokerStarANRFlow extends PokerStarLocators {
         enterNumber(number);
 
         //Click on OTP text field
-        clickLoginField();
+        clickOTPField();
 
         //Enter OTP
-        enterNumber(otp);
+        enterOTP(otp);
 
         //Handle location permission
         if(isLocationPermissionPopupPresent()) {
