@@ -442,10 +442,10 @@ public class ANRFlows extends ANRLocators {
                     driver.activateApp("com.jungleerummy.jungleerummy");
                     break;
                 case "psrmg":
-                    driver.activateApp("com.jungleerummy.playcashgameonline");
+                    driver.activateApp("com.jungleegames.poker");
                     break;
                 case "native":
-                    driver.activateApp("com.jungleegames.poker.cash.game");
+                    driver.activateApp("com.jungleegames.poker");
                     break;
                 case "rummydotcom":
                     driver.activateApp("com.jungleerummy.playcashgameonline");

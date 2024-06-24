@@ -71,12 +71,12 @@ public class BaseTest {
 
         if(props.getProperty("platform").equalsIgnoreCase("psrmg") || props.getProperty("platform").equalsIgnoreCase("ipa"))
         {
-            desiredCapabilities.setCapability("appPackage", "com.jungleerummy.playcashgameonline");
-            desiredCapabilities.setCapability("appActivity", "io.jungleerummy.jungleegames.MainActivity");
+            desiredCapabilities.setCapability("appPackage", "com.jungleegames.poker");
+            desiredCapabilities.setCapability("appActivity", "com.howzat.howzatfantasy.MainActivity");
         }
         else if(props.getProperty("platform").equalsIgnoreCase("native"))
         {
-            desiredCapabilities.setCapability("appPackage", "com.jungleegames.poker.cash.game");
+            desiredCapabilities.setCapability("appPackage", "com.jungleegames.poker");
             desiredCapabilities.setCapability("appActivity", "com.howzat.howzatfantasy.MainActivity");
         }
         else {

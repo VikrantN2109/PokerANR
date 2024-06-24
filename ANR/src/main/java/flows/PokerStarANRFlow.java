@@ -21,7 +21,7 @@ public class PokerStarANRFlow extends PokerStarLocators {
     }
 
 
-    public void doLoginFlow(String number, String otp) throws InterruptedException {
+    public void loginViaOTP(String number, String otp) throws InterruptedException {
 
         Thread.sleep(6000);
 
@@ -61,6 +61,44 @@ public class PokerStarANRFlow extends PokerStarLocators {
 
     }
 
+    public void loginViaEmail(String email, String password) throws InterruptedException {
+
+        Thread.sleep(6000);
+
+        //Click on email
+        clickEmailButton();
+
+        //Enter email address
+        enterEmailAddress(email);
+
+        //Enter password
+        enterPassword(password);
+
+        //Click on continue button
+        clickContinueButton();
+
+        //Handle update bottom sheet if present
+        closeUpdateBottomSheet();
+
+        //Handle location permission
+        if(isLocationPermissionPopupPresent()) {
+            //Click on Allow Location Permission
+            allowLocationPermission();
+        }
+        Thread.sleep(3000);
+
+        //Handle Illustration popup
+        if(isIllustrationPopupPresent()) {
+            //Click to close illustration popup
+            clickToCloseIllustration();
+        }
+
+        Thread.sleep(3000);
+
+        //Handle update bottom sheet if present
+        closeUpdateBottomSheet();
+    }
+
     public void lobbyToGameTable(String platform, String runEnv) throws InterruptedException {
 
         //Click on lobby
@@ -76,6 +114,8 @@ public class PokerStarANRFlow extends PokerStarLocators {
         setNetworkSpeedBS("2g-gprs-lossy");
 
         randomRotation(10);
+
+        Thread.sleep(5000);
 
         //click on skip tour button if present
         if(isSkipTourButtonPresent()){
@@ -116,8 +156,9 @@ public class PokerStarANRFlow extends PokerStarLocators {
 
     }
 
-    public void logoutFlow(){
+    public void logoutFlow() throws InterruptedException {
 
+        Thread.sleep(5000);
         //Click on More Button
         clickMoreButton();
 

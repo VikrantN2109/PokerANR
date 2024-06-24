@@ -24,7 +24,7 @@ public class TestPokerANR extends BaseTest {
 
     String platform = props.getProperty("platform");
     String runEnv = props.getProperty("runEnv");
-    int noOfIterations = 30;
+    int noOfIterations = 25;
     int toggleBtwApps = 1;
     int F2UFrequency = 1;
 
@@ -38,7 +38,9 @@ public class TestPokerANR extends BaseTest {
 
             System.out.println("Iteration : " + i );
 
-            pokerStarANRFlow.doLoginFlow("8527029916", "123456");
+//            pokerStarANRFlow.loginViaOTP("8527029916", "123456");
+
+            pokerStarANRFlow.loginViaEmail("automation12@junglee.com", "automation");
 
             flows.randomRotation(10);
 

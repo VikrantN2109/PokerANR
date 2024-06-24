@@ -54,6 +54,18 @@ public class PokerStarLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Scrim']")
     public WebElement closeUpdateBottomSheet;
 
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Email']")
+    public WebElement emailButton;
+
+    @AndroidFindBy(xpath = "//android.widget.EditText[1]")
+    public WebElement emailAddress;
+
+    @AndroidFindBy(xpath = "//android.widget.EditText[2]")
+    public WebElement emailPassword;
+
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Continue']")
+    public WebElement continueButton;
+
 
     public void clickLoginField(){ click(loginField); }
 
@@ -132,6 +144,32 @@ public class PokerStarLocators extends ActionUtils {
     public void closeUpdateBottomSheet(){
         if (isElementPresent(updateBottomSheet)) {
             click(closeUpdateBottomSheet);
+        }
+    }
+
+    public void clickEmailButton(){
+        if (isElementPresent(emailButton)) {
+            click(emailButton);
+        }
+    }
+
+    public void enterEmailAddress(String email){
+        if (isElementPresent(emailAddress)) {
+            click(emailAddress);
+            sendText(emailAddress, email);
+        }
+    }
+
+    public void enterPassword(String password){
+        if (isElementPresent(emailPassword)) {
+            click(emailPassword);
+            sendText(emailPassword, password);
+        }
+    }
+
+    public void clickContinueButton(){
+        if (isElementPresent(continueButton)) {
+            click(continueButton);
         }
     }
 
