@@ -66,6 +66,14 @@ public class PokerStarLocators extends ActionUtils {
     @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Continue']")
     public WebElement continueButton;
 
+    @AndroidFindBy(xpath = "//android.view.View[contains(@content-desc,'My Account')]")
+    public WebElement myAccountButton;
+
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='My Profile']")
+    public WebElement myProfile;
+
+    @AndroidFindBy(xpath = "//android.widget.Button[@content-desc='Logout']")
+    public WebElement logoutButton;
 
     public void clickLoginField(){ click(loginField); }
 
@@ -170,6 +178,24 @@ public class PokerStarLocators extends ActionUtils {
     public void clickContinueButton(){
         if (isElementPresent(continueButton)) {
             click(continueButton);
+        }
+    }
+
+    public void clickMyAccountButton(){
+        if (isElementPresent(myAccountButton)) {
+            click(myAccountButton);
+        }
+    }
+
+    public void clickMyProfile(){
+        if (isElementPresent(myProfile)) {
+            click(myProfile);
+        }
+    }
+
+    public void clickLogoutButton(){
+        if (isElementPresent(logoutButton)) {
+            click(logoutButton);
         }
     }
 

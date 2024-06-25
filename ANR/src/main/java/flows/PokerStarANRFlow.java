@@ -163,10 +163,14 @@ public class PokerStarANRFlow extends PokerStarLocators {
         clickMoreButton();
 
         //Scroll until last element
-        scrollUntilLast(logoutOption);
+//        scrollUntilLast(logoutOption);
 
         //Click on Logout Option
-        clickLogoutOption();
+//        clickLogoutOption();
+
+        clickMyAccountButton();
+        clickMyProfile();
+        clickLogoutButton();
 
     }
 
